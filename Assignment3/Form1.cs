@@ -12,32 +12,35 @@ namespace Assignment3
 {
     public partial class Form1 : Form
     {
-        // Literal value - correct password
+        // Correct password
         const string PASSWORD_VALUE = "ShowMeTheMoney";
 
-        // Literal value - limit for number of failed attempts to enter password
+        // Limit for number of failed attempts to enter password
         const int PASSWORD_FAILED_ATTEMPTS_LIMIT = 4;
 
-        // Literal values - wrong password
+        // Error messages for wrong password
         const string WRONG_PASSWORD_MESSAGE = "Wrong Password";
         const string TOO_MANY_FAILED_ATTEMPTS_MESSAGE = "Too many failed attempts";
         const string LOCKED_OUT_MESSAGE = "Locked out";
 
         // Interest rates
-        const double BAND_1_TERM_1_YEAR = 0.005000D;
+        const double BAND_1_TERM_1_YEARS = 0.005000D;
         const double BAND_1_TERM_3_YEARS = 0.006250D;
         const double BAND_1_TERM_5_YEARS = 0.007125D;
-        const double BAND_1_YEAR_10_YEARS = 0.011250D;
-        const double BAND_2_TERM_1_YEAR = 0.006000D;
+        const double BAND_1_TERM_10_YEARS = 0.011250D;
+        const double BAND_2_TERM_1_YEARS = 0.006000D;
         const double BAND_2_TERM_3_YEARS = 0.007250D;
         const double BAND_2_TERM_5_YEARS = 0.008125D;
-        const double BAND_2_YEAR_10_YEARS = 0.012500D;
+        const double BAND_2_TERM_10_YEARS = 0.012500D;
+
+        // Cut-off for higher investment rate
+        int BAND_2_CUTOFF = 100000;
 
         // Term durations
-        const int TERM_1 = 1;
-        const int TERM_2 = 3;
-        const int TERM_3 = 5;
-        const int TERM_4 = 10;
+        const int TERM_1_YEARS = 1;
+        const int TERM_3_YEARS = 3;
+        const int TERM_5_YEARS = 5;
+        const int TERM_10_YEARS = 10;
 
         // Cutoff for bonus
         const decimal BONUS_CUTOFF = 1000000.00M;
@@ -108,6 +111,32 @@ namespace Assignment3
         // Method called on pressing the "Display" button 
         private void displayButton_Click(object sender, EventArgs e)
         {
+            // Obtain entered investment amount
+            double investment = int.Parse(investmentAmountTextBox.Text);
+            // Check if the investment amount qualifies for the higher interest rate
+            // Accordingly, display interest rates, calculate and display final balance
+            if (investment >= BAND_2_CUTOFF)
+            {
+                interestRate1YearLabel.Text = BAND_2_TERM_1_YEARS + "%";
+                interestRate3YearLabel.Text = BAND_2_TERM_3_YEARS + "%";
+                interestRate5YearLabel.Text = BAND_2_TERM_5_YEARS + "%";
+                interestRate10YearLabel.Text = BAND_2_TERM_10_YEARS + "%";
+                finalBalance1YearLabel.Text = computeBalance(investment, TERM_1_YEARS, BAND_2_TERM_1_YEARS).ToString("C");
+                finalBalance3YearLabel.Text = computeBalance(investment, TERM_3_YEARS, BAND_2_TERM_3_YEARS).ToString("C");
+                finalBalance5YearLabel.Text = computeBalance(investment, TERM_5_YEARS, BAND_2_TERM_5_YEARS).ToString("C");
+                finalBalance10YearLabel.Text = computeBalance(investment, TERM_10_YEARS, BAND_2_TERM_10_YEARS).ToString("C");
+            }
+            else
+            {
+                interestRate1YearLabel.Text = BAND_1_TERM_1_YEARS + "%";
+                interestRate3YearLabel.Text = BAND_1_TERM_3_YEARS + "%";
+                interestRate5YearLabel.Text = BAND_1_TERM_5_YEARS + "%";
+                interestRate10YearLabel.Text = BAND_1_TERM_10_YEARS + "%";
+                finalBalance1YearLabel.Text = computeBalance(investment, TERM_1_YEARS, BAND_1_TERM_1_YEARS).ToString("C");
+                finalBalance3YearLabel.Text = computeBalance(investment, TERM_3_YEARS, BAND_1_TERM_3_YEARS).ToString("C");
+                finalBalance5YearLabel.Text = computeBalance(investment, TERM_5_YEARS, BAND_1_TERM_5_YEARS).ToString("C");
+                finalBalance10YearLabel.Text = computeBalance(investment, TERM_10_YEARS, BAND_1_TERM_10_YEARS).ToString("C");
+            }
 
         }
     }
