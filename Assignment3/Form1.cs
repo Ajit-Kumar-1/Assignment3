@@ -23,10 +23,28 @@ namespace Assignment3
         const string TOO_MANY_FAILED_ATTEMPTS_MESSAGE = "Too many failed attempts";
         const string LOCKED_OUT_MESSAGE = "Locked out";
 
+        // Interest rates
+        const double BAND_1_TERM_1_YEAR = 0.005000D;
+        const double BAND_1_TERM_3_YEARS = 0.006250D;
+        const double BAND_1_TERM_5_YEARS = 0.007125D;
+        const double BAND_1_YEAR_10_YEARS = 0.011250D;
+        const double BAND_2_TERM_1_YEAR = 0.006000D;
+        const double BAND_2_TERM_3_YEARS = 0.007250D;
+        const double BAND_2_TERM_5_YEARS = 0.008125D;
+        const double BAND_2_YEAR_10_YEARS = 0.012500D;
+
+        // Term durations
+        const int TERM_1 = 1;
+        const int TERM_2 = 3;
+        const int TERM_3 = 5;
+        const int TERM_4 = 10;
+
+        // Cutoff for bonus
+        const decimal BONUS_CUTOFF = 1000000.00M;
+        const int BONUS_MINIMUM_TERM_DURATION = 5;
+
         // Variable to keep track of number of failed attempts to enter password
         int passwordAttemptsCounter = 0;
-
-        // Function to check is password is correct
 
         public Form1()
         {
@@ -65,13 +83,14 @@ namespace Assignment3
             }
         }
 
-        // Method triggered on clicking the "Proceed" button on the first screen
+        // Method called on pressing the "Proceed" button on the first screen
         private void passwordEntryButton_Click(object sender, EventArgs e)
         {
+            // Run password check
             checkPassword();
         }
 
-        // Method triggered whenever a key is pressed while the text box has focus
+        // Method called whenever a key is pressed while the text box has focus
         private void passwordEntryTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             // Check if the enter key is pressed
@@ -82,6 +101,15 @@ namespace Assignment3
             }
         }
 
+        // Method to compute final balance
+        double computeBalance(double investment, int term, double interest) => 
+            investment * Math.Pow((1 + interest), (term * 12));
+
+        // Method called on pressing the "Display" button 
+        private void displayButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
