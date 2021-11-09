@@ -27,21 +27,20 @@ namespace Assignment3
         int passwordAttemptsCounter = 0;
 
         // Function to check is password is correct
-        Boolean isPasswordCorrect(String enteredPassword) => enteredPassword == PASSWORD_VALUE;
 
         public Form1()
         {
             InitializeComponent();
         }
 
-        // Method triggered on clicking the "Proceed" button on the first screen
-        private void passwordEntryButton_Click(object sender, EventArgs e)
+        // Function for checking the entered password and acting according to its validity
+        void checkPassword()
         {
             // Obtain entered password
             String enteredPassword = passwordEntryTextBox.Text;
 
             // Check if entered password is correct
-            if (isPasswordCorrect(enteredPassword))
+            if (enteredPassword == PASSWORD_VALUE)
             {
                 // If so, proceed to the next screen
                 passwordEntryPanel.Hide();
@@ -63,17 +62,23 @@ namespace Assignment3
                     if (result == DialogResult.OK)
                         Application.Exit();
                 }
-
             }
         }
 
+        // Method triggered on clicking the "Proceed" button on the first screen
+        private void passwordEntryButton_Click(object sender, EventArgs e)
+        {
+            checkPassword();
+        }
+
+        // Method triggered whenever a key is pressed while the text box has focus
         private void passwordEntryTextBox_KeyDown(object sender, KeyEventArgs e)
         {
+            // Check if the enter key is pressed
             if (e.KeyCode == Keys.Enter)
             {
-                passwordEntryButton.PerformClick();
-                e.SuppressKeyPress = true;
-                e.Handled = true;
+                // If so, perform the password check
+                checkPassword();
             }
         }
 
