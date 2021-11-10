@@ -185,6 +185,24 @@ namespace Assignment3
 
         }
 
+        // Method to generate a random string
+        string randomString()
+        {
+            // Specify the characters used to make up the random string
+            var characterSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+            // Initialize the random string
+            var randomizedString = "";
+            var random = new Random();
+
+            // Loop 8 times
+            for (int i = 0; i < 8; i++)
+                // Add a random character each time
+                randomizedString += characterSet[random.Next(8)];
+
+            return randomizedString;
+        }
+
         // Methods called on toggling radio buttons
         private void oneYearRadioButton_CheckedChanged(object sender, EventArgs e)
         {
@@ -239,16 +257,7 @@ namespace Assignment3
                     break;
             }
 
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            var stringChars = new char[8];
-            var random = new Random();
-
-            for (int i = 0; i < stringChars.Length; i++)
-            {
-                stringChars[i] = chars[random.Next(chars.Length)];
-            }
-
-            var finalString = new String(stringChars);
+            referenceNumberLabel.Text = randomString();
 
         }
 
