@@ -64,6 +64,12 @@ namespace Assignment3
         decimal interestRateFor10Years = BAND_1_TERM_10_YEARS;
         int termDuration = TERM_1_YEARS;
 
+        // Variables to keep track of investor details
+        string reference = "12345678";
+        string name = "";
+        string email = "";
+        string phone = "";
+
         public Form1()
         {
             InitializeComponent();
@@ -93,7 +99,8 @@ namespace Assignment3
                 {
                     // Show message indicating that too many failed attempts have occured
                     DialogResult result =
-                    MessageBox.Show(TOO_MANY_FAILED_ATTEMPTS_MESSAGE, LOCKED_OUT_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(TOO_MANY_FAILED_ATTEMPTS_MESSAGE, 
+                    LOCKED_OUT_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     // Then exit the application
                     if (result == DialogResult.OK)
                         Application.Exit();
@@ -154,7 +161,7 @@ namespace Assignment3
                 interestRateFor10Years = BAND_1_TERM_10_YEARS;
             }
 
-            // Calculate final balance for each tern duration
+            // Calculate final balance for each term duration
             finalBalanceFor1Years = computeBalance(investment, TERM_1_YEARS, interestRateFor1Years);
             finalBalanceFor1Years += generateBonus(investment, TERM_1_YEARS);
             finalBalanceFor3Years = computeBalance(investment, TERM_3_YEARS, interestRateFor3Years);
@@ -211,6 +218,7 @@ namespace Assignment3
                 fiveYearsRadioButton.Checked ? 2 :
                 tenYearsRadioButton.Checked ? 3 : 0;
 
+            // Set interest rate and final balance based on selected term duration
             switch (checkedIndex)
             {
                 case 0:
@@ -230,6 +238,17 @@ namespace Assignment3
                     finalBalance = finalBalanceFor10Years;
                     break;
             }
+
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var stringChars = new char[8];
+            var random = new Random();
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            var finalString = new String(stringChars);
 
         }
 
