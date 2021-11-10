@@ -35,9 +35,9 @@ namespace Assignment3
             this.passwordScreenImage = new System.Windows.Forms.PictureBox();
             this.passwordEntryLabel = new System.Windows.Forms.Label();
             this.passwordEntryTextBox = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.investmentPanel = new System.Windows.Forms.Panel();
             this.investmentDetailsGroupBox = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.proceedButton = new System.Windows.Forms.Button();
             this.finalBalance10YearLabel = new System.Windows.Forms.Label();
             this.finalBalance5YearLabel = new System.Windows.Forms.Label();
             this.finalBalance3YearLabel = new System.Windows.Forms.Label();
@@ -57,10 +57,21 @@ namespace Assignment3
             this.investmentAmountTextBox = new System.Windows.Forms.TextBox();
             this.euroSymbolLabel = new System.Windows.Forms.Label();
             this.investmentAmountLabel = new System.Windows.Forms.Label();
+            this.investorDetailsGroupBox = new System.Windows.Forms.GroupBox();
+            this.referenceNumberDescriptionLabel = new System.Windows.Forms.Label();
+            this.referenceNumberLabel = new System.Windows.Forms.Label();
+            this.fullNameLabel = new System.Windows.Forms.Label();
+            this.emailLabel = new System.Windows.Forms.Label();
+            this.phoneNumberLabel = new System.Windows.Forms.Label();
+            this.fullNameTextBox = new System.Windows.Forms.TextBox();
+            this.emailTextBox = new System.Windows.Forms.TextBox();
+            this.phoneNumberTextBox = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.passwordEntryPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.passwordScreenImage)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.investmentPanel.SuspendLayout();
             this.investmentDetailsGroupBox.SuspendLayout();
+            this.investorDetailsGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // passwordEntryPanel
@@ -112,21 +123,22 @@ namespace Assignment3
             this.passwordEntryTextBox.TabIndex = 0;
             this.passwordEntryTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.passwordEntryTextBox_KeyDown);
             // 
-            // panel1
+            // investmentPanel
             // 
-            this.panel1.Controls.Add(this.investmentDetailsGroupBox);
-            this.panel1.Controls.Add(this.displayButton);
-            this.panel1.Controls.Add(this.investmentAmountTextBox);
-            this.panel1.Controls.Add(this.euroSymbolLabel);
-            this.panel1.Controls.Add(this.investmentAmountLabel);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1575, 1128);
-            this.panel1.TabIndex = 4;
+            this.investmentPanel.Controls.Add(this.investorDetailsGroupBox);
+            this.investmentPanel.Controls.Add(this.investmentDetailsGroupBox);
+            this.investmentPanel.Controls.Add(this.displayButton);
+            this.investmentPanel.Controls.Add(this.investmentAmountTextBox);
+            this.investmentPanel.Controls.Add(this.euroSymbolLabel);
+            this.investmentPanel.Controls.Add(this.investmentAmountLabel);
+            this.investmentPanel.Location = new System.Drawing.Point(0, 0);
+            this.investmentPanel.Name = "investmentPanel";
+            this.investmentPanel.Size = new System.Drawing.Size(1575, 1454);
+            this.investmentPanel.TabIndex = 4;
             // 
             // investmentDetailsGroupBox
             // 
-            this.investmentDetailsGroupBox.Controls.Add(this.button1);
+            this.investmentDetailsGroupBox.Controls.Add(this.proceedButton);
             this.investmentDetailsGroupBox.Controls.Add(this.finalBalance10YearLabel);
             this.investmentDetailsGroupBox.Controls.Add(this.finalBalance5YearLabel);
             this.investmentDetailsGroupBox.Controls.Add(this.finalBalance3YearLabel);
@@ -144,24 +156,26 @@ namespace Assignment3
             this.investmentDetailsGroupBox.Controls.Add(this.oneYearRadioButton);
             this.investmentDetailsGroupBox.Location = new System.Drawing.Point(92, 154);
             this.investmentDetailsGroupBox.Name = "investmentDetailsGroupBox";
-            this.investmentDetailsGroupBox.Size = new System.Drawing.Size(1386, 564);
+            this.investmentDetailsGroupBox.Size = new System.Drawing.Size(1386, 466);
             this.investmentDetailsGroupBox.TabIndex = 4;
             this.investmentDetailsGroupBox.TabStop = false;
             this.investmentDetailsGroupBox.Text = "Details on return on investment";
+            this.investmentDetailsGroupBox.Visible = false;
             // 
-            // button1
+            // proceedButton
             // 
-            this.button1.Location = new System.Drawing.Point(621, 452);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 46);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "&Proceed";
-            this.button1.UseVisualStyleBackColor = true;
+            this.proceedButton.Location = new System.Drawing.Point(621, 392);
+            this.proceedButton.Name = "proceedButton";
+            this.proceedButton.Size = new System.Drawing.Size(150, 46);
+            this.proceedButton.TabIndex = 15;
+            this.proceedButton.Text = "&Proceed";
+            this.proceedButton.UseVisualStyleBackColor = true;
+            this.proceedButton.Visible = false;
             // 
             // finalBalance10YearLabel
             // 
             this.finalBalance10YearLabel.AutoSize = true;
-            this.finalBalance10YearLabel.Location = new System.Drawing.Point(961, 365);
+            this.finalBalance10YearLabel.Location = new System.Drawing.Point(958, 335);
             this.finalBalance10YearLabel.Name = "finalBalance10YearLabel";
             this.finalBalance10YearLabel.Size = new System.Drawing.Size(153, 32);
             this.finalBalance10YearLabel.TabIndex = 14;
@@ -170,7 +184,7 @@ namespace Assignment3
             // finalBalance5YearLabel
             // 
             this.finalBalance5YearLabel.AutoSize = true;
-            this.finalBalance5YearLabel.Location = new System.Drawing.Point(961, 305);
+            this.finalBalance5YearLabel.Location = new System.Drawing.Point(958, 275);
             this.finalBalance5YearLabel.Name = "finalBalance5YearLabel";
             this.finalBalance5YearLabel.Size = new System.Drawing.Size(153, 32);
             this.finalBalance5YearLabel.TabIndex = 13;
@@ -179,7 +193,7 @@ namespace Assignment3
             // finalBalance3YearLabel
             // 
             this.finalBalance3YearLabel.AutoSize = true;
-            this.finalBalance3YearLabel.Location = new System.Drawing.Point(961, 245);
+            this.finalBalance3YearLabel.Location = new System.Drawing.Point(958, 215);
             this.finalBalance3YearLabel.Name = "finalBalance3YearLabel";
             this.finalBalance3YearLabel.Size = new System.Drawing.Size(153, 32);
             this.finalBalance3YearLabel.TabIndex = 12;
@@ -188,7 +202,7 @@ namespace Assignment3
             // finalBalance1YearLabel
             // 
             this.finalBalance1YearLabel.AutoSize = true;
-            this.finalBalance1YearLabel.Location = new System.Drawing.Point(961, 185);
+            this.finalBalance1YearLabel.Location = new System.Drawing.Point(958, 155);
             this.finalBalance1YearLabel.Name = "finalBalance1YearLabel";
             this.finalBalance1YearLabel.Size = new System.Drawing.Size(153, 32);
             this.finalBalance1YearLabel.TabIndex = 11;
@@ -197,7 +211,8 @@ namespace Assignment3
             // finalBalanceLabel
             // 
             this.finalBalanceLabel.AutoSize = true;
-            this.finalBalanceLabel.Location = new System.Drawing.Point(961, 112);
+            this.finalBalanceLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.finalBalanceLabel.Location = new System.Drawing.Point(958, 82);
             this.finalBalanceLabel.Name = "finalBalanceLabel";
             this.finalBalanceLabel.Size = new System.Drawing.Size(153, 32);
             this.finalBalanceLabel.TabIndex = 10;
@@ -206,7 +221,7 @@ namespace Assignment3
             // interestRate10YearLabel
             // 
             this.interestRate10YearLabel.AutoSize = true;
-            this.interestRate10YearLabel.Location = new System.Drawing.Point(398, 365);
+            this.interestRate10YearLabel.Location = new System.Drawing.Point(395, 335);
             this.interestRate10YearLabel.Name = "interestRate10YearLabel";
             this.interestRate10YearLabel.Size = new System.Drawing.Size(148, 32);
             this.interestRate10YearLabel.TabIndex = 9;
@@ -215,7 +230,7 @@ namespace Assignment3
             // interestRate5YearLabel
             // 
             this.interestRate5YearLabel.AutoSize = true;
-            this.interestRate5YearLabel.Location = new System.Drawing.Point(398, 305);
+            this.interestRate5YearLabel.Location = new System.Drawing.Point(395, 275);
             this.interestRate5YearLabel.Name = "interestRate5YearLabel";
             this.interestRate5YearLabel.Size = new System.Drawing.Size(148, 32);
             this.interestRate5YearLabel.TabIndex = 8;
@@ -224,7 +239,7 @@ namespace Assignment3
             // interestRate3YearLabel
             // 
             this.interestRate3YearLabel.AutoSize = true;
-            this.interestRate3YearLabel.Location = new System.Drawing.Point(398, 245);
+            this.interestRate3YearLabel.Location = new System.Drawing.Point(395, 215);
             this.interestRate3YearLabel.Name = "interestRate3YearLabel";
             this.interestRate3YearLabel.Size = new System.Drawing.Size(148, 32);
             this.interestRate3YearLabel.TabIndex = 7;
@@ -233,7 +248,7 @@ namespace Assignment3
             // interestRate1YearLabel
             // 
             this.interestRate1YearLabel.AutoSize = true;
-            this.interestRate1YearLabel.Location = new System.Drawing.Point(398, 185);
+            this.interestRate1YearLabel.Location = new System.Drawing.Point(395, 155);
             this.interestRate1YearLabel.Name = "interestRate1YearLabel";
             this.interestRate1YearLabel.Size = new System.Drawing.Size(148, 32);
             this.interestRate1YearLabel.TabIndex = 6;
@@ -242,7 +257,8 @@ namespace Assignment3
             // interestRateLabel
             // 
             this.interestRateLabel.AutoSize = true;
-            this.interestRateLabel.Location = new System.Drawing.Point(398, 112);
+            this.interestRateLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.interestRateLabel.Location = new System.Drawing.Point(395, 82);
             this.interestRateLabel.Name = "interestRateLabel";
             this.interestRateLabel.Size = new System.Drawing.Size(148, 32);
             this.interestRateLabel.TabIndex = 5;
@@ -251,16 +267,17 @@ namespace Assignment3
             // selectInvestmentTermLabel
             // 
             this.selectInvestmentTermLabel.AutoSize = true;
-            this.selectInvestmentTermLabel.Location = new System.Drawing.Point(63, 56);
+            this.selectInvestmentTermLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.selectInvestmentTermLabel.Location = new System.Drawing.Point(63, 47);
             this.selectInvestmentTermLabel.Name = "selectInvestmentTermLabel";
-            this.selectInvestmentTermLabel.Size = new System.Drawing.Size(261, 32);
+            this.selectInvestmentTermLabel.Size = new System.Drawing.Size(304, 32);
             this.selectInvestmentTermLabel.TabIndex = 4;
-            this.selectInvestmentTermLabel.Text = "Select investment term";
+            this.selectInvestmentTermLabel.Text = "2. Select investment term";
             // 
             // tenYearsRadioButton
             // 
             this.tenYearsRadioButton.AutoSize = true;
-            this.tenYearsRadioButton.Location = new System.Drawing.Point(63, 363);
+            this.tenYearsRadioButton.Location = new System.Drawing.Point(60, 333);
             this.tenYearsRadioButton.Name = "tenYearsRadioButton";
             this.tenYearsRadioButton.Size = new System.Drawing.Size(132, 36);
             this.tenYearsRadioButton.TabIndex = 3;
@@ -271,7 +288,7 @@ namespace Assignment3
             // fiveYearsRadioButton
             // 
             this.fiveYearsRadioButton.AutoSize = true;
-            this.fiveYearsRadioButton.Location = new System.Drawing.Point(63, 303);
+            this.fiveYearsRadioButton.Location = new System.Drawing.Point(60, 273);
             this.fiveYearsRadioButton.Name = "fiveYearsRadioButton";
             this.fiveYearsRadioButton.Size = new System.Drawing.Size(119, 36);
             this.fiveYearsRadioButton.TabIndex = 2;
@@ -282,7 +299,7 @@ namespace Assignment3
             // threeYearsRadioButton
             // 
             this.threeYearsRadioButton.AutoSize = true;
-            this.threeYearsRadioButton.Location = new System.Drawing.Point(63, 243);
+            this.threeYearsRadioButton.Location = new System.Drawing.Point(60, 213);
             this.threeYearsRadioButton.Name = "threeYearsRadioButton";
             this.threeYearsRadioButton.Size = new System.Drawing.Size(119, 36);
             this.threeYearsRadioButton.TabIndex = 1;
@@ -293,7 +310,7 @@ namespace Assignment3
             // oneYearRadioButton
             // 
             this.oneYearRadioButton.AutoSize = true;
-            this.oneYearRadioButton.Location = new System.Drawing.Point(63, 183);
+            this.oneYearRadioButton.Location = new System.Drawing.Point(60, 153);
             this.oneYearRadioButton.Name = "oneYearRadioButton";
             this.oneYearRadioButton.Size = new System.Drawing.Size(109, 36);
             this.oneYearRadioButton.TabIndex = 0;
@@ -327,22 +344,124 @@ namespace Assignment3
             this.euroSymbolLabel.Size = new System.Drawing.Size(27, 32);
             this.euroSymbolLabel.TabIndex = 1;
             this.euroSymbolLabel.Text = "€";
+            this.euroSymbolLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // investmentAmountLabel
             // 
             this.investmentAmountLabel.AutoSize = true;
+            this.investmentAmountLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.investmentAmountLabel.Location = new System.Drawing.Point(92, 67);
             this.investmentAmountLabel.Name = "investmentAmountLabel";
-            this.investmentAmountLabel.Size = new System.Drawing.Size(402, 32);
+            this.investmentAmountLabel.Size = new System.Drawing.Size(455, 32);
             this.investmentAmountLabel.TabIndex = 0;
-            this.investmentAmountLabel.Text = "How much would you like to invest?";
+            this.investmentAmountLabel.Text = "1. How much would you like to invest?";
+            // 
+            // investorDetailsGroupBox
+            // 
+            this.investorDetailsGroupBox.Controls.Add(this.button1);
+            this.investorDetailsGroupBox.Controls.Add(this.phoneNumberTextBox);
+            this.investorDetailsGroupBox.Controls.Add(this.emailTextBox);
+            this.investorDetailsGroupBox.Controls.Add(this.fullNameTextBox);
+            this.investorDetailsGroupBox.Controls.Add(this.phoneNumberLabel);
+            this.investorDetailsGroupBox.Controls.Add(this.emailLabel);
+            this.investorDetailsGroupBox.Controls.Add(this.fullNameLabel);
+            this.investorDetailsGroupBox.Controls.Add(this.referenceNumberLabel);
+            this.investorDetailsGroupBox.Controls.Add(this.referenceNumberDescriptionLabel);
+            this.investorDetailsGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.investorDetailsGroupBox.Location = new System.Drawing.Point(92, 663);
+            this.investorDetailsGroupBox.Name = "investorDetailsGroupBox";
+            this.investorDetailsGroupBox.Size = new System.Drawing.Size(1386, 360);
+            this.investorDetailsGroupBox.TabIndex = 5;
+            this.investorDetailsGroupBox.TabStop = false;
+            this.investorDetailsGroupBox.Text = "3. Enter Investor Details";
+            // 
+            // referenceNumberDescriptionLabel
+            // 
+            this.referenceNumberDescriptionLabel.AutoSize = true;
+            this.referenceNumberDescriptionLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.referenceNumberDescriptionLabel.Location = new System.Drawing.Point(63, 58);
+            this.referenceNumberDescriptionLabel.Name = "referenceNumberDescriptionLabel";
+            this.referenceNumberDescriptionLabel.Size = new System.Drawing.Size(278, 32);
+            this.referenceNumberDescriptionLabel.TabIndex = 6;
+            this.referenceNumberDescriptionLabel.Text = "Generated Reference no:";
+            // 
+            // referenceNumberLabel
+            // 
+            this.referenceNumberLabel.AutoSize = true;
+            this.referenceNumberLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.referenceNumberLabel.Location = new System.Drawing.Point(347, 58);
+            this.referenceNumberLabel.Name = "referenceNumberLabel";
+            this.referenceNumberLabel.Size = new System.Drawing.Size(24, 32);
+            this.referenceNumberLabel.TabIndex = 7;
+            this.referenceNumberLabel.Text = "-";
+            // 
+            // fullNameLabel
+            // 
+            this.fullNameLabel.AutoSize = true;
+            this.fullNameLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.fullNameLabel.Location = new System.Drawing.Point(63, 108);
+            this.fullNameLabel.Name = "fullNameLabel";
+            this.fullNameLabel.Size = new System.Drawing.Size(124, 32);
+            this.fullNameLabel.TabIndex = 16;
+            this.fullNameLabel.Text = "Full name:";
+            // 
+            // emailLabel
+            // 
+            this.emailLabel.AutoSize = true;
+            this.emailLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.emailLabel.Location = new System.Drawing.Point(63, 158);
+            this.emailLabel.Name = "emailLabel";
+            this.emailLabel.Size = new System.Drawing.Size(76, 32);
+            this.emailLabel.TabIndex = 17;
+            this.emailLabel.Text = "Email:";
+            // 
+            // phoneNumberLabel
+            // 
+            this.phoneNumberLabel.AutoSize = true;
+            this.phoneNumberLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.phoneNumberLabel.Location = new System.Drawing.Point(63, 208);
+            this.phoneNumberLabel.Name = "phoneNumberLabel";
+            this.phoneNumberLabel.Size = new System.Drawing.Size(166, 32);
+            this.phoneNumberLabel.TabIndex = 18;
+            this.phoneNumberLabel.Text = "Telephone no:";
+            // 
+            // fullNameTextBox
+            // 
+            this.fullNameTextBox.Location = new System.Drawing.Point(347, 105);
+            this.fullNameTextBox.Name = "fullNameTextBox";
+            this.fullNameTextBox.Size = new System.Drawing.Size(649, 39);
+            this.fullNameTextBox.TabIndex = 19;
+            // 
+            // emailTextBox
+            // 
+            this.emailTextBox.Location = new System.Drawing.Point(347, 155);
+            this.emailTextBox.Name = "emailTextBox";
+            this.emailTextBox.Size = new System.Drawing.Size(649, 39);
+            this.emailTextBox.TabIndex = 20;
+            // 
+            // phoneNumberTextBox
+            // 
+            this.phoneNumberTextBox.Location = new System.Drawing.Point(347, 205);
+            this.phoneNumberTextBox.Name = "phoneNumberTextBox";
+            this.phoneNumberTextBox.Size = new System.Drawing.Size(649, 39);
+            this.phoneNumberTextBox.TabIndex = 21;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.Location = new System.Drawing.Point(621, 273);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(150, 46);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "&Submit";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1574, 1129);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1574, 1451);
+            this.Controls.Add(this.investmentPanel);
             this.Controls.Add(this.passwordEntryPanel);
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
@@ -350,10 +469,12 @@ namespace Assignment3
             this.passwordEntryPanel.ResumeLayout(false);
             this.passwordEntryPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.passwordScreenImage)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.investmentPanel.ResumeLayout(false);
+            this.investmentPanel.PerformLayout();
             this.investmentDetailsGroupBox.ResumeLayout(false);
             this.investmentDetailsGroupBox.PerformLayout();
+            this.investorDetailsGroupBox.ResumeLayout(false);
+            this.investorDetailsGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -365,7 +486,7 @@ namespace Assignment3
         private System.Windows.Forms.TextBox passwordEntryTextBox;
         private System.Windows.Forms.PictureBox passwordScreenImage;
         private System.Windows.Forms.Button passwordEntryButton;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel investmentPanel;
         private System.Windows.Forms.TextBox investmentAmountTextBox;
         private System.Windows.Forms.Label euroSymbolLabel;
         private System.Windows.Forms.Label investmentAmountLabel;
@@ -382,11 +503,21 @@ namespace Assignment3
         private System.Windows.Forms.Label interestRate3YearLabel;
         private System.Windows.Forms.Label interestRate1YearLabel;
         private System.Windows.Forms.Label finalBalanceLabel;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button proceedButton;
         private System.Windows.Forms.Label finalBalance10YearLabel;
         private System.Windows.Forms.Label finalBalance5YearLabel;
         private System.Windows.Forms.Label finalBalance3YearLabel;
         private System.Windows.Forms.Label finalBalance1YearLabel;
+        private System.Windows.Forms.GroupBox investorDetailsGroupBox;
+        private System.Windows.Forms.Label referenceNumberLabel;
+        private System.Windows.Forms.Label referenceNumberDescriptionLabel;
+        private System.Windows.Forms.TextBox phoneNumberTextBox;
+        private System.Windows.Forms.TextBox emailTextBox;
+        private System.Windows.Forms.TextBox fullNameTextBox;
+        private System.Windows.Forms.Label phoneNumberLabel;
+        private System.Windows.Forms.Label emailLabel;
+        private System.Windows.Forms.Label fullNameLabel;
+        private System.Windows.Forms.Button button1;
     }
 }
 
