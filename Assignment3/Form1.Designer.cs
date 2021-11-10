@@ -36,6 +36,16 @@ namespace Assignment3
             this.passwordEntryLabel = new System.Windows.Forms.Label();
             this.passwordEntryTextBox = new System.Windows.Forms.TextBox();
             this.investmentPanel = new System.Windows.Forms.Panel();
+            this.investorDetailsGroupBox = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.phoneNumberTextBox = new System.Windows.Forms.TextBox();
+            this.emailTextBox = new System.Windows.Forms.TextBox();
+            this.fullNameTextBox = new System.Windows.Forms.TextBox();
+            this.phoneNumberLabel = new System.Windows.Forms.Label();
+            this.emailLabel = new System.Windows.Forms.Label();
+            this.fullNameLabel = new System.Windows.Forms.Label();
+            this.referenceNumberLabel = new System.Windows.Forms.Label();
+            this.referenceNumberDescriptionLabel = new System.Windows.Forms.Label();
             this.investmentDetailsGroupBox = new System.Windows.Forms.GroupBox();
             this.proceedButton = new System.Windows.Forms.Button();
             this.finalBalance10YearLabel = new System.Windows.Forms.Label();
@@ -57,21 +67,11 @@ namespace Assignment3
             this.investmentAmountTextBox = new System.Windows.Forms.TextBox();
             this.euroSymbolLabel = new System.Windows.Forms.Label();
             this.investmentAmountLabel = new System.Windows.Forms.Label();
-            this.investorDetailsGroupBox = new System.Windows.Forms.GroupBox();
-            this.referenceNumberDescriptionLabel = new System.Windows.Forms.Label();
-            this.referenceNumberLabel = new System.Windows.Forms.Label();
-            this.fullNameLabel = new System.Windows.Forms.Label();
-            this.emailLabel = new System.Windows.Forms.Label();
-            this.phoneNumberLabel = new System.Windows.Forms.Label();
-            this.fullNameTextBox = new System.Windows.Forms.TextBox();
-            this.emailTextBox = new System.Windows.Forms.TextBox();
-            this.phoneNumberTextBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.passwordEntryPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.passwordScreenImage)).BeginInit();
             this.investmentPanel.SuspendLayout();
-            this.investmentDetailsGroupBox.SuspendLayout();
             this.investorDetailsGroupBox.SuspendLayout();
+            this.investmentDetailsGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // passwordEntryPanel
@@ -136,6 +136,106 @@ namespace Assignment3
             this.investmentPanel.Size = new System.Drawing.Size(1575, 1454);
             this.investmentPanel.TabIndex = 4;
             // 
+            // investorDetailsGroupBox
+            // 
+            this.investorDetailsGroupBox.Controls.Add(this.button1);
+            this.investorDetailsGroupBox.Controls.Add(this.phoneNumberTextBox);
+            this.investorDetailsGroupBox.Controls.Add(this.emailTextBox);
+            this.investorDetailsGroupBox.Controls.Add(this.fullNameTextBox);
+            this.investorDetailsGroupBox.Controls.Add(this.phoneNumberLabel);
+            this.investorDetailsGroupBox.Controls.Add(this.emailLabel);
+            this.investorDetailsGroupBox.Controls.Add(this.fullNameLabel);
+            this.investorDetailsGroupBox.Controls.Add(this.referenceNumberLabel);
+            this.investorDetailsGroupBox.Controls.Add(this.referenceNumberDescriptionLabel);
+            this.investorDetailsGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.investorDetailsGroupBox.Location = new System.Drawing.Point(92, 663);
+            this.investorDetailsGroupBox.Name = "investorDetailsGroupBox";
+            this.investorDetailsGroupBox.Size = new System.Drawing.Size(1386, 360);
+            this.investorDetailsGroupBox.TabIndex = 5;
+            this.investorDetailsGroupBox.TabStop = false;
+            this.investorDetailsGroupBox.Text = "3. Enter Investor Details";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.Location = new System.Drawing.Point(621, 273);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(150, 46);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "&Submit";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // phoneNumberTextBox
+            // 
+            this.phoneNumberTextBox.Location = new System.Drawing.Point(347, 205);
+            this.phoneNumberTextBox.Name = "phoneNumberTextBox";
+            this.phoneNumberTextBox.Size = new System.Drawing.Size(649, 39);
+            this.phoneNumberTextBox.TabIndex = 21;
+            // 
+            // emailTextBox
+            // 
+            this.emailTextBox.Location = new System.Drawing.Point(347, 155);
+            this.emailTextBox.Name = "emailTextBox";
+            this.emailTextBox.Size = new System.Drawing.Size(649, 39);
+            this.emailTextBox.TabIndex = 20;
+            // 
+            // fullNameTextBox
+            // 
+            this.fullNameTextBox.Location = new System.Drawing.Point(347, 105);
+            this.fullNameTextBox.Name = "fullNameTextBox";
+            this.fullNameTextBox.Size = new System.Drawing.Size(649, 39);
+            this.fullNameTextBox.TabIndex = 19;
+            // 
+            // phoneNumberLabel
+            // 
+            this.phoneNumberLabel.AutoSize = true;
+            this.phoneNumberLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.phoneNumberLabel.Location = new System.Drawing.Point(63, 208);
+            this.phoneNumberLabel.Name = "phoneNumberLabel";
+            this.phoneNumberLabel.Size = new System.Drawing.Size(166, 32);
+            this.phoneNumberLabel.TabIndex = 18;
+            this.phoneNumberLabel.Text = "Telephone no:";
+            // 
+            // emailLabel
+            // 
+            this.emailLabel.AutoSize = true;
+            this.emailLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.emailLabel.Location = new System.Drawing.Point(63, 158);
+            this.emailLabel.Name = "emailLabel";
+            this.emailLabel.Size = new System.Drawing.Size(76, 32);
+            this.emailLabel.TabIndex = 17;
+            this.emailLabel.Text = "Email:";
+            // 
+            // fullNameLabel
+            // 
+            this.fullNameLabel.AutoSize = true;
+            this.fullNameLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.fullNameLabel.Location = new System.Drawing.Point(63, 108);
+            this.fullNameLabel.Name = "fullNameLabel";
+            this.fullNameLabel.Size = new System.Drawing.Size(124, 32);
+            this.fullNameLabel.TabIndex = 16;
+            this.fullNameLabel.Text = "Full name:";
+            // 
+            // referenceNumberLabel
+            // 
+            this.referenceNumberLabel.AutoSize = true;
+            this.referenceNumberLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.referenceNumberLabel.Location = new System.Drawing.Point(347, 58);
+            this.referenceNumberLabel.Name = "referenceNumberLabel";
+            this.referenceNumberLabel.Size = new System.Drawing.Size(24, 32);
+            this.referenceNumberLabel.TabIndex = 7;
+            this.referenceNumberLabel.Text = "-";
+            // 
+            // referenceNumberDescriptionLabel
+            // 
+            this.referenceNumberDescriptionLabel.AutoSize = true;
+            this.referenceNumberDescriptionLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.referenceNumberDescriptionLabel.Location = new System.Drawing.Point(63, 58);
+            this.referenceNumberDescriptionLabel.Name = "referenceNumberDescriptionLabel";
+            this.referenceNumberDescriptionLabel.Size = new System.Drawing.Size(278, 32);
+            this.referenceNumberDescriptionLabel.TabIndex = 6;
+            this.referenceNumberDescriptionLabel.Text = "Generated Reference no:";
+            // 
             // investmentDetailsGroupBox
             // 
             this.investmentDetailsGroupBox.Controls.Add(this.proceedButton);
@@ -171,6 +271,7 @@ namespace Assignment3
             this.proceedButton.Text = "&Proceed";
             this.proceedButton.UseVisualStyleBackColor = true;
             this.proceedButton.Visible = false;
+            this.proceedButton.Click += new System.EventHandler(this.proceedButton_Click);
             // 
             // finalBalance10YearLabel
             // 
@@ -284,6 +385,7 @@ namespace Assignment3
             this.tenYearsRadioButton.TabStop = true;
             this.tenYearsRadioButton.Text = "10 Years";
             this.tenYearsRadioButton.UseVisualStyleBackColor = true;
+            this.tenYearsRadioButton.CheckedChanged += new System.EventHandler(this.tenYearsRadioButton_CheckedChanged);
             // 
             // fiveYearsRadioButton
             // 
@@ -295,6 +397,7 @@ namespace Assignment3
             this.fiveYearsRadioButton.TabStop = true;
             this.fiveYearsRadioButton.Text = "5 Years";
             this.fiveYearsRadioButton.UseVisualStyleBackColor = true;
+            this.fiveYearsRadioButton.CheckedChanged += new System.EventHandler(this.fiveYearsRadioButton_CheckedChanged);
             // 
             // threeYearsRadioButton
             // 
@@ -306,6 +409,7 @@ namespace Assignment3
             this.threeYearsRadioButton.TabStop = true;
             this.threeYearsRadioButton.Text = "3 Years";
             this.threeYearsRadioButton.UseVisualStyleBackColor = true;
+            this.threeYearsRadioButton.CheckedChanged += new System.EventHandler(this.threeYearsRadioButton_CheckedChanged);
             // 
             // oneYearRadioButton
             // 
@@ -317,6 +421,7 @@ namespace Assignment3
             this.oneYearRadioButton.TabStop = true;
             this.oneYearRadioButton.Text = "1 Year";
             this.oneYearRadioButton.UseVisualStyleBackColor = true;
+            this.oneYearRadioButton.CheckedChanged += new System.EventHandler(this.oneYearRadioButton_CheckedChanged);
             // 
             // displayButton
             // 
@@ -356,106 +461,6 @@ namespace Assignment3
             this.investmentAmountLabel.TabIndex = 0;
             this.investmentAmountLabel.Text = "1. How much would you like to invest?";
             // 
-            // investorDetailsGroupBox
-            // 
-            this.investorDetailsGroupBox.Controls.Add(this.button1);
-            this.investorDetailsGroupBox.Controls.Add(this.phoneNumberTextBox);
-            this.investorDetailsGroupBox.Controls.Add(this.emailTextBox);
-            this.investorDetailsGroupBox.Controls.Add(this.fullNameTextBox);
-            this.investorDetailsGroupBox.Controls.Add(this.phoneNumberLabel);
-            this.investorDetailsGroupBox.Controls.Add(this.emailLabel);
-            this.investorDetailsGroupBox.Controls.Add(this.fullNameLabel);
-            this.investorDetailsGroupBox.Controls.Add(this.referenceNumberLabel);
-            this.investorDetailsGroupBox.Controls.Add(this.referenceNumberDescriptionLabel);
-            this.investorDetailsGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.investorDetailsGroupBox.Location = new System.Drawing.Point(92, 663);
-            this.investorDetailsGroupBox.Name = "investorDetailsGroupBox";
-            this.investorDetailsGroupBox.Size = new System.Drawing.Size(1386, 360);
-            this.investorDetailsGroupBox.TabIndex = 5;
-            this.investorDetailsGroupBox.TabStop = false;
-            this.investorDetailsGroupBox.Text = "3. Enter Investor Details";
-            // 
-            // referenceNumberDescriptionLabel
-            // 
-            this.referenceNumberDescriptionLabel.AutoSize = true;
-            this.referenceNumberDescriptionLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.referenceNumberDescriptionLabel.Location = new System.Drawing.Point(63, 58);
-            this.referenceNumberDescriptionLabel.Name = "referenceNumberDescriptionLabel";
-            this.referenceNumberDescriptionLabel.Size = new System.Drawing.Size(278, 32);
-            this.referenceNumberDescriptionLabel.TabIndex = 6;
-            this.referenceNumberDescriptionLabel.Text = "Generated Reference no:";
-            // 
-            // referenceNumberLabel
-            // 
-            this.referenceNumberLabel.AutoSize = true;
-            this.referenceNumberLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.referenceNumberLabel.Location = new System.Drawing.Point(347, 58);
-            this.referenceNumberLabel.Name = "referenceNumberLabel";
-            this.referenceNumberLabel.Size = new System.Drawing.Size(24, 32);
-            this.referenceNumberLabel.TabIndex = 7;
-            this.referenceNumberLabel.Text = "-";
-            // 
-            // fullNameLabel
-            // 
-            this.fullNameLabel.AutoSize = true;
-            this.fullNameLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.fullNameLabel.Location = new System.Drawing.Point(63, 108);
-            this.fullNameLabel.Name = "fullNameLabel";
-            this.fullNameLabel.Size = new System.Drawing.Size(124, 32);
-            this.fullNameLabel.TabIndex = 16;
-            this.fullNameLabel.Text = "Full name:";
-            // 
-            // emailLabel
-            // 
-            this.emailLabel.AutoSize = true;
-            this.emailLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.emailLabel.Location = new System.Drawing.Point(63, 158);
-            this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(76, 32);
-            this.emailLabel.TabIndex = 17;
-            this.emailLabel.Text = "Email:";
-            // 
-            // phoneNumberLabel
-            // 
-            this.phoneNumberLabel.AutoSize = true;
-            this.phoneNumberLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.phoneNumberLabel.Location = new System.Drawing.Point(63, 208);
-            this.phoneNumberLabel.Name = "phoneNumberLabel";
-            this.phoneNumberLabel.Size = new System.Drawing.Size(166, 32);
-            this.phoneNumberLabel.TabIndex = 18;
-            this.phoneNumberLabel.Text = "Telephone no:";
-            // 
-            // fullNameTextBox
-            // 
-            this.fullNameTextBox.Location = new System.Drawing.Point(347, 105);
-            this.fullNameTextBox.Name = "fullNameTextBox";
-            this.fullNameTextBox.Size = new System.Drawing.Size(649, 39);
-            this.fullNameTextBox.TabIndex = 19;
-            // 
-            // emailTextBox
-            // 
-            this.emailTextBox.Location = new System.Drawing.Point(347, 155);
-            this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(649, 39);
-            this.emailTextBox.TabIndex = 20;
-            // 
-            // phoneNumberTextBox
-            // 
-            this.phoneNumberTextBox.Location = new System.Drawing.Point(347, 205);
-            this.phoneNumberTextBox.Name = "phoneNumberTextBox";
-            this.phoneNumberTextBox.Size = new System.Drawing.Size(649, 39);
-            this.phoneNumberTextBox.TabIndex = 21;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(621, 273);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 46);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "&Submit";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
@@ -471,10 +476,10 @@ namespace Assignment3
             ((System.ComponentModel.ISupportInitialize)(this.passwordScreenImage)).EndInit();
             this.investmentPanel.ResumeLayout(false);
             this.investmentPanel.PerformLayout();
-            this.investmentDetailsGroupBox.ResumeLayout(false);
-            this.investmentDetailsGroupBox.PerformLayout();
             this.investorDetailsGroupBox.ResumeLayout(false);
             this.investorDetailsGroupBox.PerformLayout();
+            this.investmentDetailsGroupBox.ResumeLayout(false);
+            this.investmentDetailsGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
