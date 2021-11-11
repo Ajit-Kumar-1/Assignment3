@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.ComponentModel.DataAnnotations;
 
 namespace Assignment3
 {
@@ -18,10 +19,16 @@ namespace Assignment3
         // Limit for number of failed attempts to enter password
         const int PASSWORD_FAILED_ATTEMPTS_LIMIT = 4;
 
-        // Error messages for wrong password
+        // Error messages
         const string WRONG_PASSWORD_MESSAGE = "Wrong Password";
         const string TOO_MANY_FAILED_ATTEMPTS_MESSAGE = "Too many failed attempts";
         const string LOCKED_OUT_MESSAGE = "Locked out";
+        const string ERROR_MESSAGE = "Error";
+        const string ENTER_NAME_MESSAGE = "Please enter your full name";
+        const string ENTER_EMAIL_MESSAGE = "Please enter your email address";
+        const string ENTER_PHONE_MESSAGE = "Please enter your phone number";
+        const string ENTER_VALID_EMAIL_MESSAGE = "Please enter a valid email address";
+        const string ENTER_VALID_PHONE_MESSAGE = "Please enter a valid phone number";
 
         // Interest rates
         const decimal BAND_1_TERM_1_YEARS = 0.005000M;
@@ -240,27 +247,69 @@ namespace Assignment3
             switch (checkedIndex)
             {
                 case 0:
+                    termDuration = TERM_1_YEARS;
                     interestRate = interestRateFor1Years;
                     finalBalance = finalBalanceFor1Years;
                     break;
                 case 1:
+                    termDuration = TERM_3_YEARS;
                     interestRate = interestRateFor3Years;
                     finalBalance = finalBalanceFor3Years;
                     break;
                 case 2:
+                    termDuration = TERM_5_YEARS;
                     interestRate = interestRateFor5Years;
                     finalBalance = finalBalanceFor5Years;
                     break;
                 case 3:
+                    termDuration = TERM_10_YEARS;
                     interestRate = interestRateFor10Years;
                     finalBalance = finalBalanceFor10Years;
                     break;
             }
 
+            // Generate and assign a random string for the reference ID
             referenceNumberLabel.Text = randomString();
 
         }
 
+        // Method called on pressing the "Submit" button
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Check if no name was entered
+            if (fullNameTextBox.Text.Trim() == "")
+            {
+                // Show message requesting the user to enter one
+                DialogResult result = MessageBox.Show(ENTER_NAME_MESSAGE,
+                    ERROR_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (result == DialogResult.OK)
+                    fullNameTextBox.Focus();
+                return;
+            }
+
+            // Check if no email address was entered
+            if (emailTextBox.Text.Trim() == "")
+            {
+                // Show message requesting the user to enter one
+                DialogResult result = MessageBox.Show(ENTER_EMAIL_MESSAGE,
+                    ERROR_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (result == DialogResult.OK)
+                    emailTextBox.Focus();
+                return;
+            }
+
+            // Check if email entered was invalid
+            if (!new EmailAddressAttribute().IsValid(emailTextBox.Text))
+            {
+                // Show message requesting the user to enter a valid email address
+                DialogResult result = MessageBox.Show(ENTER_VALID_EMAIL_MESSAGE,
+                ERROR_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (result == DialogResult.OK)
+                    emailTextBox.Focus();
+                return;
+            }
+
+        }
     }
 
 }

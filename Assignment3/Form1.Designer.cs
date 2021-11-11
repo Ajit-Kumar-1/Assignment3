@@ -148,9 +148,9 @@ namespace Assignment3
             this.investorDetailsGroupBox.Controls.Add(this.referenceNumberLabel);
             this.investorDetailsGroupBox.Controls.Add(this.referenceNumberDescriptionLabel);
             this.investorDetailsGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.investorDetailsGroupBox.Location = new System.Drawing.Point(92, 663);
+            this.investorDetailsGroupBox.Location = new System.Drawing.Point(92, 591);
             this.investorDetailsGroupBox.Name = "investorDetailsGroupBox";
-            this.investorDetailsGroupBox.Size = new System.Drawing.Size(1386, 360);
+            this.investorDetailsGroupBox.Size = new System.Drawing.Size(1386, 342);
             this.investorDetailsGroupBox.TabIndex = 5;
             this.investorDetailsGroupBox.TabStop = false;
             this.investorDetailsGroupBox.Text = "3. Enter Investor Details";
@@ -164,6 +164,7 @@ namespace Assignment3
             this.button1.TabIndex = 22;
             this.button1.Text = "&Submit";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // phoneNumberTextBox
             // 
@@ -254,7 +255,7 @@ namespace Assignment3
             this.investmentDetailsGroupBox.Controls.Add(this.fiveYearsRadioButton);
             this.investmentDetailsGroupBox.Controls.Add(this.threeYearsRadioButton);
             this.investmentDetailsGroupBox.Controls.Add(this.oneYearRadioButton);
-            this.investmentDetailsGroupBox.Location = new System.Drawing.Point(92, 154);
+            this.investmentDetailsGroupBox.Location = new System.Drawing.Point(92, 103);
             this.investmentDetailsGroupBox.Name = "investmentDetailsGroupBox";
             this.investmentDetailsGroupBox.Size = new System.Drawing.Size(1386, 466);
             this.investmentDetailsGroupBox.TabIndex = 4;
@@ -425,7 +426,7 @@ namespace Assignment3
             // 
             // displayButton
             // 
-            this.displayButton.Location = new System.Drawing.Point(938, 63);
+            this.displayButton.Location = new System.Drawing.Point(938, 32);
             this.displayButton.Name = "displayButton";
             this.displayButton.Size = new System.Drawing.Size(150, 46);
             this.displayButton.TabIndex = 3;
@@ -435,7 +436,7 @@ namespace Assignment3
             // 
             // investmentAmountTextBox
             // 
-            this.investmentAmountTextBox.Location = new System.Drawing.Point(621, 67);
+            this.investmentAmountTextBox.Location = new System.Drawing.Point(621, 36);
             this.investmentAmountTextBox.MaxLength = 10;
             this.investmentAmountTextBox.Name = "investmentAmountTextBox";
             this.investmentAmountTextBox.Size = new System.Drawing.Size(200, 39);
@@ -444,7 +445,7 @@ namespace Assignment3
             // euroSymbolLabel
             // 
             this.euroSymbolLabel.AutoSize = true;
-            this.euroSymbolLabel.Location = new System.Drawing.Point(588, 67);
+            this.euroSymbolLabel.Location = new System.Drawing.Point(588, 36);
             this.euroSymbolLabel.Name = "euroSymbolLabel";
             this.euroSymbolLabel.Size = new System.Drawing.Size(27, 32);
             this.euroSymbolLabel.TabIndex = 1;
@@ -455,7 +456,7 @@ namespace Assignment3
             // 
             this.investmentAmountLabel.AutoSize = true;
             this.investmentAmountLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.investmentAmountLabel.Location = new System.Drawing.Point(92, 67);
+            this.investmentAmountLabel.Location = new System.Drawing.Point(92, 36);
             this.investmentAmountLabel.Name = "investmentAmountLabel";
             this.investmentAmountLabel.Size = new System.Drawing.Size(455, 32);
             this.investmentAmountLabel.TabIndex = 0;
