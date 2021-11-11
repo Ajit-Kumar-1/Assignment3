@@ -14,6 +14,11 @@ namespace Assignment3
 {
     public partial class Form1 : Form
     {
+
+        // Form dimension
+        const int MIN_HEIGHT = 500;
+        const int MAX_HEIGHT = 1518;        
+        
         // Correct password
         const string PASSWORD_VALUE = "ShowMeTheMoney";
 
@@ -22,6 +27,9 @@ namespace Assignment3
 
         // File name where transaction data is stored
         const string DATA_FILE_NAME = "Invest4UTransactions.txt";
+
+        // Format for displaying date
+        const string DATE_FORMAT = "DD/MM/YYYY";
 
         // Messages
         const string WRONG_PASSWORD_MESSAGE_PART_1 = "Wrong Password. You have ";
@@ -39,6 +47,8 @@ namespace Assignment3
         const string ARE_YOU_SURE_MESSAGE = "Would you like to confirm this investment?";
         const string TRANSACTION_CONFIRMED_MESSAGE = "Transaction confirmed!";
         const string ALERT_MESSAGE = "Alert";
+        const string ENTER_TRANSACTION_ID_MESSAGE = "Please enter a transaction ID to search";
+        const string ID_NOT_FOUND = "No transaction found for given ID";
 
         // Literal value for displaying years of investment term duration
         const string YEAR_SUFFIX = " Year(s)";
@@ -88,7 +98,7 @@ namespace Assignment3
         int termDuration = 0;
 
         // Variables to keep track of investor details
-        string reference = "";
+        string transactionID = "";
         string name = "";
         string email = "";
         string phone = "";
@@ -216,12 +226,15 @@ namespace Assignment3
             interestRate5YearLabel.Text = interestRateFor5Years + "%";
             interestRate10YearLabel.Text = interestRateFor10Years + "%";
 
+            // Expand form
+            this.Height = MAX_HEIGHT;
+
             // Show interest rates and final balance
             investmentDetailsGroupBox.Enabled = true;
             investmentDetailsGroupBox.Show();
 
             // Pass on focus
-            oneYearRadioButton.Focus();
+            term10YearsRadioButton.Focus();
         }
 
         // Method to compute balance after compound interest
@@ -287,10 +300,10 @@ namespace Assignment3
             int checkedIndex = 0;
 
             // Set term duration based on selected radio button
-            checkedIndex = oneYearRadioButton.Checked ? 0 :
-                threeYearsRadioButton.Checked ? 1 :
-                fiveYearsRadioButton.Checked ? 2 :
-                tenYearsRadioButton.Checked ? 3 : 0;
+            checkedIndex = term10YearsRadioButton.Checked ? 0 :
+                term3YearsRadioButton.Checked ? 1 :
+                term5YearsRadioButton.Checked ? 2 :
+                term1YearsRadioButton.Checked ? 3 : 0;
 
             // Set interest rate and final balance based on selected term duration
             switch (checkedIndex)
@@ -317,16 +330,19 @@ namespace Assignment3
                     break;
             }
 
-            // Check if a reference ID hasa not been generated
-            if (reference == "")
+            // Check if a transaction ID hasa not been generated
+            if (transactionID == "")
             {
-                // If so, generate and assign a random string for the reference ID
-                reference = randomString();
-                referenceNumberLabel.Text = reference;
+                // If so, generate and assign a random string for the transaction ID
+                transactionID = randomString();
+                transactionIDDisplayLabel.Text = transactionID;
             }
 
             // Show date
-            investmentDateValueLabel.Text = DateTime.Today.ToString("dd/MM/yyyy");
+            investmentDateValueLabel.Text = DateTime.Today.ToString(DATE_FORMAT);
+
+            // Expand form
+            this.Height = MAX_HEIGHT;
 
             // Show fields for investor details
             investorDetailsGroupBox.Show();
@@ -399,8 +415,8 @@ namespace Assignment3
             fullNameValueLabel.Text = name;
             emailAddressValueLabel.Text = email;
             telephoneValueLabel.Text = phone;
-            referenceIDValueLabel.Text = reference;
-            dateValueLabel.Text = DateTime.Today.ToString("dd/MM/yyyy");
+            transactionIDValueLabel.Text = transactionID;
+            dateValueLabel.Text = DateTime.Today.ToString(DATE_FORMAT);
 
             // Show the investment details for confirmation
             confirmationGroupBox.Show();
@@ -420,10 +436,10 @@ namespace Assignment3
         private void toggleInvestorDetailsVisibility()
         {
             // Check if the term duration selected is the same as that before pressing "Proceed"
-            if (termDuration == TERM_1_YEARS && oneYearRadioButton.Checked ||
-                termDuration == TERM_3_YEARS && threeYearsRadioButton.Checked ||
-                termDuration == TERM_5_YEARS && fiveYearsRadioButton.Checked ||
-                termDuration == TERM_10_YEARS && tenYearsRadioButton.Checked)
+            if (termDuration == TERM_1_YEARS && term10YearsRadioButton.Checked ||
+                termDuration == TERM_3_YEARS && term3YearsRadioButton.Checked ||
+                termDuration == TERM_5_YEARS && term5YearsRadioButton.Checked ||
+                termDuration == TERM_10_YEARS && term1YearsRadioButton.Checked)
                 // If so, show the investor details
                 investorDetailsGroupBox.Enabled = true;
             else 
@@ -478,7 +494,7 @@ namespace Assignment3
             telephoneValueLabel.Text = "";
             finalBalanceValueLabel.Text = "";
             termDurationValueLabel.Text = "";
-            referenceIDValueLabel.Text = "";
+            transactionIDValueLabel.Text = "";
             investmentValueLabel.Text = "";
             dateValueLabel.Text = "";
             investmentDateValueLabel.Text = "";
@@ -486,10 +502,10 @@ namespace Assignment3
             emailTextBox.Text = "";
             phoneNumberTextBox.Text = "";
             investmentAmountTextBox.Text = "";
-            oneYearRadioButton.Checked = false;
-            threeYearsRadioButton.Checked = false;
-            fiveYearsRadioButton.Checked = false;
-            tenYearsRadioButton.Checked = false;
+            term10YearsRadioButton.Checked = false;
+            term3YearsRadioButton.Checked = false;
+            term5YearsRadioButton.Checked = false;
+            term1YearsRadioButton.Checked = false;
             investmentAmountTextBox.Focus();
         }
 
@@ -505,8 +521,8 @@ namespace Assignment3
                 StreamWriter outputFile = File.AppendText(DATA_FILE_NAME);
 
                 // Write details of investment to file
-                outputFile.WriteLine(reference);
-                outputFile.WriteLine(DateTime.Today.ToString("dd/MM/yyyy"));
+                outputFile.WriteLine(transactionID);
+                outputFile.WriteLine(DateTime.Today.ToString(DATE_FORMAT));
                 outputFile.WriteLine(email);
                 outputFile.WriteLine(name);
                 outputFile.WriteLine(phone);
@@ -587,7 +603,7 @@ namespace Assignment3
         {
             clearFields();
             summaryPanel.Hide();
-            searchPanel.Hide();
+            this.Height = MIN_HEIGHT;
         }
 
         private void summaryButton_Click(object sender, EventArgs e)
@@ -609,15 +625,15 @@ namespace Assignment3
                 // Read saved data
                 do
                 {                    
-                    string reference = inputFile.ReadLine();
+                    string currentID = inputFile.ReadLine();
 
-                    if (reference == null)
+                    if (currentID == null)
                         break;
 
                     transactionCount++;
 
-                    // Add reference to the list of IDs shown
-                    summaryListBox.Items.Add(reference);
+                    // Add transaction ID to the list of IDs shown
+                    summaryListBox.Items.Add(currentID);
 
                     // Skip through lines with information we don't need now
                     for (int index = 0; index < 4; index++)
@@ -645,14 +661,12 @@ namespace Assignment3
                 // Show summary section
                 summaryPanel.Show();
 
-                // Hide overlapping search panel
-                searchPanel.Hide();
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ERROR_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        
         }
     }
 
