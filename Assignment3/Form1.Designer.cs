@@ -36,6 +36,10 @@ namespace Assignment3
             this.passwordEntryLabel = new System.Windows.Forms.Label();
             this.passwordEntryTextBox = new System.Windows.Forms.TextBox();
             this.investmentPanel = new System.Windows.Forms.Panel();
+            this.investmentAmountGroupBox = new System.Windows.Forms.GroupBox();
+            this.investmentAmountTextBox = new System.Windows.Forms.TextBox();
+            this.euroSymbolLabel = new System.Windows.Forms.Label();
+            this.displayButton = new System.Windows.Forms.Button();
             this.summaryGroupBox = new System.Windows.Forms.GroupBox();
             this.averageTermValueLabel = new System.Windows.Forms.Label();
             this.averageInvestmentValueLabel = new System.Windows.Forms.Label();
@@ -89,18 +93,14 @@ namespace Assignment3
             this.fiveYearsRadioButton = new System.Windows.Forms.RadioButton();
             this.threeYearsRadioButton = new System.Windows.Forms.RadioButton();
             this.oneYearRadioButton = new System.Windows.Forms.RadioButton();
-            this.displayButton = new System.Windows.Forms.Button();
-            this.investmentAmountTextBox = new System.Windows.Forms.TextBox();
-            this.euroSymbolLabel = new System.Windows.Forms.Label();
-            this.investmentAmountGroupBox = new System.Windows.Forms.GroupBox();
             this.passwordEntryPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.passwordScreenImage)).BeginInit();
             this.investmentPanel.SuspendLayout();
+            this.investmentAmountGroupBox.SuspendLayout();
             this.summaryGroupBox.SuspendLayout();
             this.confirmationGroupBox.SuspendLayout();
             this.investorDetailsGroupBox.SuspendLayout();
             this.investmentDetailsGroupBox.SuspendLayout();
-            this.investmentAmountGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // passwordEntryPanel
@@ -165,6 +165,52 @@ namespace Assignment3
             this.investmentPanel.Size = new System.Drawing.Size(1575, 1426);
             this.investmentPanel.TabIndex = 4;
             // 
+            // investmentAmountGroupBox
+            // 
+            this.investmentAmountGroupBox.Controls.Add(this.investmentAmountTextBox);
+            this.investmentAmountGroupBox.Controls.Add(this.euroSymbolLabel);
+            this.investmentAmountGroupBox.Controls.Add(this.displayButton);
+            this.investmentAmountGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.investmentAmountGroupBox.Location = new System.Drawing.Point(35, 37);
+            this.investmentAmountGroupBox.Name = "investmentAmountGroupBox";
+            this.investmentAmountGroupBox.Size = new System.Drawing.Size(853, 120);
+            this.investmentAmountGroupBox.TabIndex = 8;
+            this.investmentAmountGroupBox.TabStop = false;
+            this.investmentAmountGroupBox.Text = "1. Enter investment amount";
+            // 
+            // investmentAmountTextBox
+            // 
+            this.investmentAmountTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.investmentAmountTextBox.Location = new System.Drawing.Point(91, 57);
+            this.investmentAmountTextBox.MaxLength = 14;
+            this.investmentAmountTextBox.Name = "investmentAmountTextBox";
+            this.investmentAmountTextBox.Size = new System.Drawing.Size(255, 39);
+            this.investmentAmountTextBox.TabIndex = 2;
+            this.investmentAmountTextBox.TextChanged += new System.EventHandler(this.investmentAmountTextBox_TextChanged);
+            this.investmentAmountTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.investmentAmountTextBox_KeyPress);
+            // 
+            // euroSymbolLabel
+            // 
+            this.euroSymbolLabel.AutoSize = true;
+            this.euroSymbolLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.euroSymbolLabel.Location = new System.Drawing.Point(58, 60);
+            this.euroSymbolLabel.Name = "euroSymbolLabel";
+            this.euroSymbolLabel.Size = new System.Drawing.Size(27, 32);
+            this.euroSymbolLabel.TabIndex = 1;
+            this.euroSymbolLabel.Text = "€";
+            this.euroSymbolLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // displayButton
+            // 
+            this.displayButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.displayButton.Location = new System.Drawing.Point(374, 53);
+            this.displayButton.Name = "displayButton";
+            this.displayButton.Size = new System.Drawing.Size(150, 46);
+            this.displayButton.TabIndex = 3;
+            this.displayButton.Text = "&Display";
+            this.displayButton.UseVisualStyleBackColor = true;
+            this.displayButton.Click += new System.EventHandler(this.displayButton_Click);
+            // 
             // summaryGroupBox
             // 
             this.summaryGroupBox.Controls.Add(this.averageTermValueLabel);
@@ -175,9 +221,9 @@ namespace Assignment3
             this.summaryGroupBox.Controls.Add(this.averageInvestmentDescriptionLabel);
             this.summaryGroupBox.Controls.Add(this.totalInterestDescriptionLabel);
             this.summaryGroupBox.Controls.Add(this.totalInvestmentDescriptionLabel);
-            this.summaryGroupBox.Location = new System.Drawing.Point(936, 37);
+            this.summaryGroupBox.Location = new System.Drawing.Point(911, 37);
             this.summaryGroupBox.Name = "summaryGroupBox";
-            this.summaryGroupBox.Size = new System.Drawing.Size(608, 830);
+            this.summaryGroupBox.Size = new System.Drawing.Size(630, 830);
             this.summaryGroupBox.TabIndex = 7;
             this.summaryGroupBox.TabStop = false;
             this.summaryGroupBox.Text = "Summary Information Display";
@@ -279,7 +325,7 @@ namespace Assignment3
             this.confirmationGroupBox.Controls.Add(this.interestRateConfirmationLabel);
             this.confirmationGroupBox.Controls.Add(this.investmentConfirmationLabel);
             this.confirmationGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.confirmationGroupBox.Location = new System.Drawing.Point(49, 873);
+            this.confirmationGroupBox.Location = new System.Drawing.Point(35, 873);
             this.confirmationGroupBox.Name = "confirmationGroupBox";
             this.confirmationGroupBox.Size = new System.Drawing.Size(853, 508);
             this.confirmationGroupBox.TabIndex = 6;
@@ -470,7 +516,7 @@ namespace Assignment3
             this.investorDetailsGroupBox.Controls.Add(this.referenceNumberLabel);
             this.investorDetailsGroupBox.Controls.Add(this.referenceIDDescriptionLabel);
             this.investorDetailsGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.investorDetailsGroupBox.Location = new System.Drawing.Point(49, 542);
+            this.investorDetailsGroupBox.Location = new System.Drawing.Point(35, 542);
             this.investorDetailsGroupBox.Name = "investorDetailsGroupBox";
             this.investorDetailsGroupBox.Size = new System.Drawing.Size(853, 325);
             this.investorDetailsGroupBox.TabIndex = 5;
@@ -581,7 +627,7 @@ namespace Assignment3
             this.investmentDetailsGroupBox.Controls.Add(this.threeYearsRadioButton);
             this.investmentDetailsGroupBox.Controls.Add(this.oneYearRadioButton);
             this.investmentDetailsGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.investmentDetailsGroupBox.Location = new System.Drawing.Point(49, 163);
+            this.investmentDetailsGroupBox.Location = new System.Drawing.Point(35, 163);
             this.investmentDetailsGroupBox.Name = "investmentDetailsGroupBox";
             this.investmentDetailsGroupBox.Size = new System.Drawing.Size(853, 373);
             this.investmentDetailsGroupBox.TabIndex = 4;
@@ -723,6 +769,7 @@ namespace Assignment3
             this.tenYearsRadioButton.Text = "10 Years";
             this.tenYearsRadioButton.UseVisualStyleBackColor = true;
             this.tenYearsRadioButton.CheckedChanged += new System.EventHandler(this.tenYearsRadioButton_CheckedChanged);
+            this.tenYearsRadioButton.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tenYearsRadioButton_KeyPress);
             // 
             // fiveYearsRadioButton
             // 
@@ -736,6 +783,7 @@ namespace Assignment3
             this.fiveYearsRadioButton.Text = "5 Years";
             this.fiveYearsRadioButton.UseVisualStyleBackColor = true;
             this.fiveYearsRadioButton.CheckedChanged += new System.EventHandler(this.fiveYearsRadioButton_CheckedChanged);
+            this.fiveYearsRadioButton.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.fiveYearsRadioButton_KeyPress);
             // 
             // threeYearsRadioButton
             // 
@@ -749,6 +797,7 @@ namespace Assignment3
             this.threeYearsRadioButton.Text = "3 Years";
             this.threeYearsRadioButton.UseVisualStyleBackColor = true;
             this.threeYearsRadioButton.CheckedChanged += new System.EventHandler(this.threeYearsRadioButton_CheckedChanged);
+            this.threeYearsRadioButton.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.threeYearsRadioButton_KeyPress);
             // 
             // oneYearRadioButton
             // 
@@ -762,52 +811,7 @@ namespace Assignment3
             this.oneYearRadioButton.Text = "1 Year";
             this.oneYearRadioButton.UseVisualStyleBackColor = true;
             this.oneYearRadioButton.CheckedChanged += new System.EventHandler(this.oneYearRadioButton_CheckedChanged);
-            // 
-            // displayButton
-            // 
-            this.displayButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.displayButton.Location = new System.Drawing.Point(374, 53);
-            this.displayButton.Name = "displayButton";
-            this.displayButton.Size = new System.Drawing.Size(150, 46);
-            this.displayButton.TabIndex = 3;
-            this.displayButton.Text = "&Display";
-            this.displayButton.UseVisualStyleBackColor = true;
-            this.displayButton.Click += new System.EventHandler(this.displayButton_Click);
-            // 
-            // investmentAmountTextBox
-            // 
-            this.investmentAmountTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.investmentAmountTextBox.Location = new System.Drawing.Point(91, 57);
-            this.investmentAmountTextBox.MaxLength = 14;
-            this.investmentAmountTextBox.Name = "investmentAmountTextBox";
-            this.investmentAmountTextBox.Size = new System.Drawing.Size(255, 39);
-            this.investmentAmountTextBox.TabIndex = 2;
-            this.investmentAmountTextBox.TextChanged += new System.EventHandler(this.investmentAmountTextBox_TextChanged);
-            this.investmentAmountTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.investmentAmountTextBox_KeyPress);
-            // 
-            // euroSymbolLabel
-            // 
-            this.euroSymbolLabel.AutoSize = true;
-            this.euroSymbolLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.euroSymbolLabel.Location = new System.Drawing.Point(58, 60);
-            this.euroSymbolLabel.Name = "euroSymbolLabel";
-            this.euroSymbolLabel.Size = new System.Drawing.Size(27, 32);
-            this.euroSymbolLabel.TabIndex = 1;
-            this.euroSymbolLabel.Text = "€";
-            this.euroSymbolLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // investmentAmountGroupBox
-            // 
-            this.investmentAmountGroupBox.Controls.Add(this.investmentAmountTextBox);
-            this.investmentAmountGroupBox.Controls.Add(this.euroSymbolLabel);
-            this.investmentAmountGroupBox.Controls.Add(this.displayButton);
-            this.investmentAmountGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.investmentAmountGroupBox.Location = new System.Drawing.Point(49, 37);
-            this.investmentAmountGroupBox.Name = "investmentAmountGroupBox";
-            this.investmentAmountGroupBox.Size = new System.Drawing.Size(853, 120);
-            this.investmentAmountGroupBox.TabIndex = 8;
-            this.investmentAmountGroupBox.TabStop = false;
-            this.investmentAmountGroupBox.Text = "1. Enter investment amount";
+            this.oneYearRadioButton.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.oneYearRadioButton_KeyPress);
             // 
             // Form1
             // 
@@ -818,11 +822,13 @@ namespace Assignment3
             this.Controls.Add(this.passwordEntryPanel);
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-            this.Text = "s";
+            this.Text = "Invest4U";
             this.passwordEntryPanel.ResumeLayout(false);
             this.passwordEntryPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.passwordScreenImage)).EndInit();
             this.investmentPanel.ResumeLayout(false);
+            this.investmentAmountGroupBox.ResumeLayout(false);
+            this.investmentAmountGroupBox.PerformLayout();
             this.summaryGroupBox.ResumeLayout(false);
             this.summaryGroupBox.PerformLayout();
             this.confirmationGroupBox.ResumeLayout(false);
@@ -831,8 +837,6 @@ namespace Assignment3
             this.investorDetailsGroupBox.PerformLayout();
             this.investmentDetailsGroupBox.ResumeLayout(false);
             this.investmentDetailsGroupBox.PerformLayout();
-            this.investmentAmountGroupBox.ResumeLayout(false);
-            this.investmentAmountGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -71,7 +71,7 @@ namespace Assignment3
         decimal interestRateFor3Years = BAND_1_TERM_3_YEARS;
         decimal interestRateFor5Years = BAND_1_TERM_5_YEARS;
         decimal interestRateFor10Years = BAND_1_TERM_10_YEARS;
-        int termDuration = TERM_1_YEARS;
+        int termDuration = 0;
 
         // Variables to keep track of investor details
         string reference = "";
@@ -196,6 +196,9 @@ namespace Assignment3
             // Show interest rates and final balance
             investmentDetailsGroupBox.Enabled = true;
             investmentDetailsGroupBox.Show();
+
+            // Pass on focus
+            oneYearRadioButton.Focus();
         }
 
         // Method to compute balance after compound interest
@@ -215,7 +218,7 @@ namespace Assignment3
         // Method to generate a random string
         string randomString()
         {
-            StreamReader inputFile = File.OpenText("data.txt");
+            // StreamReader inputFile = File.OpenText("data.txt");
 
             // Specify the characters used to make up the random string
             var characterSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -236,21 +239,25 @@ namespace Assignment3
         private void oneYearRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             proceedButton.Show();
+            toggleInvestorDetailsVisibility();
         }
 
         private void threeYearsRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             proceedButton.Show();
+            toggleInvestorDetailsVisibility();
         }
 
         private void fiveYearsRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             proceedButton.Show();
+            toggleInvestorDetailsVisibility();
         }
 
         private void tenYearsRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             proceedButton.Show();
+            toggleInvestorDetailsVisibility();
         }
 
         // Method for proceeding from term selection to investor information
@@ -355,15 +362,39 @@ namespace Assignment3
                 return;
             }
 
+            // Obtain entered information
+            name = fullNameTextBox.Text.Trim();
+            email = emailTextBox.Text.Trim();
+            phone = phoneNumberTextBox.Text.Trim();
+
             // Fill investment details
             investmentValueLabel.Text = investment.ToString("C");
-            interestRateValueLabel.Text = interestRate.ToString();
+            interestRateValueLabel.Text = interestRate + "%";
             termDurationValueLabel.Text = termDuration + " Year" + (termDuration == 1 ? "" : "s");
-            fullNameValueLabel.Text = "";
+            fullNameValueLabel.Text = name;
+            emailAddressValueLabel.Text = email;
+            telephoneValueLabel.Text = phone;
+            referenceIDValueLabel.Text = reference;
+            dateValueLabel.Text = DateTime.Today.ToString("dd/MM/yyyy");
 
             // Show the investment details for confirmation
             confirmationGroupBox.Show();
 
+        }
+
+        // Method to check if the term duration is unchanged
+        void toggleInvestorDetailsVisibility()
+        {
+            // Check if the term duration selected is the same as that before pressing "Proceed"
+            if (termDuration == TERM_1_YEARS && oneYearRadioButton.Checked ||
+                termDuration == TERM_3_YEARS && threeYearsRadioButton.Checked ||
+                termDuration == TERM_5_YEARS && fiveYearsRadioButton.Checked ||
+                termDuration == TERM_10_YEARS && tenYearsRadioButton.Checked)
+                // If so, show the investor details
+                investorDetailsGroupBox.Enabled = true;
+            else 
+                // Otherwise, grey out the investor details
+                investorDetailsGroupBox.Enabled = false;
         }
 
         // Method called on editing investment amount text box
@@ -378,13 +409,7 @@ namespace Assignment3
                     // If so, show the investment details
                     investmentDetailsGroupBox.Enabled = true;
 
-                    // Check if the term duration selected is the same as that before pressing "Proceed"
-                    if (termDuration == TERM_1_YEARS && oneYearRadioButton.Checked ||
-                        termDuration == TERM_3_YEARS && threeYearsRadioButton.Checked ||
-                        termDuration == TERM_5_YEARS && fiveYearsRadioButton.Checked ||
-                        termDuration == TERM_10_YEARS && tenYearsRadioButton.Checked)
-                        // If so, show the investor details
-                        investorDetailsGroupBox.Enabled = true;                    
+                    toggleInvestorDetailsVisibility();                   
                 }
                 else
                 {
@@ -434,6 +459,33 @@ namespace Assignment3
                 MessageBox.Show(ex.Message);
             }
         }
+
+        // Methods called on pressing a key when focused on a radio button
+        private void oneYearRadioButton_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Check if enter key is pressed
+            if (e.KeyChar == (char)13)
+                proceedToInvestorInformation();
+        }
+        private void threeYearsRadioButton_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Check if enter key is pressed
+            if (e.KeyChar == (char)13)
+                proceedToInvestorInformation();
+        }
+        private void fiveYearsRadioButton_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Check if enter key is pressed
+            if (e.KeyChar == (char)13)
+                proceedToInvestorInformation();
+        }
+        private void tenYearsRadioButton_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Check if enter key is pressed
+            if (e.KeyChar == (char)13)
+                proceedToInvestorInformation();
+        }
+
     }
 
 }
