@@ -20,8 +20,12 @@ namespace Assignment3
         // Limit for number of failed attempts to enter password
         const int PASSWORD_FAILED_ATTEMPTS_LIMIT = 4;
 
-        // Error messages
-        const string WRONG_PASSWORD_MESSAGE = "Wrong Password";
+        // File name where transaction data is stored
+        const string DATA_FILE_NAME = "Invest4UTransactions.txt";
+
+        // Messages
+        const string WRONG_PASSWORD_MESSAGE_PART_1 = "Wrong Password. You have ";
+        const string WRONG_PASSWORD_MESSAGE_PART_2 = " more attempt(s).";
         const string TOO_MANY_FAILED_ATTEMPTS_MESSAGE = "Too many failed attempts";
         const string LOCKED_OUT_MESSAGE = "Locked out";
         const string ERROR_MESSAGE = "Error";
@@ -31,6 +35,14 @@ namespace Assignment3
         const string ENTER_VALID_EMAIL_MESSAGE = "Please enter a valid email address";
         const string ENTER_VALID_PHONE_MESSAGE = "Please enter a valid phone number";
         const string ENTER_VALID_AMOUNT = "Please enter a numeric value for investment amount";
+        const string CONFIRM_INVESTMENT_MESSAGE = "Confirm Investment";
+        const string ARE_YOU_SURE_MESSAGE = "Would you like to confirm this investment?";
+
+        // Literal value for displaying years of investment term duration
+        const string YEAR_SUFFIX = " Year";
+
+        // Specify the characters used to make up the random string
+        const string characterSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
         // Interest rates
         const decimal BAND_1_TERM_1_YEARS = 0.005000M;
@@ -85,7 +97,7 @@ namespace Assignment3
         }
 
         // Function for checking the entered password and acting according to its validity
-        void checkPassword()
+        private void checkPassword()
         {
             // Obtain entered password
             String enteredPassword = passwordEntryTextBox.Text;
@@ -103,13 +115,21 @@ namespace Assignment3
                 passwordAttemptsCounter++;
                 // Check if we are within the limit for failed password attempts
                 if (passwordAttemptsCounter < PASSWORD_FAILED_ATTEMPTS_LIMIT)
+                {
                     // Show message indicating that a wrong password is entered
-                    MessageBox.Show(WRONG_PASSWORD_MESSAGE);
+                    string mainMessage = WRONG_PASSWORD_MESSAGE_PART_1 +
+                        (PASSWORD_FAILED_ATTEMPTS_LIMIT - passwordAttemptsCounter) +
+                        WRONG_PASSWORD_MESSAGE_PART_2;
+                    DialogResult result = MessageBox.Show(mainMessage, ERROR_MESSAGE, 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (result == DialogResult.OK)
+                        passwordEntryTextBox.Focus();
+                }
                 else
                 {
                     // Show message indicating that too many failed attempts have occured
                     DialogResult result =
-                    MessageBox.Show(TOO_MANY_FAILED_ATTEMPTS_MESSAGE, 
+                    MessageBox.Show(TOO_MANY_FAILED_ATTEMPTS_MESSAGE,
                     LOCKED_OUT_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     // Then exit the application
                     if (result == DialogResult.OK)
@@ -137,7 +157,7 @@ namespace Assignment3
         }
 
         // Method to show interest rates and final balance for given investment amount
-        void displayRates()
+        private void displayRates()
         {
             // Obtain entered investment amount
             try
@@ -203,11 +223,11 @@ namespace Assignment3
         }
 
         // Method to compute balance after compound interest
-        decimal computeBalance(decimal investment, int term, decimal interest) => 
+        private decimal computeBalance(decimal investment, int term, decimal interest) => 
             investment * ((decimal)Math.Pow((1 + Decimal.ToDouble(interest)), (term * 12)));
 
         // Method to generate applicable bonus amount
-        decimal generateBonus(decimal investment, int term) =>
+        private decimal generateBonus(decimal investment, int term) =>
             (investment > BONUS_CUTOFF && term >= BONUS_MINIMUM_TERM_DURATION) ? BONUS_AMOUNT : 0;
 
         // Method called on pressing the "Display" button 
@@ -217,12 +237,9 @@ namespace Assignment3
         }
 
         // Method to generate a random string
-        string randomString()
+        private string randomString()
         {
-            // StreamReader inputFile = File.OpenText("data.txt");
-
-            // Specify the characters used to make up the random string
-            var characterSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            // StreamReader inputFile = File.OpenText("Invest4UTransactions.txt");
 
             // Initialize the random string
             var randomizedString = "";
@@ -262,7 +279,7 @@ namespace Assignment3
         }
 
         // Method for proceeding from term selection to investor information
-        void proceedToInvestorInformation()
+        private void proceedToInvestorInformation()
         {
             // Variable to keep track of the selected term duration
             int checkedIndex = 0;
@@ -306,6 +323,10 @@ namespace Assignment3
                 referenceNumberLabel.Text = reference;
             }
 
+            // Show date
+            investmentDateValueLabel.Text = DateTime.Today.ToString("dd/MM/yyyy");
+
+            // Show fields for investor details
             investorDetailsGroupBox.Show();
             investorDetailsGroupBox.Enabled = true;
 
@@ -328,7 +349,7 @@ namespace Assignment3
         }
 
         // Method to Submit information for confirmation
-        void submitInformation()
+        private void submitInformation()
         {
             // Check if no name was entered
             if (fullNameTextBox.Text.Trim() == "")
@@ -371,8 +392,8 @@ namespace Assignment3
             // Fill investment details
             investmentValueLabel.Text = investment.ToString("C");
             finalBalanceValueLabel.Text = finalBalance.ToString("C");
-            interestRateValueLabel.Text = interestRate + "%";
-            termDurationValueLabel.Text = termDuration + " Year" + (termDuration == 1 ? "" : "s");
+            interestValueLabel.Text = (finalBalance - investment).ToString("C");
+            termDurationValueLabel.Text = termDuration + YEAR_SUFFIX + (termDuration == 1 ? "" : "s");
             fullNameValueLabel.Text = name;
             emailAddressValueLabel.Text = email;
             telephoneValueLabel.Text = phone;
@@ -381,6 +402,9 @@ namespace Assignment3
 
             // Show the investment details for confirmation
             confirmationGroupBox.Show();
+
+            // Pass on focus
+            confirmButton.Focus();
 
         }
 
@@ -391,7 +415,7 @@ namespace Assignment3
         }
 
         // Method to check if the term duration is unchanged
-        void toggleInvestorDetailsVisibility()
+        private void toggleInvestorDetailsVisibility()
         {
             // Check if the term duration selected is the same as that before pressing "Proceed"
             if (termDuration == TERM_1_YEARS && oneYearRadioButton.Checked ||
@@ -440,26 +464,56 @@ namespace Assignment3
             }
         }
 
+        // Method to clear fields and labels
+        private void clearFields()
+        {
+            confirmationGroupBox.Hide();
+            investorDetailsGroupBox.Hide();
+            investmentDetailsGroupBox.Hide();
+            fullNameValueLabel.Text = "";
+            emailAddressValueLabel.Text = "";
+            interestValueLabel.Text = "";
+            telephoneValueLabel.Text = "";
+            finalBalanceValueLabel.Text = "";
+            termDurationValueLabel.Text = "";
+            referenceIDValueLabel.Text = "";
+            investmentValueLabel.Text = "";
+            dateValueLabel.Text = "";
+            fullNameTextBox.Text = "";
+            emailTextBox.Text = "";
+            phoneNumberTextBox.Text = "";
+            investmentAmountTextBox.Text = "";
+            investmentAmountTextBox.Focus();
+        }
+
         // Method called on pressing the "Confirm" button
         private void confirmButton_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show(ARE_YOU_SURE_MESSAGE,
+                CONFIRM_INVESTMENT_MESSAGE, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (result == DialogResult.Yes)
             try
             {
                 // Obtain the file where data is stored
-                StreamWriter outputFile = File.AppendText("data.txt");
+                StreamWriter outputFile = File.AppendText(DATA_FILE_NAME);
 
                 // Write details of investment to file
                 outputFile.WriteLine(reference);
-                outputFile.WriteLine(name);
+                outputFile.WriteLine(DateTime.Today.ToString("dd/MM/yyyy"));
                 outputFile.WriteLine(email);
+                outputFile.WriteLine(name);
                 outputFile.WriteLine(phone);
-                outputFile.WriteLine("Date");
                 outputFile.WriteLine(investment);
-                outputFile.WriteLine(interestRate);
                 outputFile.WriteLine(termDuration);
+                outputFile.WriteLine(finalBalance - investment);
 
                 // Close file
                 outputFile.Close();
+
+                MessageBox.Show("Investment confirmed");
+
+                // Clear text fields and labels
+                clearFields();
 
             }
             catch (Exception ex)

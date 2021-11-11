@@ -36,6 +36,7 @@ namespace Assignment3
             this.passwordEntryLabel = new System.Windows.Forms.Label();
             this.passwordEntryTextBox = new System.Windows.Forms.TextBox();
             this.investmentPanel = new System.Windows.Forms.Panel();
+            this.searchGroupBox = new System.Windows.Forms.GroupBox();
             this.investmentAmountGroupBox = new System.Windows.Forms.GroupBox();
             this.investmentAmountTextBox = new System.Windows.Forms.TextBox();
             this.euroSymbolLabel = new System.Windows.Forms.Label();
@@ -59,7 +60,7 @@ namespace Assignment3
             this.emailAddressValueLabel = new System.Windows.Forms.Label();
             this.fullNameValueLabel = new System.Windows.Forms.Label();
             this.termDurationValueLabel = new System.Windows.Forms.Label();
-            this.interestRateValueLabel = new System.Windows.Forms.Label();
+            this.interestValueLabel = new System.Windows.Forms.Label();
             this.investmentValueLabel = new System.Windows.Forms.Label();
             this.dateConfirmationLabel = new System.Windows.Forms.Label();
             this.referenceIDConfirmationLabel = new System.Windows.Forms.Label();
@@ -67,7 +68,7 @@ namespace Assignment3
             this.emailAddressConfirmationLabel = new System.Windows.Forms.Label();
             this.fullNameConfirmationLabel = new System.Windows.Forms.Label();
             this.termDurationConfirmationLabel = new System.Windows.Forms.Label();
-            this.interestRateConfirmationLabel = new System.Windows.Forms.Label();
+            this.interestConfirmationLabel = new System.Windows.Forms.Label();
             this.investmentConfirmationLabel = new System.Windows.Forms.Label();
             this.investorDetailsGroupBox = new System.Windows.Forms.GroupBox();
             this.submitButton = new System.Windows.Forms.Button();
@@ -95,7 +96,8 @@ namespace Assignment3
             this.fiveYearsRadioButton = new System.Windows.Forms.RadioButton();
             this.threeYearsRadioButton = new System.Windows.Forms.RadioButton();
             this.oneYearRadioButton = new System.Windows.Forms.RadioButton();
-            this.searchGroupBox = new System.Windows.Forms.GroupBox();
+            this.investmentDateValueLabel = new System.Windows.Forms.Label();
+            this.investmentDateLabel = new System.Windows.Forms.Label();
             this.passwordEntryPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.passwordScreenImage)).BeginInit();
             this.investmentPanel.SuspendLayout();
@@ -168,6 +170,15 @@ namespace Assignment3
             this.investmentPanel.Name = "investmentPanel";
             this.investmentPanel.Size = new System.Drawing.Size(1575, 1449);
             this.investmentPanel.TabIndex = 4;
+            // 
+            // searchGroupBox
+            // 
+            this.searchGroupBox.Location = new System.Drawing.Point(739, 726);
+            this.searchGroupBox.Name = "searchGroupBox";
+            this.searchGroupBox.Size = new System.Drawing.Size(796, 689);
+            this.searchGroupBox.TabIndex = 9;
+            this.searchGroupBox.TabStop = false;
+            this.searchGroupBox.Text = "Search For:";
             // 
             // investmentAmountGroupBox
             // 
@@ -324,7 +335,7 @@ namespace Assignment3
             this.confirmationGroupBox.Controls.Add(this.emailAddressValueLabel);
             this.confirmationGroupBox.Controls.Add(this.fullNameValueLabel);
             this.confirmationGroupBox.Controls.Add(this.termDurationValueLabel);
-            this.confirmationGroupBox.Controls.Add(this.interestRateValueLabel);
+            this.confirmationGroupBox.Controls.Add(this.interestValueLabel);
             this.confirmationGroupBox.Controls.Add(this.investmentValueLabel);
             this.confirmationGroupBox.Controls.Add(this.dateConfirmationLabel);
             this.confirmationGroupBox.Controls.Add(this.referenceIDConfirmationLabel);
@@ -332,7 +343,7 @@ namespace Assignment3
             this.confirmationGroupBox.Controls.Add(this.emailAddressConfirmationLabel);
             this.confirmationGroupBox.Controls.Add(this.fullNameConfirmationLabel);
             this.confirmationGroupBox.Controls.Add(this.termDurationConfirmationLabel);
-            this.confirmationGroupBox.Controls.Add(this.interestRateConfirmationLabel);
+            this.confirmationGroupBox.Controls.Add(this.interestConfirmationLabel);
             this.confirmationGroupBox.Controls.Add(this.investmentConfirmationLabel);
             this.confirmationGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.confirmationGroupBox.Location = new System.Drawing.Point(35, 873);
@@ -434,15 +445,15 @@ namespace Assignment3
             this.termDurationValueLabel.TabIndex = 10;
             this.termDurationValueLabel.Text = "Term Duration:";
             // 
-            // interestRateValueLabel
+            // interestValueLabel
             // 
-            this.interestRateValueLabel.AutoEllipsis = true;
-            this.interestRateValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.interestRateValueLabel.Location = new System.Drawing.Point(243, 143);
-            this.interestRateValueLabel.Name = "interestRateValueLabel";
-            this.interestRateValueLabel.Size = new System.Drawing.Size(397, 32);
-            this.interestRateValueLabel.TabIndex = 9;
-            this.interestRateValueLabel.Text = "Interest Rate:";
+            this.interestValueLabel.AutoEllipsis = true;
+            this.interestValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.interestValueLabel.Location = new System.Drawing.Point(243, 143);
+            this.interestValueLabel.Name = "interestValueLabel";
+            this.interestValueLabel.Size = new System.Drawing.Size(397, 32);
+            this.interestValueLabel.TabIndex = 9;
+            this.interestValueLabel.Text = "interest";
             // 
             // investmentValueLabel
             // 
@@ -514,15 +525,15 @@ namespace Assignment3
             this.termDurationConfirmationLabel.TabIndex = 2;
             this.termDurationConfirmationLabel.Text = "Term Duration:";
             // 
-            // interestRateConfirmationLabel
+            // interestConfirmationLabel
             // 
-            this.interestRateConfirmationLabel.AutoSize = true;
-            this.interestRateConfirmationLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.interestRateConfirmationLabel.Location = new System.Drawing.Point(35, 143);
-            this.interestRateConfirmationLabel.Name = "interestRateConfirmationLabel";
-            this.interestRateConfirmationLabel.Size = new System.Drawing.Size(153, 32);
-            this.interestRateConfirmationLabel.TabIndex = 1;
-            this.interestRateConfirmationLabel.Text = "Interest Rate:";
+            this.interestConfirmationLabel.AutoSize = true;
+            this.interestConfirmationLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.interestConfirmationLabel.Location = new System.Drawing.Point(35, 143);
+            this.interestConfirmationLabel.Name = "interestConfirmationLabel";
+            this.interestConfirmationLabel.Size = new System.Drawing.Size(99, 32);
+            this.interestConfirmationLabel.TabIndex = 1;
+            this.interestConfirmationLabel.Text = "Interest:";
             // 
             // investmentConfirmationLabel
             // 
@@ -536,6 +547,8 @@ namespace Assignment3
             // 
             // investorDetailsGroupBox
             // 
+            this.investorDetailsGroupBox.Controls.Add(this.investmentDateValueLabel);
+            this.investorDetailsGroupBox.Controls.Add(this.investmentDateLabel);
             this.investorDetailsGroupBox.Controls.Add(this.submitButton);
             this.investorDetailsGroupBox.Controls.Add(this.phoneNumberTextBox);
             this.investorDetailsGroupBox.Controls.Add(this.emailTextBox);
@@ -842,14 +855,25 @@ namespace Assignment3
             this.oneYearRadioButton.CheckedChanged += new System.EventHandler(this.oneYearRadioButton_CheckedChanged);
             this.oneYearRadioButton.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.oneYearRadioButton_KeyPress);
             // 
-            // searchGroupBox
+            // investmentDateValueLabel
             // 
-            this.searchGroupBox.Location = new System.Drawing.Point(739, 726);
-            this.searchGroupBox.Name = "searchGroupBox";
-            this.searchGroupBox.Size = new System.Drawing.Size(796, 689);
-            this.searchGroupBox.TabIndex = 9;
-            this.searchGroupBox.TabStop = false;
-            this.searchGroupBox.Text = "Search For:";
+            this.investmentDateValueLabel.AutoSize = true;
+            this.investmentDateValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.investmentDateValueLabel.Location = new System.Drawing.Point(427, 46);
+            this.investmentDateValueLabel.Name = "investmentDateValueLabel";
+            this.investmentDateValueLabel.Size = new System.Drawing.Size(24, 32);
+            this.investmentDateValueLabel.TabIndex = 24;
+            this.investmentDateValueLabel.Text = "-";
+            // 
+            // investmentDateLabel
+            // 
+            this.investmentDateLabel.AutoSize = true;
+            this.investmentDateLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.investmentDateLabel.Location = new System.Drawing.Point(352, 46);
+            this.investmentDateLabel.Name = "investmentDateLabel";
+            this.investmentDateLabel.Size = new System.Drawing.Size(69, 32);
+            this.investmentDateLabel.TabIndex = 23;
+            this.investmentDateLabel.Text = "Date:";
             // 
             // Form1
             // 
@@ -919,7 +943,7 @@ namespace Assignment3
         private System.Windows.Forms.GroupBox confirmationGroupBox;
         private System.Windows.Forms.Label investmentConfirmationLabel;
         private System.Windows.Forms.Label termDurationConfirmationLabel;
-        private System.Windows.Forms.Label interestRateConfirmationLabel;
+        private System.Windows.Forms.Label interestConfirmationLabel;
         private System.Windows.Forms.Label fullNameConfirmationLabel;
         private System.Windows.Forms.Label emailAddressConfirmationLabel;
         private System.Windows.Forms.Label telephoneConfirmationLabel;
@@ -931,7 +955,7 @@ namespace Assignment3
         private System.Windows.Forms.Label emailAddressValueLabel;
         private System.Windows.Forms.Label fullNameValueLabel;
         private System.Windows.Forms.Label termDurationValueLabel;
-        private System.Windows.Forms.Label interestRateValueLabel;
+        private System.Windows.Forms.Label interestValueLabel;
         private System.Windows.Forms.Label investmentValueLabel;
         private System.Windows.Forms.Button confirmButton;
         private System.Windows.Forms.GroupBox summaryGroupBox;
@@ -947,6 +971,8 @@ namespace Assignment3
         private System.Windows.Forms.Label finalBalanceValueLabel;
         private System.Windows.Forms.Label finalBalanceDescriptionLabel;
         private System.Windows.Forms.GroupBox searchGroupBox;
+        private System.Windows.Forms.Label investmentDateValueLabel;
+        private System.Windows.Forms.Label investmentDateLabel;
     }
 }
 
