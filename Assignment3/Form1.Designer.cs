@@ -50,6 +50,8 @@ namespace Assignment3
             this.totalInterestDescriptionLabel = new System.Windows.Forms.Label();
             this.totalInvestmentDescriptionLabel = new System.Windows.Forms.Label();
             this.confirmationGroupBox = new System.Windows.Forms.GroupBox();
+            this.finalBalanceValueLabel = new System.Windows.Forms.Label();
+            this.finalBalanceDescriptionLabel = new System.Windows.Forms.Label();
             this.confirmButton = new System.Windows.Forms.Button();
             this.dateValueLabel = new System.Windows.Forms.Label();
             this.referenceIDValueLabel = new System.Windows.Forms.Label();
@@ -93,6 +95,7 @@ namespace Assignment3
             this.fiveYearsRadioButton = new System.Windows.Forms.RadioButton();
             this.threeYearsRadioButton = new System.Windows.Forms.RadioButton();
             this.oneYearRadioButton = new System.Windows.Forms.RadioButton();
+            this.searchGroupBox = new System.Windows.Forms.GroupBox();
             this.passwordEntryPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.passwordScreenImage)).BeginInit();
             this.investmentPanel.SuspendLayout();
@@ -154,15 +157,16 @@ namespace Assignment3
             // 
             // investmentPanel
             // 
+            this.investmentPanel.Controls.Add(this.searchGroupBox);
             this.investmentPanel.Controls.Add(this.investmentAmountGroupBox);
             this.investmentPanel.Controls.Add(this.summaryGroupBox);
             this.investmentPanel.Controls.Add(this.confirmationGroupBox);
             this.investmentPanel.Controls.Add(this.investorDetailsGroupBox);
             this.investmentPanel.Controls.Add(this.investmentDetailsGroupBox);
-            this.investmentPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.investmentPanel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.investmentPanel.Location = new System.Drawing.Point(0, 0);
             this.investmentPanel.Name = "investmentPanel";
-            this.investmentPanel.Size = new System.Drawing.Size(1575, 1426);
+            this.investmentPanel.Size = new System.Drawing.Size(1575, 1449);
             this.investmentPanel.TabIndex = 4;
             // 
             // investmentAmountGroupBox
@@ -173,7 +177,7 @@ namespace Assignment3
             this.investmentAmountGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.investmentAmountGroupBox.Location = new System.Drawing.Point(35, 37);
             this.investmentAmountGroupBox.Name = "investmentAmountGroupBox";
-            this.investmentAmountGroupBox.Size = new System.Drawing.Size(853, 120);
+            this.investmentAmountGroupBox.Size = new System.Drawing.Size(685, 120);
             this.investmentAmountGroupBox.TabIndex = 8;
             this.investmentAmountGroupBox.TabStop = false;
             this.investmentAmountGroupBox.Text = "1. Enter investment amount";
@@ -221,68 +225,71 @@ namespace Assignment3
             this.summaryGroupBox.Controls.Add(this.averageInvestmentDescriptionLabel);
             this.summaryGroupBox.Controls.Add(this.totalInterestDescriptionLabel);
             this.summaryGroupBox.Controls.Add(this.totalInvestmentDescriptionLabel);
-            this.summaryGroupBox.Location = new System.Drawing.Point(911, 37);
+            this.summaryGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.summaryGroupBox.Location = new System.Drawing.Point(739, 37);
             this.summaryGroupBox.Name = "summaryGroupBox";
-            this.summaryGroupBox.Size = new System.Drawing.Size(630, 830);
+            this.summaryGroupBox.Size = new System.Drawing.Size(796, 683);
             this.summaryGroupBox.TabIndex = 7;
             this.summaryGroupBox.TabStop = false;
             this.summaryGroupBox.Text = "Summary Information Display";
             // 
             // averageTermValueLabel
             // 
-            this.averageTermValueLabel.AutoSize = true;
+            this.averageTermValueLabel.AutoEllipsis = true;
             this.averageTermValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.averageTermValueLabel.Location = new System.Drawing.Point(194, 273);
+            this.averageTermValueLabel.Location = new System.Drawing.Point(295, 188);
             this.averageTermValueLabel.Name = "averageTermValueLabel";
-            this.averageTermValueLabel.Size = new System.Drawing.Size(252, 32);
+            this.averageTermValueLabel.Size = new System.Drawing.Size(462, 32);
             this.averageTermValueLabel.TabIndex = 19;
             this.averageTermValueLabel.Text = "average term duration";
             // 
             // averageInvestmentValueLabel
             // 
-            this.averageInvestmentValueLabel.AutoSize = true;
+            this.averageInvestmentValueLabel.AutoEllipsis = true;
             this.averageInvestmentValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.averageInvestmentValueLabel.Location = new System.Drawing.Point(194, 193);
+            this.averageInvestmentValueLabel.Location = new System.Drawing.Point(292, 143);
             this.averageInvestmentValueLabel.Name = "averageInvestmentValueLabel";
-            this.averageInvestmentValueLabel.Size = new System.Drawing.Size(224, 32);
+            this.averageInvestmentValueLabel.Size = new System.Drawing.Size(465, 32);
             this.averageInvestmentValueLabel.TabIndex = 18;
             this.averageInvestmentValueLabel.Text = "average investment";
             // 
             // totalInterestValueLabel
             // 
-            this.totalInterestValueLabel.AutoSize = true;
+            this.totalInterestValueLabel.AutoEllipsis = true;
             this.totalInterestValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.totalInterestValueLabel.Location = new System.Drawing.Point(194, 134);
+            this.totalInterestValueLabel.Location = new System.Drawing.Point(295, 98);
             this.totalInterestValueLabel.Name = "totalInterestValueLabel";
-            this.totalInterestValueLabel.Size = new System.Drawing.Size(149, 32);
+            this.totalInterestValueLabel.Size = new System.Drawing.Size(462, 32);
             this.totalInterestValueLabel.TabIndex = 17;
             this.totalInterestValueLabel.Text = "total interest";
             // 
             // totalInvestmentValueLabel
             // 
-            this.totalInvestmentValueLabel.AutoSize = true;
+            this.totalInvestmentValueLabel.AutoEllipsis = true;
             this.totalInvestmentValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.totalInvestmentValueLabel.Location = new System.Drawing.Point(194, 67);
+            this.totalInvestmentValueLabel.Location = new System.Drawing.Point(292, 53);
             this.totalInvestmentValueLabel.Name = "totalInvestmentValueLabel";
-            this.totalInvestmentValueLabel.Size = new System.Drawing.Size(152, 32);
+            this.totalInvestmentValueLabel.Size = new System.Drawing.Size(465, 32);
             this.totalInvestmentValueLabel.TabIndex = 16;
             this.totalInvestmentValueLabel.Text = "total amount";
             // 
             // averageTermDescriptionLabel
             // 
+            this.averageTermDescriptionLabel.AutoSize = true;
             this.averageTermDescriptionLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.averageTermDescriptionLabel.Location = new System.Drawing.Point(26, 263);
+            this.averageTermDescriptionLabel.Location = new System.Drawing.Point(26, 188);
             this.averageTermDescriptionLabel.Name = "averageTermDescriptionLabel";
-            this.averageTermDescriptionLabel.Size = new System.Drawing.Size(162, 70);
+            this.averageTermDescriptionLabel.Size = new System.Drawing.Size(260, 32);
             this.averageTermDescriptionLabel.TabIndex = 15;
             this.averageTermDescriptionLabel.Text = "Average term duration:";
             // 
             // averageInvestmentDescriptionLabel
             // 
+            this.averageInvestmentDescriptionLabel.AutoSize = true;
             this.averageInvestmentDescriptionLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.averageInvestmentDescriptionLabel.Location = new System.Drawing.Point(26, 181);
+            this.averageInvestmentDescriptionLabel.Location = new System.Drawing.Point(26, 143);
             this.averageInvestmentDescriptionLabel.Name = "averageInvestmentDescriptionLabel";
-            this.averageInvestmentDescriptionLabel.Size = new System.Drawing.Size(162, 67);
+            this.averageInvestmentDescriptionLabel.Size = new System.Drawing.Size(232, 32);
             this.averageInvestmentDescriptionLabel.TabIndex = 14;
             this.averageInvestmentDescriptionLabel.Text = "Average Investment:";
             // 
@@ -290,7 +297,7 @@ namespace Assignment3
             // 
             this.totalInterestDescriptionLabel.AutoSize = true;
             this.totalInterestDescriptionLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.totalInterestDescriptionLabel.Location = new System.Drawing.Point(26, 134);
+            this.totalInterestDescriptionLabel.Location = new System.Drawing.Point(26, 98);
             this.totalInterestDescriptionLabel.Name = "totalInterestDescriptionLabel";
             this.totalInterestDescriptionLabel.Size = new System.Drawing.Size(157, 32);
             this.totalInterestDescriptionLabel.TabIndex = 13;
@@ -298,15 +305,18 @@ namespace Assignment3
             // 
             // totalInvestmentDescriptionLabel
             // 
+            this.totalInvestmentDescriptionLabel.AutoSize = true;
             this.totalInvestmentDescriptionLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.totalInvestmentDescriptionLabel.Location = new System.Drawing.Point(26, 53);
             this.totalInvestmentDescriptionLabel.Name = "totalInvestmentDescriptionLabel";
-            this.totalInvestmentDescriptionLabel.Size = new System.Drawing.Size(162, 66);
+            this.totalInvestmentDescriptionLabel.Size = new System.Drawing.Size(260, 32);
             this.totalInvestmentDescriptionLabel.TabIndex = 12;
             this.totalInvestmentDescriptionLabel.Text = "Total Amount Invested:";
             // 
             // confirmationGroupBox
             // 
+            this.confirmationGroupBox.Controls.Add(this.finalBalanceValueLabel);
+            this.confirmationGroupBox.Controls.Add(this.finalBalanceDescriptionLabel);
             this.confirmationGroupBox.Controls.Add(this.confirmButton);
             this.confirmationGroupBox.Controls.Add(this.dateValueLabel);
             this.confirmationGroupBox.Controls.Add(this.referenceIDValueLabel);
@@ -327,16 +337,36 @@ namespace Assignment3
             this.confirmationGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.confirmationGroupBox.Location = new System.Drawing.Point(35, 873);
             this.confirmationGroupBox.Name = "confirmationGroupBox";
-            this.confirmationGroupBox.Size = new System.Drawing.Size(853, 508);
+            this.confirmationGroupBox.Size = new System.Drawing.Size(686, 542);
             this.confirmationGroupBox.TabIndex = 6;
             this.confirmationGroupBox.TabStop = false;
             this.confirmationGroupBox.Text = "4. Confirm investment";
             this.confirmationGroupBox.Visible = false;
             // 
+            // finalBalanceValueLabel
+            // 
+            this.finalBalanceValueLabel.AutoEllipsis = true;
+            this.finalBalanceValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.finalBalanceValueLabel.Location = new System.Drawing.Point(243, 98);
+            this.finalBalanceValueLabel.Name = "finalBalanceValueLabel";
+            this.finalBalanceValueLabel.Size = new System.Drawing.Size(397, 32);
+            this.finalBalanceValueLabel.TabIndex = 18;
+            this.finalBalanceValueLabel.Text = "final balance";
+            // 
+            // finalBalanceDescriptionLabel
+            // 
+            this.finalBalanceDescriptionLabel.AutoSize = true;
+            this.finalBalanceDescriptionLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.finalBalanceDescriptionLabel.Location = new System.Drawing.Point(35, 98);
+            this.finalBalanceDescriptionLabel.Name = "finalBalanceDescriptionLabel";
+            this.finalBalanceDescriptionLabel.Size = new System.Drawing.Size(158, 32);
+            this.finalBalanceDescriptionLabel.TabIndex = 17;
+            this.finalBalanceDescriptionLabel.Text = "Final Balance:";
+            // 
             // confirmButton
             // 
             this.confirmButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.confirmButton.Location = new System.Drawing.Point(373, 432);
+            this.confirmButton.Location = new System.Drawing.Point(282, 471);
             this.confirmButton.Name = "confirmButton";
             this.confirmButton.Size = new System.Drawing.Size(150, 46);
             this.confirmButton.TabIndex = 16;
@@ -346,81 +376,81 @@ namespace Assignment3
             // 
             // dateValueLabel
             // 
-            this.dateValueLabel.AutoSize = true;
+            this.dateValueLabel.AutoEllipsis = true;
             this.dateValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateValueLabel.Location = new System.Drawing.Point(243, 380);
+            this.dateValueLabel.Location = new System.Drawing.Point(243, 413);
             this.dateValueLabel.Name = "dateValueLabel";
-            this.dateValueLabel.Size = new System.Drawing.Size(69, 32);
+            this.dateValueLabel.Size = new System.Drawing.Size(388, 32);
             this.dateValueLabel.TabIndex = 15;
             this.dateValueLabel.Text = "Date:";
             // 
             // referenceIDValueLabel
             // 
-            this.referenceIDValueLabel.AutoSize = true;
+            this.referenceIDValueLabel.AutoEllipsis = true;
             this.referenceIDValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.referenceIDValueLabel.Location = new System.Drawing.Point(243, 335);
+            this.referenceIDValueLabel.Location = new System.Drawing.Point(243, 368);
             this.referenceIDValueLabel.Name = "referenceIDValueLabel";
-            this.referenceIDValueLabel.Size = new System.Drawing.Size(155, 32);
+            this.referenceIDValueLabel.Size = new System.Drawing.Size(388, 32);
             this.referenceIDValueLabel.TabIndex = 14;
             this.referenceIDValueLabel.Text = "Reference ID:";
             // 
             // telephoneValueLabel
             // 
-            this.telephoneValueLabel.AutoSize = true;
+            this.telephoneValueLabel.AutoEllipsis = true;
             this.telephoneValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.telephoneValueLabel.Location = new System.Drawing.Point(243, 290);
+            this.telephoneValueLabel.Location = new System.Drawing.Point(243, 323);
             this.telephoneValueLabel.Name = "telephoneValueLabel";
-            this.telephoneValueLabel.Size = new System.Drawing.Size(166, 32);
+            this.telephoneValueLabel.Size = new System.Drawing.Size(397, 32);
             this.telephoneValueLabel.TabIndex = 13;
             this.telephoneValueLabel.Text = "Telephone no:";
             // 
             // emailAddressValueLabel
             // 
-            this.emailAddressValueLabel.AutoSize = true;
+            this.emailAddressValueLabel.AutoEllipsis = true;
             this.emailAddressValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.emailAddressValueLabel.Location = new System.Drawing.Point(243, 245);
+            this.emailAddressValueLabel.Location = new System.Drawing.Point(243, 278);
             this.emailAddressValueLabel.Name = "emailAddressValueLabel";
-            this.emailAddressValueLabel.Size = new System.Drawing.Size(164, 32);
+            this.emailAddressValueLabel.Size = new System.Drawing.Size(388, 32);
             this.emailAddressValueLabel.TabIndex = 12;
             this.emailAddressValueLabel.Text = "Email address:";
             // 
             // fullNameValueLabel
             // 
-            this.fullNameValueLabel.AutoSize = true;
+            this.fullNameValueLabel.AutoEllipsis = true;
             this.fullNameValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.fullNameValueLabel.Location = new System.Drawing.Point(243, 200);
+            this.fullNameValueLabel.Location = new System.Drawing.Point(243, 233);
             this.fullNameValueLabel.Name = "fullNameValueLabel";
-            this.fullNameValueLabel.Size = new System.Drawing.Size(124, 32);
+            this.fullNameValueLabel.Size = new System.Drawing.Size(388, 32);
             this.fullNameValueLabel.TabIndex = 11;
             this.fullNameValueLabel.Text = "Full name:";
             // 
             // termDurationValueLabel
             // 
-            this.termDurationValueLabel.AutoSize = true;
+            this.termDurationValueLabel.AutoEllipsis = true;
             this.termDurationValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.termDurationValueLabel.Location = new System.Drawing.Point(243, 155);
+            this.termDurationValueLabel.Location = new System.Drawing.Point(243, 188);
             this.termDurationValueLabel.Name = "termDurationValueLabel";
-            this.termDurationValueLabel.Size = new System.Drawing.Size(172, 32);
+            this.termDurationValueLabel.Size = new System.Drawing.Size(388, 32);
             this.termDurationValueLabel.TabIndex = 10;
             this.termDurationValueLabel.Text = "Term Duration:";
             // 
             // interestRateValueLabel
             // 
-            this.interestRateValueLabel.AutoSize = true;
+            this.interestRateValueLabel.AutoEllipsis = true;
             this.interestRateValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.interestRateValueLabel.Location = new System.Drawing.Point(243, 110);
+            this.interestRateValueLabel.Location = new System.Drawing.Point(243, 143);
             this.interestRateValueLabel.Name = "interestRateValueLabel";
-            this.interestRateValueLabel.Size = new System.Drawing.Size(153, 32);
+            this.interestRateValueLabel.Size = new System.Drawing.Size(397, 32);
             this.interestRateValueLabel.TabIndex = 9;
             this.interestRateValueLabel.Text = "Interest Rate:";
             // 
             // investmentValueLabel
             // 
-            this.investmentValueLabel.AutoSize = true;
+            this.investmentValueLabel.AutoEllipsis = true;
             this.investmentValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.investmentValueLabel.Location = new System.Drawing.Point(243, 65);
+            this.investmentValueLabel.Location = new System.Drawing.Point(243, 53);
             this.investmentValueLabel.Name = "investmentValueLabel";
-            this.investmentValueLabel.Size = new System.Drawing.Size(202, 32);
+            this.investmentValueLabel.Size = new System.Drawing.Size(397, 32);
             this.investmentValueLabel.TabIndex = 8;
             this.investmentValueLabel.Text = "Invested Amount:";
             // 
@@ -428,7 +458,7 @@ namespace Assignment3
             // 
             this.dateConfirmationLabel.AutoSize = true;
             this.dateConfirmationLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateConfirmationLabel.Location = new System.Drawing.Point(35, 380);
+            this.dateConfirmationLabel.Location = new System.Drawing.Point(35, 413);
             this.dateConfirmationLabel.Name = "dateConfirmationLabel";
             this.dateConfirmationLabel.Size = new System.Drawing.Size(69, 32);
             this.dateConfirmationLabel.TabIndex = 7;
@@ -438,7 +468,7 @@ namespace Assignment3
             // 
             this.referenceIDConfirmationLabel.AutoSize = true;
             this.referenceIDConfirmationLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.referenceIDConfirmationLabel.Location = new System.Drawing.Point(35, 335);
+            this.referenceIDConfirmationLabel.Location = new System.Drawing.Point(35, 368);
             this.referenceIDConfirmationLabel.Name = "referenceIDConfirmationLabel";
             this.referenceIDConfirmationLabel.Size = new System.Drawing.Size(155, 32);
             this.referenceIDConfirmationLabel.TabIndex = 6;
@@ -448,7 +478,7 @@ namespace Assignment3
             // 
             this.telephoneConfirmationLabel.AutoSize = true;
             this.telephoneConfirmationLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.telephoneConfirmationLabel.Location = new System.Drawing.Point(35, 290);
+            this.telephoneConfirmationLabel.Location = new System.Drawing.Point(35, 323);
             this.telephoneConfirmationLabel.Name = "telephoneConfirmationLabel";
             this.telephoneConfirmationLabel.Size = new System.Drawing.Size(166, 32);
             this.telephoneConfirmationLabel.TabIndex = 5;
@@ -458,7 +488,7 @@ namespace Assignment3
             // 
             this.emailAddressConfirmationLabel.AutoSize = true;
             this.emailAddressConfirmationLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.emailAddressConfirmationLabel.Location = new System.Drawing.Point(35, 245);
+            this.emailAddressConfirmationLabel.Location = new System.Drawing.Point(35, 278);
             this.emailAddressConfirmationLabel.Name = "emailAddressConfirmationLabel";
             this.emailAddressConfirmationLabel.Size = new System.Drawing.Size(164, 32);
             this.emailAddressConfirmationLabel.TabIndex = 4;
@@ -468,7 +498,7 @@ namespace Assignment3
             // 
             this.fullNameConfirmationLabel.AutoSize = true;
             this.fullNameConfirmationLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.fullNameConfirmationLabel.Location = new System.Drawing.Point(35, 200);
+            this.fullNameConfirmationLabel.Location = new System.Drawing.Point(35, 233);
             this.fullNameConfirmationLabel.Name = "fullNameConfirmationLabel";
             this.fullNameConfirmationLabel.Size = new System.Drawing.Size(124, 32);
             this.fullNameConfirmationLabel.TabIndex = 3;
@@ -478,7 +508,7 @@ namespace Assignment3
             // 
             this.termDurationConfirmationLabel.AutoSize = true;
             this.termDurationConfirmationLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.termDurationConfirmationLabel.Location = new System.Drawing.Point(35, 155);
+            this.termDurationConfirmationLabel.Location = new System.Drawing.Point(35, 188);
             this.termDurationConfirmationLabel.Name = "termDurationConfirmationLabel";
             this.termDurationConfirmationLabel.Size = new System.Drawing.Size(172, 32);
             this.termDurationConfirmationLabel.TabIndex = 2;
@@ -488,7 +518,7 @@ namespace Assignment3
             // 
             this.interestRateConfirmationLabel.AutoSize = true;
             this.interestRateConfirmationLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.interestRateConfirmationLabel.Location = new System.Drawing.Point(35, 110);
+            this.interestRateConfirmationLabel.Location = new System.Drawing.Point(35, 143);
             this.interestRateConfirmationLabel.Name = "interestRateConfirmationLabel";
             this.interestRateConfirmationLabel.Size = new System.Drawing.Size(153, 32);
             this.interestRateConfirmationLabel.TabIndex = 1;
@@ -498,7 +528,7 @@ namespace Assignment3
             // 
             this.investmentConfirmationLabel.AutoSize = true;
             this.investmentConfirmationLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.investmentConfirmationLabel.Location = new System.Drawing.Point(35, 65);
+            this.investmentConfirmationLabel.Location = new System.Drawing.Point(35, 53);
             this.investmentConfirmationLabel.Name = "investmentConfirmationLabel";
             this.investmentConfirmationLabel.Size = new System.Drawing.Size(202, 32);
             this.investmentConfirmationLabel.TabIndex = 0;
@@ -518,7 +548,7 @@ namespace Assignment3
             this.investorDetailsGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.investorDetailsGroupBox.Location = new System.Drawing.Point(35, 542);
             this.investorDetailsGroupBox.Name = "investorDetailsGroupBox";
-            this.investorDetailsGroupBox.Size = new System.Drawing.Size(853, 325);
+            this.investorDetailsGroupBox.Size = new System.Drawing.Size(685, 325);
             this.investorDetailsGroupBox.TabIndex = 5;
             this.investorDetailsGroupBox.TabStop = false;
             this.investorDetailsGroupBox.Text = "3. Enter Investor Details";
@@ -527,37 +557,40 @@ namespace Assignment3
             // submitButton
             // 
             this.submitButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.submitButton.Location = new System.Drawing.Point(374, 254);
+            this.submitButton.Location = new System.Drawing.Point(282, 252);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(150, 46);
             this.submitButton.TabIndex = 22;
             this.submitButton.Text = "&Submit";
             this.submitButton.UseVisualStyleBackColor = true;
-            this.submitButton.Click += new System.EventHandler(this.button1_Click);
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // phoneNumberTextBox
             // 
             this.phoneNumberTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.phoneNumberTextBox.Location = new System.Drawing.Point(199, 193);
             this.phoneNumberTextBox.Name = "phoneNumberTextBox";
-            this.phoneNumberTextBox.Size = new System.Drawing.Size(616, 39);
+            this.phoneNumberTextBox.Size = new System.Drawing.Size(441, 39);
             this.phoneNumberTextBox.TabIndex = 21;
+            this.phoneNumberTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.phoneNumberTextBox_KeyPress);
             // 
             // emailTextBox
             // 
             this.emailTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.emailTextBox.Location = new System.Drawing.Point(199, 143);
             this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(616, 39);
+            this.emailTextBox.Size = new System.Drawing.Size(441, 39);
             this.emailTextBox.TabIndex = 20;
+            this.emailTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.emailTextBox_KeyPress);
             // 
             // fullNameTextBox
             // 
             this.fullNameTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.fullNameTextBox.Location = new System.Drawing.Point(199, 93);
             this.fullNameTextBox.Name = "fullNameTextBox";
-            this.fullNameTextBox.Size = new System.Drawing.Size(616, 39);
+            this.fullNameTextBox.Size = new System.Drawing.Size(441, 39);
             this.fullNameTextBox.TabIndex = 19;
+            this.fullNameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.fullNameTextBox_KeyPress);
             // 
             // phoneNumberLabel
             // 
@@ -629,7 +662,7 @@ namespace Assignment3
             this.investmentDetailsGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.investmentDetailsGroupBox.Location = new System.Drawing.Point(35, 163);
             this.investmentDetailsGroupBox.Name = "investmentDetailsGroupBox";
-            this.investmentDetailsGroupBox.Size = new System.Drawing.Size(853, 373);
+            this.investmentDetailsGroupBox.Size = new System.Drawing.Size(685, 373);
             this.investmentDetailsGroupBox.TabIndex = 4;
             this.investmentDetailsGroupBox.TabStop = false;
             this.investmentDetailsGroupBox.Text = "2. Select investment term duration";
@@ -638,7 +671,7 @@ namespace Assignment3
             // proceedButton
             // 
             this.proceedButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.proceedButton.Location = new System.Drawing.Point(373, 297);
+            this.proceedButton.Location = new System.Drawing.Point(282, 295);
             this.proceedButton.Name = "proceedButton";
             this.proceedButton.Size = new System.Drawing.Size(150, 46);
             this.proceedButton.TabIndex = 15;
@@ -649,44 +682,40 @@ namespace Assignment3
             // 
             // finalBalance10YearLabel
             // 
-            this.finalBalance10YearLabel.AutoSize = true;
             this.finalBalance10YearLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.finalBalance10YearLabel.Location = new System.Drawing.Point(528, 238);
+            this.finalBalance10YearLabel.Location = new System.Drawing.Point(352, 238);
             this.finalBalance10YearLabel.Name = "finalBalance10YearLabel";
-            this.finalBalance10YearLabel.Size = new System.Drawing.Size(153, 32);
+            this.finalBalance10YearLabel.Size = new System.Drawing.Size(288, 32);
             this.finalBalance10YearLabel.TabIndex = 14;
             this.finalBalance10YearLabel.Text = "Final Balance";
             this.finalBalance10YearLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // finalBalance5YearLabel
             // 
-            this.finalBalance5YearLabel.AutoSize = true;
             this.finalBalance5YearLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.finalBalance5YearLabel.Location = new System.Drawing.Point(528, 191);
+            this.finalBalance5YearLabel.Location = new System.Drawing.Point(352, 191);
             this.finalBalance5YearLabel.Name = "finalBalance5YearLabel";
-            this.finalBalance5YearLabel.Size = new System.Drawing.Size(153, 32);
+            this.finalBalance5YearLabel.Size = new System.Drawing.Size(288, 32);
             this.finalBalance5YearLabel.TabIndex = 13;
             this.finalBalance5YearLabel.Text = "Final Balance";
             this.finalBalance5YearLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // finalBalance3YearLabel
             // 
-            this.finalBalance3YearLabel.AutoSize = true;
             this.finalBalance3YearLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.finalBalance3YearLabel.Location = new System.Drawing.Point(528, 144);
+            this.finalBalance3YearLabel.Location = new System.Drawing.Point(352, 144);
             this.finalBalance3YearLabel.Name = "finalBalance3YearLabel";
-            this.finalBalance3YearLabel.Size = new System.Drawing.Size(153, 32);
+            this.finalBalance3YearLabel.Size = new System.Drawing.Size(288, 32);
             this.finalBalance3YearLabel.TabIndex = 12;
             this.finalBalance3YearLabel.Text = "Final Balance";
             this.finalBalance3YearLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // finalBalance1YearLabel
             // 
-            this.finalBalance1YearLabel.AutoSize = true;
             this.finalBalance1YearLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.finalBalance1YearLabel.Location = new System.Drawing.Point(528, 101);
+            this.finalBalance1YearLabel.Location = new System.Drawing.Point(352, 101);
             this.finalBalance1YearLabel.Name = "finalBalance1YearLabel";
-            this.finalBalance1YearLabel.Size = new System.Drawing.Size(153, 32);
+            this.finalBalance1YearLabel.Size = new System.Drawing.Size(288, 32);
             this.finalBalance1YearLabel.TabIndex = 11;
             this.finalBalance1YearLabel.Text = "Final Balance";
             this.finalBalance1YearLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -695,7 +724,7 @@ namespace Assignment3
             // 
             this.finalBalanceLabel.AutoSize = true;
             this.finalBalanceLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.finalBalanceLabel.Location = new System.Drawing.Point(528, 49);
+            this.finalBalanceLabel.Location = new System.Drawing.Point(425, 49);
             this.finalBalanceLabel.Name = "finalBalanceLabel";
             this.finalBalanceLabel.Size = new System.Drawing.Size(153, 32);
             this.finalBalanceLabel.TabIndex = 10;
@@ -706,7 +735,7 @@ namespace Assignment3
             // 
             this.interestRate10YearLabel.AutoSize = true;
             this.interestRate10YearLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.interestRate10YearLabel.Location = new System.Drawing.Point(198, 238);
+            this.interestRate10YearLabel.Location = new System.Drawing.Point(179, 238);
             this.interestRate10YearLabel.Name = "interestRate10YearLabel";
             this.interestRate10YearLabel.Size = new System.Drawing.Size(148, 32);
             this.interestRate10YearLabel.TabIndex = 9;
@@ -717,7 +746,7 @@ namespace Assignment3
             // 
             this.interestRate5YearLabel.AutoSize = true;
             this.interestRate5YearLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.interestRate5YearLabel.Location = new System.Drawing.Point(198, 191);
+            this.interestRate5YearLabel.Location = new System.Drawing.Point(179, 191);
             this.interestRate5YearLabel.Name = "interestRate5YearLabel";
             this.interestRate5YearLabel.Size = new System.Drawing.Size(148, 32);
             this.interestRate5YearLabel.TabIndex = 8;
@@ -728,7 +757,7 @@ namespace Assignment3
             // 
             this.interestRate3YearLabel.AutoSize = true;
             this.interestRate3YearLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.interestRate3YearLabel.Location = new System.Drawing.Point(198, 144);
+            this.interestRate3YearLabel.Location = new System.Drawing.Point(179, 144);
             this.interestRate3YearLabel.Name = "interestRate3YearLabel";
             this.interestRate3YearLabel.Size = new System.Drawing.Size(148, 32);
             this.interestRate3YearLabel.TabIndex = 7;
@@ -739,7 +768,7 @@ namespace Assignment3
             // 
             this.interestRate1YearLabel.AutoSize = true;
             this.interestRate1YearLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.interestRate1YearLabel.Location = new System.Drawing.Point(198, 101);
+            this.interestRate1YearLabel.Location = new System.Drawing.Point(179, 101);
             this.interestRate1YearLabel.Name = "interestRate1YearLabel";
             this.interestRate1YearLabel.Size = new System.Drawing.Size(148, 32);
             this.interestRate1YearLabel.TabIndex = 6;
@@ -750,7 +779,7 @@ namespace Assignment3
             // 
             this.interestRateLabel.AutoSize = true;
             this.interestRateLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.interestRateLabel.Location = new System.Drawing.Point(198, 49);
+            this.interestRateLabel.Location = new System.Drawing.Point(179, 49);
             this.interestRateLabel.Name = "interestRateLabel";
             this.interestRateLabel.Size = new System.Drawing.Size(148, 32);
             this.interestRateLabel.TabIndex = 5;
@@ -813,11 +842,20 @@ namespace Assignment3
             this.oneYearRadioButton.CheckedChanged += new System.EventHandler(this.oneYearRadioButton_CheckedChanged);
             this.oneYearRadioButton.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.oneYearRadioButton_KeyPress);
             // 
+            // searchGroupBox
+            // 
+            this.searchGroupBox.Location = new System.Drawing.Point(739, 726);
+            this.searchGroupBox.Name = "searchGroupBox";
+            this.searchGroupBox.Size = new System.Drawing.Size(796, 689);
+            this.searchGroupBox.TabIndex = 9;
+            this.searchGroupBox.TabStop = false;
+            this.searchGroupBox.Text = "Search For:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1574, 1422);
+            this.ClientSize = new System.Drawing.Size(1574, 1447);
             this.Controls.Add(this.investmentPanel);
             this.Controls.Add(this.passwordEntryPanel);
             this.Name = "Form1";
@@ -906,6 +944,9 @@ namespace Assignment3
         private System.Windows.Forms.Label totalInterestDescriptionLabel;
         private System.Windows.Forms.Label totalInvestmentDescriptionLabel;
         private System.Windows.Forms.GroupBox investmentAmountGroupBox;
+        private System.Windows.Forms.Label finalBalanceValueLabel;
+        private System.Windows.Forms.Label finalBalanceDescriptionLabel;
+        private System.Windows.Forms.GroupBox searchGroupBox;
     }
 }
 

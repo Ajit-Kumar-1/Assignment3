@@ -95,6 +95,7 @@ namespace Assignment3
             {
                 // If so, proceed to the next screen
                 passwordEntryPanel.Hide();
+                investmentPanel.Show();
             }
             else
             {
@@ -326,8 +327,8 @@ namespace Assignment3
             proceedToInvestorInformation();
         }
 
-        // Method called on pressing the "Submit" button
-        private void button1_Click(object sender, EventArgs e)
+        // Method to Submit information for confirmation
+        void submitInformation()
         {
             // Check if no name was entered
             if (fullNameTextBox.Text.Trim() == "")
@@ -369,6 +370,7 @@ namespace Assignment3
 
             // Fill investment details
             investmentValueLabel.Text = investment.ToString("C");
+            finalBalanceValueLabel.Text = finalBalance.ToString("C");
             interestRateValueLabel.Text = interestRate + "%";
             termDurationValueLabel.Text = termDuration + " Year" + (termDuration == 1 ? "" : "s");
             fullNameValueLabel.Text = name;
@@ -380,6 +382,12 @@ namespace Assignment3
             // Show the investment details for confirmation
             confirmationGroupBox.Show();
 
+        }
+
+        // Method called on pressing the "Submit" button
+        private void submitButton_Click(object sender, EventArgs e)
+        {
+            submitInformation();
         }
 
         // Method to check if the term duration is unchanged
@@ -460,7 +468,7 @@ namespace Assignment3
             }
         }
 
-        // Methods called on pressing a key when focused on a radio button
+        // Methods called on pressing keys when focused on a radio button
         private void oneYearRadioButton_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Check if enter key is pressed
@@ -484,6 +492,26 @@ namespace Assignment3
             // Check if enter key is pressed
             if (e.KeyChar == (char)13)
                 proceedToInvestorInformation();
+        }
+
+        // Methods called on pressing keys while focused on text fields in the Investor information group box
+        private void fullNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Check if enter key is pressed
+            if (e.KeyChar == (char)13)
+                submitInformation();
+        }
+        private void emailTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Check if enter key is pressed
+            if (e.KeyChar == (char)13)
+                submitInformation();
+        }
+        private void phoneNumberTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Check if enter key is pressed
+            if (e.KeyChar == (char)13)
+                submitInformation();
         }
 
     }
