@@ -37,6 +37,8 @@ namespace Assignment3
         const string ENTER_VALID_AMOUNT = "Please enter a numeric value for investment amount";
         const string CONFIRM_INVESTMENT_MESSAGE = "Confirm Investment";
         const string ARE_YOU_SURE_MESSAGE = "Would you like to confirm this investment?";
+        const string TRANSACTION_CONFIRMED_MESSAGE = "Transaction confirmed!";
+        const string ALERT_MESSAGE = "Alert";
 
         // Literal value for displaying years of investment term duration
         const string YEAR_SUFFIX = " Year(s)";
@@ -516,7 +518,7 @@ namespace Assignment3
                 // Close file
                 outputFile.Close();
 
-                MessageBox.Show("Investment confirmed");
+                MessageBox.Show(TRANSACTION_CONFIRMED_MESSAGE, ALERT_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Clear text fields and labels
                 clearFields();
@@ -584,12 +586,15 @@ namespace Assignment3
         private void clearButton_Click(object sender, EventArgs e)
         {
             clearFields();
+            summaryPanel.Hide();
+            searchPanel.Hide();
         }
 
         private void summaryButton_Click(object sender, EventArgs e)
         {
             try
             {
+
                 // Initializing variables
                 decimal totalInvestment = 0.00M;
                 decimal totalInterest = 0.00M;
@@ -637,10 +642,16 @@ namespace Assignment3
                 totalInvestmentValueLabel.Text = totalInvestment.ToString("C");
                 totalInterestValueLabel.Text = totalInterest.ToString("C");
 
+                // Show summary section
+                summaryPanel.Show();
+
+                // Hide overlapping search panel
+                searchPanel.Hide();
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, ERROR_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

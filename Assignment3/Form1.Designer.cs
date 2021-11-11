@@ -105,6 +105,8 @@ namespace Assignment3
             this.fiveYearsRadioButton = new System.Windows.Forms.RadioButton();
             this.threeYearsRadioButton = new System.Windows.Forms.RadioButton();
             this.oneYearRadioButton = new System.Windows.Forms.RadioButton();
+            this.summaryPanel = new System.Windows.Forms.Panel();
+            this.searchPanel = new System.Windows.Forms.Panel();
             this.passwordEntryPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.passwordScreenImage)).BeginInit();
             this.investmentPanel.SuspendLayout();
@@ -114,6 +116,8 @@ namespace Assignment3
             this.confirmationGroupBox.SuspendLayout();
             this.investorDetailsGroupBox.SuspendLayout();
             this.investmentDetailsGroupBox.SuspendLayout();
+            this.summaryPanel.SuspendLayout();
+            this.searchPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // passwordEntryPanel
@@ -124,7 +128,7 @@ namespace Assignment3
             this.passwordEntryPanel.Controls.Add(this.passwordEntryTextBox);
             this.passwordEntryPanel.Location = new System.Drawing.Point(0, 0);
             this.passwordEntryPanel.Name = "passwordEntryPanel";
-            this.passwordEntryPanel.Size = new System.Drawing.Size(1575, 1426);
+            this.passwordEntryPanel.Size = new System.Drawing.Size(1575, 1446);
             this.passwordEntryPanel.TabIndex = 0;
             this.passwordEntryPanel.Visible = false;
             // 
@@ -167,10 +171,10 @@ namespace Assignment3
             // 
             // investmentPanel
             // 
+            this.investmentPanel.Controls.Add(this.searchPanel);
+            this.investmentPanel.Controls.Add(this.summaryPanel);
             this.investmentPanel.Controls.Add(this.buttonGroupBox);
-            this.investmentPanel.Controls.Add(this.searchGroupBox);
             this.investmentPanel.Controls.Add(this.investmentAmountGroupBox);
-            this.investmentPanel.Controls.Add(this.summaryGroupBox);
             this.investmentPanel.Controls.Add(this.confirmationGroupBox);
             this.investmentPanel.Controls.Add(this.investorDetailsGroupBox);
             this.investmentPanel.Controls.Add(this.investmentDetailsGroupBox);
@@ -188,13 +192,13 @@ namespace Assignment3
             this.buttonGroupBox.Controls.Add(this.summaryButton);
             this.buttonGroupBox.Location = new System.Drawing.Point(739, 37);
             this.buttonGroupBox.Name = "buttonGroupBox";
-            this.buttonGroupBox.Size = new System.Drawing.Size(779, 117);
+            this.buttonGroupBox.Size = new System.Drawing.Size(796, 117);
             this.buttonGroupBox.TabIndex = 10;
             this.buttonGroupBox.TabStop = false;
             // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(596, 46);
+            this.exitButton.Location = new System.Drawing.Point(607, 46);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(150, 46);
             this.exitButton.TabIndex = 3;
@@ -204,7 +208,7 @@ namespace Assignment3
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(406, 46);
+            this.clearButton.Location = new System.Drawing.Point(420, 46);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(150, 46);
             this.clearButton.TabIndex = 2;
@@ -214,7 +218,7 @@ namespace Assignment3
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(216, 46);
+            this.searchButton.Location = new System.Drawing.Point(230, 46);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(150, 46);
             this.searchButton.TabIndex = 1;
@@ -223,7 +227,7 @@ namespace Assignment3
             // 
             // summaryButton
             // 
-            this.summaryButton.Location = new System.Drawing.Point(26, 46);
+            this.summaryButton.Location = new System.Drawing.Point(33, 46);
             this.summaryButton.Name = "summaryButton";
             this.summaryButton.Size = new System.Drawing.Size(150, 46);
             this.summaryButton.TabIndex = 0;
@@ -233,9 +237,9 @@ namespace Assignment3
             // 
             // searchGroupBox
             // 
-            this.searchGroupBox.Location = new System.Drawing.Point(739, 873);
+            this.searchGroupBox.Location = new System.Drawing.Point(0, 3);
             this.searchGroupBox.Name = "searchGroupBox";
-            this.searchGroupBox.Size = new System.Drawing.Size(796, 542);
+            this.searchGroupBox.Size = new System.Drawing.Size(796, 684);
             this.searchGroupBox.TabIndex = 9;
             this.searchGroupBox.TabStop = false;
             this.searchGroupBox.Text = "Search For:";
@@ -299,7 +303,7 @@ namespace Assignment3
             this.summaryGroupBox.Controls.Add(this.totalInterestDescriptionLabel);
             this.summaryGroupBox.Controls.Add(this.totalInvestmentDescriptionLabel);
             this.summaryGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.summaryGroupBox.Location = new System.Drawing.Point(739, 184);
+            this.summaryGroupBox.Location = new System.Drawing.Point(0, 0);
             this.summaryGroupBox.Name = "summaryGroupBox";
             this.summaryGroupBox.Size = new System.Drawing.Size(796, 683);
             this.summaryGroupBox.TabIndex = 7;
@@ -957,6 +961,24 @@ namespace Assignment3
             this.oneYearRadioButton.CheckedChanged += new System.EventHandler(this.oneYearRadioButton_CheckedChanged);
             this.oneYearRadioButton.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.oneYearRadioButton_KeyPress);
             // 
+            // summaryPanel
+            // 
+            this.summaryPanel.Controls.Add(this.summaryGroupBox);
+            this.summaryPanel.Location = new System.Drawing.Point(739, 180);
+            this.summaryPanel.Name = "summaryPanel";
+            this.summaryPanel.Size = new System.Drawing.Size(796, 687);
+            this.summaryPanel.TabIndex = 11;
+            this.summaryPanel.Visible = false;
+            // 
+            // searchPanel
+            // 
+            this.searchPanel.Controls.Add(this.searchGroupBox);
+            this.searchPanel.Location = new System.Drawing.Point(739, 180);
+            this.searchPanel.Name = "searchPanel";
+            this.searchPanel.Size = new System.Drawing.Size(796, 681);
+            this.searchPanel.TabIndex = 22;
+            this.searchPanel.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
@@ -982,6 +1004,8 @@ namespace Assignment3
             this.investorDetailsGroupBox.PerformLayout();
             this.investmentDetailsGroupBox.ResumeLayout(false);
             this.investmentDetailsGroupBox.PerformLayout();
+            this.summaryPanel.ResumeLayout(false);
+            this.searchPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1063,6 +1087,8 @@ namespace Assignment3
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Button summaryButton;
+        private System.Windows.Forms.Panel summaryPanel;
+        private System.Windows.Forms.Panel searchPanel;
     }
 }
 
