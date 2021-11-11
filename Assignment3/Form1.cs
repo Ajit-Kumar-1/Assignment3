@@ -39,7 +39,7 @@ namespace Assignment3
         const string ARE_YOU_SURE_MESSAGE = "Would you like to confirm this investment?";
 
         // Literal value for displaying years of investment term duration
-        const string YEAR_SUFFIX = " Year";
+        const string YEAR_SUFFIX = " Year(s)";
 
         // Specify the characters used to make up the random string
         const string characterSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -479,10 +479,15 @@ namespace Assignment3
             referenceIDValueLabel.Text = "";
             investmentValueLabel.Text = "";
             dateValueLabel.Text = "";
+            investmentDateValueLabel.Text = "";
             fullNameTextBox.Text = "";
             emailTextBox.Text = "";
             phoneNumberTextBox.Text = "";
             investmentAmountTextBox.Text = "";
+            oneYearRadioButton.Checked = false;
+            threeYearsRadioButton.Checked = false;
+            fiveYearsRadioButton.Checked = false;
+            tenYearsRadioButton.Checked = false;
             investmentAmountTextBox.Focus();
         }
 
@@ -506,6 +511,7 @@ namespace Assignment3
                 outputFile.WriteLine(investment);
                 outputFile.WriteLine(termDuration);
                 outputFile.WriteLine(finalBalance - investment);
+                outputFile.WriteLine(" ");
 
                 // Close file
                 outputFile.Close();
@@ -568,6 +574,75 @@ namespace Assignment3
                 submitInformation();
         }
 
+        // Method called on pressing the "Exit" button
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        // Method called on pressing the "Clear" button
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            clearFields();
+        }
+
+        private void summaryButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Initializing variables
+                decimal totalInvestment = 0.00M;
+                decimal totalInterest = 0.00M;
+                decimal averageInvestment = 0.00M;
+                decimal averageTermDuration = 0.0M;
+                int transactionCount = 0;
+                decimal totalTermDuration = 0.0M;
+
+                // Open file
+                StreamReader inputFile = File.OpenText(DATA_FILE_NAME);
+
+                // Read saved data
+                do
+                {                    
+                    string reference = inputFile.ReadLine();
+
+                    if (reference == null)
+                        break;
+
+                    transactionCount++;
+
+                    // Add reference to the list of IDs shown
+                    summaryListBox.Items.Add(reference);
+
+                    // Skip through lines with information we don't need now
+                    for (int index = 0; index < 4; index++)
+                        inputFile.ReadLine();
+
+                    totalInvestment += decimal.Parse(inputFile.ReadLine());
+                    totalTermDuration += decimal.Parse(inputFile.ReadLine());
+                    totalInterest += decimal.Parse(inputFile.ReadLine());
+                }
+                while (inputFile.ReadLine() != null);
+
+                // Close file
+                inputFile.Close();
+
+                // Calculating averages
+                averageInvestment = totalInvestment / transactionCount;
+                averageTermDuration = totalTermDuration / transactionCount;
+
+                // Display information
+                averageTermValueLabel.Text = averageTermDuration + YEAR_SUFFIX;
+                averageInvestmentValueLabel.Text = averageInvestment.ToString("C");
+                totalInvestmentValueLabel.Text = totalInvestment.ToString("C");
+                totalInterestValueLabel.Text = totalInterest.ToString("C");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 
 }

@@ -36,12 +36,19 @@ namespace Assignment3
             this.passwordEntryLabel = new System.Windows.Forms.Label();
             this.passwordEntryTextBox = new System.Windows.Forms.TextBox();
             this.investmentPanel = new System.Windows.Forms.Panel();
+            this.buttonGroupBox = new System.Windows.Forms.GroupBox();
+            this.exitButton = new System.Windows.Forms.Button();
+            this.clearButton = new System.Windows.Forms.Button();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.summaryButton = new System.Windows.Forms.Button();
             this.searchGroupBox = new System.Windows.Forms.GroupBox();
             this.investmentAmountGroupBox = new System.Windows.Forms.GroupBox();
             this.investmentAmountTextBox = new System.Windows.Forms.TextBox();
             this.euroSymbolLabel = new System.Windows.Forms.Label();
             this.displayButton = new System.Windows.Forms.Button();
             this.summaryGroupBox = new System.Windows.Forms.GroupBox();
+            this.referenceIDsDescriptionLabel = new System.Windows.Forms.Label();
+            this.summaryListBox = new System.Windows.Forms.ListBox();
             this.averageTermValueLabel = new System.Windows.Forms.Label();
             this.averageInvestmentValueLabel = new System.Windows.Forms.Label();
             this.totalInterestValueLabel = new System.Windows.Forms.Label();
@@ -71,6 +78,8 @@ namespace Assignment3
             this.interestConfirmationLabel = new System.Windows.Forms.Label();
             this.investmentConfirmationLabel = new System.Windows.Forms.Label();
             this.investorDetailsGroupBox = new System.Windows.Forms.GroupBox();
+            this.investmentDateValueLabel = new System.Windows.Forms.Label();
+            this.investmentDateLabel = new System.Windows.Forms.Label();
             this.submitButton = new System.Windows.Forms.Button();
             this.phoneNumberTextBox = new System.Windows.Forms.TextBox();
             this.emailTextBox = new System.Windows.Forms.TextBox();
@@ -96,11 +105,10 @@ namespace Assignment3
             this.fiveYearsRadioButton = new System.Windows.Forms.RadioButton();
             this.threeYearsRadioButton = new System.Windows.Forms.RadioButton();
             this.oneYearRadioButton = new System.Windows.Forms.RadioButton();
-            this.investmentDateValueLabel = new System.Windows.Forms.Label();
-            this.investmentDateLabel = new System.Windows.Forms.Label();
             this.passwordEntryPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.passwordScreenImage)).BeginInit();
             this.investmentPanel.SuspendLayout();
+            this.buttonGroupBox.SuspendLayout();
             this.investmentAmountGroupBox.SuspendLayout();
             this.summaryGroupBox.SuspendLayout();
             this.confirmationGroupBox.SuspendLayout();
@@ -159,6 +167,7 @@ namespace Assignment3
             // 
             // investmentPanel
             // 
+            this.investmentPanel.Controls.Add(this.buttonGroupBox);
             this.investmentPanel.Controls.Add(this.searchGroupBox);
             this.investmentPanel.Controls.Add(this.investmentAmountGroupBox);
             this.investmentPanel.Controls.Add(this.summaryGroupBox);
@@ -171,11 +180,62 @@ namespace Assignment3
             this.investmentPanel.Size = new System.Drawing.Size(1575, 1449);
             this.investmentPanel.TabIndex = 4;
             // 
+            // buttonGroupBox
+            // 
+            this.buttonGroupBox.Controls.Add(this.exitButton);
+            this.buttonGroupBox.Controls.Add(this.clearButton);
+            this.buttonGroupBox.Controls.Add(this.searchButton);
+            this.buttonGroupBox.Controls.Add(this.summaryButton);
+            this.buttonGroupBox.Location = new System.Drawing.Point(739, 37);
+            this.buttonGroupBox.Name = "buttonGroupBox";
+            this.buttonGroupBox.Size = new System.Drawing.Size(779, 117);
+            this.buttonGroupBox.TabIndex = 10;
+            this.buttonGroupBox.TabStop = false;
+            // 
+            // exitButton
+            // 
+            this.exitButton.Location = new System.Drawing.Point(596, 46);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(150, 46);
+            this.exitButton.TabIndex = 3;
+            this.exitButton.Text = "&Exit";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            // 
+            // clearButton
+            // 
+            this.clearButton.Location = new System.Drawing.Point(406, 46);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(150, 46);
+            this.clearButton.TabIndex = 2;
+            this.clearButton.Text = "&Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            // 
+            // searchButton
+            // 
+            this.searchButton.Location = new System.Drawing.Point(216, 46);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(150, 46);
+            this.searchButton.TabIndex = 1;
+            this.searchButton.Text = "Se&arch";
+            this.searchButton.UseVisualStyleBackColor = true;
+            // 
+            // summaryButton
+            // 
+            this.summaryButton.Location = new System.Drawing.Point(26, 46);
+            this.summaryButton.Name = "summaryButton";
+            this.summaryButton.Size = new System.Drawing.Size(150, 46);
+            this.summaryButton.TabIndex = 0;
+            this.summaryButton.Text = "&Summary";
+            this.summaryButton.UseVisualStyleBackColor = true;
+            this.summaryButton.Click += new System.EventHandler(this.summaryButton_Click);
+            // 
             // searchGroupBox
             // 
-            this.searchGroupBox.Location = new System.Drawing.Point(739, 726);
+            this.searchGroupBox.Location = new System.Drawing.Point(739, 873);
             this.searchGroupBox.Name = "searchGroupBox";
-            this.searchGroupBox.Size = new System.Drawing.Size(796, 689);
+            this.searchGroupBox.Size = new System.Drawing.Size(796, 542);
             this.searchGroupBox.TabIndex = 9;
             this.searchGroupBox.TabStop = false;
             this.searchGroupBox.Text = "Search For:";
@@ -228,6 +288,8 @@ namespace Assignment3
             // 
             // summaryGroupBox
             // 
+            this.summaryGroupBox.Controls.Add(this.referenceIDsDescriptionLabel);
+            this.summaryGroupBox.Controls.Add(this.summaryListBox);
             this.summaryGroupBox.Controls.Add(this.averageTermValueLabel);
             this.summaryGroupBox.Controls.Add(this.averageInvestmentValueLabel);
             this.summaryGroupBox.Controls.Add(this.totalInterestValueLabel);
@@ -237,12 +299,32 @@ namespace Assignment3
             this.summaryGroupBox.Controls.Add(this.totalInterestDescriptionLabel);
             this.summaryGroupBox.Controls.Add(this.totalInvestmentDescriptionLabel);
             this.summaryGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.summaryGroupBox.Location = new System.Drawing.Point(739, 37);
+            this.summaryGroupBox.Location = new System.Drawing.Point(739, 184);
             this.summaryGroupBox.Name = "summaryGroupBox";
             this.summaryGroupBox.Size = new System.Drawing.Size(796, 683);
             this.summaryGroupBox.TabIndex = 7;
             this.summaryGroupBox.TabStop = false;
             this.summaryGroupBox.Text = "Summary Information Display";
+            // 
+            // referenceIDsDescriptionLabel
+            // 
+            this.referenceIDsDescriptionLabel.AutoSize = true;
+            this.referenceIDsDescriptionLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.referenceIDsDescriptionLabel.Location = new System.Drawing.Point(26, 238);
+            this.referenceIDsDescriptionLabel.Name = "referenceIDsDescriptionLabel";
+            this.referenceIDsDescriptionLabel.Size = new System.Drawing.Size(165, 32);
+            this.referenceIDsDescriptionLabel.TabIndex = 21;
+            this.referenceIDsDescriptionLabel.Text = "Reference IDs:";
+            // 
+            // summaryListBox
+            // 
+            this.summaryListBox.BackColor = System.Drawing.SystemColors.Menu;
+            this.summaryListBox.FormattingEnabled = true;
+            this.summaryListBox.ItemHeight = 32;
+            this.summaryListBox.Location = new System.Drawing.Point(26, 273);
+            this.summaryListBox.Name = "summaryListBox";
+            this.summaryListBox.Size = new System.Drawing.Size(240, 356);
+            this.summaryListBox.TabIndex = 20;
             // 
             // averageTermValueLabel
             // 
@@ -381,7 +463,7 @@ namespace Assignment3
             this.confirmButton.Name = "confirmButton";
             this.confirmButton.Size = new System.Drawing.Size(150, 46);
             this.confirmButton.TabIndex = 16;
-            this.confirmButton.Text = "&Confirm";
+            this.confirmButton.Text = "C&onfirm";
             this.confirmButton.UseVisualStyleBackColor = true;
             this.confirmButton.Click += new System.EventHandler(this.confirmButton_Click);
             // 
@@ -567,6 +649,26 @@ namespace Assignment3
             this.investorDetailsGroupBox.Text = "3. Enter Investor Details";
             this.investorDetailsGroupBox.Visible = false;
             // 
+            // investmentDateValueLabel
+            // 
+            this.investmentDateValueLabel.AutoSize = true;
+            this.investmentDateValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.investmentDateValueLabel.Location = new System.Drawing.Point(427, 46);
+            this.investmentDateValueLabel.Name = "investmentDateValueLabel";
+            this.investmentDateValueLabel.Size = new System.Drawing.Size(24, 32);
+            this.investmentDateValueLabel.TabIndex = 24;
+            this.investmentDateValueLabel.Text = "-";
+            // 
+            // investmentDateLabel
+            // 
+            this.investmentDateLabel.AutoSize = true;
+            this.investmentDateLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.investmentDateLabel.Location = new System.Drawing.Point(352, 46);
+            this.investmentDateLabel.Name = "investmentDateLabel";
+            this.investmentDateLabel.Size = new System.Drawing.Size(69, 32);
+            this.investmentDateLabel.TabIndex = 23;
+            this.investmentDateLabel.Text = "Date:";
+            // 
             // submitButton
             // 
             this.submitButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -574,7 +676,7 @@ namespace Assignment3
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(150, 46);
             this.submitButton.TabIndex = 22;
-            this.submitButton.Text = "&Submit";
+            this.submitButton.Text = "S&ubmit";
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
@@ -855,26 +957,6 @@ namespace Assignment3
             this.oneYearRadioButton.CheckedChanged += new System.EventHandler(this.oneYearRadioButton_CheckedChanged);
             this.oneYearRadioButton.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.oneYearRadioButton_KeyPress);
             // 
-            // investmentDateValueLabel
-            // 
-            this.investmentDateValueLabel.AutoSize = true;
-            this.investmentDateValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.investmentDateValueLabel.Location = new System.Drawing.Point(427, 46);
-            this.investmentDateValueLabel.Name = "investmentDateValueLabel";
-            this.investmentDateValueLabel.Size = new System.Drawing.Size(24, 32);
-            this.investmentDateValueLabel.TabIndex = 24;
-            this.investmentDateValueLabel.Text = "-";
-            // 
-            // investmentDateLabel
-            // 
-            this.investmentDateLabel.AutoSize = true;
-            this.investmentDateLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.investmentDateLabel.Location = new System.Drawing.Point(352, 46);
-            this.investmentDateLabel.Name = "investmentDateLabel";
-            this.investmentDateLabel.Size = new System.Drawing.Size(69, 32);
-            this.investmentDateLabel.TabIndex = 23;
-            this.investmentDateLabel.Text = "Date:";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
@@ -889,6 +971,7 @@ namespace Assignment3
             this.passwordEntryPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.passwordScreenImage)).EndInit();
             this.investmentPanel.ResumeLayout(false);
+            this.buttonGroupBox.ResumeLayout(false);
             this.investmentAmountGroupBox.ResumeLayout(false);
             this.investmentAmountGroupBox.PerformLayout();
             this.summaryGroupBox.ResumeLayout(false);
@@ -973,6 +1056,13 @@ namespace Assignment3
         private System.Windows.Forms.GroupBox searchGroupBox;
         private System.Windows.Forms.Label investmentDateValueLabel;
         private System.Windows.Forms.Label investmentDateLabel;
+        private System.Windows.Forms.ListBox summaryListBox;
+        private System.Windows.Forms.Label referenceIDsDescriptionLabel;
+        private System.Windows.Forms.GroupBox buttonGroupBox;
+        private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.Button summaryButton;
     }
 }
 
