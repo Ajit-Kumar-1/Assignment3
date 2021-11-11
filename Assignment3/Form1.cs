@@ -231,8 +231,8 @@ namespace Assignment3
             proceedButton.Show();
         }
 
-        // Method called on pressing the "Proceed" button
-        private void proceedButton_Click(object sender, EventArgs e)
+        // Method for proceeding from term selection to investor information
+        void proceedToInvestorInformation()
         {
             // Variable to keep track of the selected term duration
             int checkedIndex = 0;
@@ -270,7 +270,12 @@ namespace Assignment3
 
             // Generate and assign a random string for the reference ID
             referenceNumberLabel.Text = randomString();
+        }
 
+        // Method called on pressing the "Proceed" button
+        private void proceedButton_Click(object sender, EventArgs e)
+        {
+            proceedToInvestorInformation();
         }
 
         // Method called on pressing the "Submit" button
@@ -310,6 +315,7 @@ namespace Assignment3
             }
 
         }
+
     }
 
 }

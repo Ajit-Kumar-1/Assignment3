@@ -148,9 +148,9 @@ namespace Assignment3
             this.investorDetailsGroupBox.Controls.Add(this.referenceNumberLabel);
             this.investorDetailsGroupBox.Controls.Add(this.referenceNumberDescriptionLabel);
             this.investorDetailsGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.investorDetailsGroupBox.Location = new System.Drawing.Point(92, 591);
+            this.investorDetailsGroupBox.Location = new System.Drawing.Point(92, 572);
             this.investorDetailsGroupBox.Name = "investorDetailsGroupBox";
-            this.investorDetailsGroupBox.Size = new System.Drawing.Size(1386, 342);
+            this.investorDetailsGroupBox.Size = new System.Drawing.Size(896, 342);
             this.investorDetailsGroupBox.TabIndex = 5;
             this.investorDetailsGroupBox.TabStop = false;
             this.investorDetailsGroupBox.Text = "3. Enter Investor Details";
@@ -158,7 +158,7 @@ namespace Assignment3
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(621, 273);
+            this.button1.Location = new System.Drawing.Point(373, 266);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(150, 46);
             this.button1.TabIndex = 22;
@@ -168,30 +168,33 @@ namespace Assignment3
             // 
             // phoneNumberTextBox
             // 
-            this.phoneNumberTextBox.Location = new System.Drawing.Point(347, 205);
+            this.phoneNumberTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.phoneNumberTextBox.Location = new System.Drawing.Point(198, 205);
             this.phoneNumberTextBox.Name = "phoneNumberTextBox";
-            this.phoneNumberTextBox.Size = new System.Drawing.Size(649, 39);
+            this.phoneNumberTextBox.Size = new System.Drawing.Size(647, 39);
             this.phoneNumberTextBox.TabIndex = 21;
             // 
             // emailTextBox
             // 
-            this.emailTextBox.Location = new System.Drawing.Point(347, 155);
+            this.emailTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.emailTextBox.Location = new System.Drawing.Point(198, 155);
             this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(649, 39);
+            this.emailTextBox.Size = new System.Drawing.Size(647, 39);
             this.emailTextBox.TabIndex = 20;
             // 
             // fullNameTextBox
             // 
-            this.fullNameTextBox.Location = new System.Drawing.Point(347, 105);
+            this.fullNameTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.fullNameTextBox.Location = new System.Drawing.Point(198, 105);
             this.fullNameTextBox.Name = "fullNameTextBox";
-            this.fullNameTextBox.Size = new System.Drawing.Size(649, 39);
+            this.fullNameTextBox.Size = new System.Drawing.Size(647, 39);
             this.fullNameTextBox.TabIndex = 19;
             // 
             // phoneNumberLabel
             // 
             this.phoneNumberLabel.AutoSize = true;
             this.phoneNumberLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.phoneNumberLabel.Location = new System.Drawing.Point(63, 208);
+            this.phoneNumberLabel.Location = new System.Drawing.Point(32, 208);
             this.phoneNumberLabel.Name = "phoneNumberLabel";
             this.phoneNumberLabel.Size = new System.Drawing.Size(166, 32);
             this.phoneNumberLabel.TabIndex = 18;
@@ -201,17 +204,17 @@ namespace Assignment3
             // 
             this.emailLabel.AutoSize = true;
             this.emailLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.emailLabel.Location = new System.Drawing.Point(63, 158);
+            this.emailLabel.Location = new System.Drawing.Point(32, 158);
             this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(76, 32);
+            this.emailLabel.Size = new System.Drawing.Size(164, 32);
             this.emailLabel.TabIndex = 17;
-            this.emailLabel.Text = "Email:";
+            this.emailLabel.Text = "Email address:";
             // 
             // fullNameLabel
             // 
             this.fullNameLabel.AutoSize = true;
             this.fullNameLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.fullNameLabel.Location = new System.Drawing.Point(63, 108);
+            this.fullNameLabel.Location = new System.Drawing.Point(32, 108);
             this.fullNameLabel.Name = "fullNameLabel";
             this.fullNameLabel.Size = new System.Drawing.Size(124, 32);
             this.fullNameLabel.TabIndex = 16;
@@ -221,7 +224,7 @@ namespace Assignment3
             // 
             this.referenceNumberLabel.AutoSize = true;
             this.referenceNumberLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.referenceNumberLabel.Location = new System.Drawing.Point(347, 58);
+            this.referenceNumberLabel.Location = new System.Drawing.Point(198, 58);
             this.referenceNumberLabel.Name = "referenceNumberLabel";
             this.referenceNumberLabel.Size = new System.Drawing.Size(24, 32);
             this.referenceNumberLabel.TabIndex = 7;
@@ -231,11 +234,11 @@ namespace Assignment3
             // 
             this.referenceNumberDescriptionLabel.AutoSize = true;
             this.referenceNumberDescriptionLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.referenceNumberDescriptionLabel.Location = new System.Drawing.Point(63, 58);
+            this.referenceNumberDescriptionLabel.Location = new System.Drawing.Point(32, 58);
             this.referenceNumberDescriptionLabel.Name = "referenceNumberDescriptionLabel";
-            this.referenceNumberDescriptionLabel.Size = new System.Drawing.Size(278, 32);
+            this.referenceNumberDescriptionLabel.Size = new System.Drawing.Size(160, 32);
             this.referenceNumberDescriptionLabel.TabIndex = 6;
-            this.referenceNumberDescriptionLabel.Text = "Generated Reference no:";
+            this.referenceNumberDescriptionLabel.Text = "Reference no:";
             // 
             // investmentDetailsGroupBox
             // 
@@ -255,9 +258,9 @@ namespace Assignment3
             this.investmentDetailsGroupBox.Controls.Add(this.fiveYearsRadioButton);
             this.investmentDetailsGroupBox.Controls.Add(this.threeYearsRadioButton);
             this.investmentDetailsGroupBox.Controls.Add(this.oneYearRadioButton);
-            this.investmentDetailsGroupBox.Location = new System.Drawing.Point(92, 103);
+            this.investmentDetailsGroupBox.Location = new System.Drawing.Point(92, 84);
             this.investmentDetailsGroupBox.Name = "investmentDetailsGroupBox";
-            this.investmentDetailsGroupBox.Size = new System.Drawing.Size(1386, 466);
+            this.investmentDetailsGroupBox.Size = new System.Drawing.Size(896, 466);
             this.investmentDetailsGroupBox.TabIndex = 4;
             this.investmentDetailsGroupBox.TabStop = false;
             this.investmentDetailsGroupBox.Text = "Details on return on investment";
@@ -265,7 +268,7 @@ namespace Assignment3
             // 
             // proceedButton
             // 
-            this.proceedButton.Location = new System.Drawing.Point(621, 392);
+            this.proceedButton.Location = new System.Drawing.Point(373, 388);
             this.proceedButton.Name = "proceedButton";
             this.proceedButton.Size = new System.Drawing.Size(150, 46);
             this.proceedButton.TabIndex = 15;
@@ -277,7 +280,7 @@ namespace Assignment3
             // finalBalance10YearLabel
             // 
             this.finalBalance10YearLabel.AutoSize = true;
-            this.finalBalance10YearLabel.Location = new System.Drawing.Point(958, 335);
+            this.finalBalance10YearLabel.Location = new System.Drawing.Point(528, 331);
             this.finalBalance10YearLabel.Name = "finalBalance10YearLabel";
             this.finalBalance10YearLabel.Size = new System.Drawing.Size(153, 32);
             this.finalBalance10YearLabel.TabIndex = 14;
@@ -286,7 +289,7 @@ namespace Assignment3
             // finalBalance5YearLabel
             // 
             this.finalBalance5YearLabel.AutoSize = true;
-            this.finalBalance5YearLabel.Location = new System.Drawing.Point(958, 275);
+            this.finalBalance5YearLabel.Location = new System.Drawing.Point(528, 271);
             this.finalBalance5YearLabel.Name = "finalBalance5YearLabel";
             this.finalBalance5YearLabel.Size = new System.Drawing.Size(153, 32);
             this.finalBalance5YearLabel.TabIndex = 13;
@@ -295,7 +298,7 @@ namespace Assignment3
             // finalBalance3YearLabel
             // 
             this.finalBalance3YearLabel.AutoSize = true;
-            this.finalBalance3YearLabel.Location = new System.Drawing.Point(958, 215);
+            this.finalBalance3YearLabel.Location = new System.Drawing.Point(528, 211);
             this.finalBalance3YearLabel.Name = "finalBalance3YearLabel";
             this.finalBalance3YearLabel.Size = new System.Drawing.Size(153, 32);
             this.finalBalance3YearLabel.TabIndex = 12;
@@ -304,7 +307,7 @@ namespace Assignment3
             // finalBalance1YearLabel
             // 
             this.finalBalance1YearLabel.AutoSize = true;
-            this.finalBalance1YearLabel.Location = new System.Drawing.Point(958, 155);
+            this.finalBalance1YearLabel.Location = new System.Drawing.Point(528, 151);
             this.finalBalance1YearLabel.Name = "finalBalance1YearLabel";
             this.finalBalance1YearLabel.Size = new System.Drawing.Size(153, 32);
             this.finalBalance1YearLabel.TabIndex = 11;
@@ -314,7 +317,7 @@ namespace Assignment3
             // 
             this.finalBalanceLabel.AutoSize = true;
             this.finalBalanceLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.finalBalanceLabel.Location = new System.Drawing.Point(958, 82);
+            this.finalBalanceLabel.Location = new System.Drawing.Point(528, 78);
             this.finalBalanceLabel.Name = "finalBalanceLabel";
             this.finalBalanceLabel.Size = new System.Drawing.Size(153, 32);
             this.finalBalanceLabel.TabIndex = 10;
@@ -323,7 +326,7 @@ namespace Assignment3
             // interestRate10YearLabel
             // 
             this.interestRate10YearLabel.AutoSize = true;
-            this.interestRate10YearLabel.Location = new System.Drawing.Point(395, 335);
+            this.interestRate10YearLabel.Location = new System.Drawing.Point(198, 331);
             this.interestRate10YearLabel.Name = "interestRate10YearLabel";
             this.interestRate10YearLabel.Size = new System.Drawing.Size(148, 32);
             this.interestRate10YearLabel.TabIndex = 9;
@@ -332,7 +335,7 @@ namespace Assignment3
             // interestRate5YearLabel
             // 
             this.interestRate5YearLabel.AutoSize = true;
-            this.interestRate5YearLabel.Location = new System.Drawing.Point(395, 275);
+            this.interestRate5YearLabel.Location = new System.Drawing.Point(198, 271);
             this.interestRate5YearLabel.Name = "interestRate5YearLabel";
             this.interestRate5YearLabel.Size = new System.Drawing.Size(148, 32);
             this.interestRate5YearLabel.TabIndex = 8;
@@ -341,7 +344,7 @@ namespace Assignment3
             // interestRate3YearLabel
             // 
             this.interestRate3YearLabel.AutoSize = true;
-            this.interestRate3YearLabel.Location = new System.Drawing.Point(395, 215);
+            this.interestRate3YearLabel.Location = new System.Drawing.Point(198, 211);
             this.interestRate3YearLabel.Name = "interestRate3YearLabel";
             this.interestRate3YearLabel.Size = new System.Drawing.Size(148, 32);
             this.interestRate3YearLabel.TabIndex = 7;
@@ -350,7 +353,7 @@ namespace Assignment3
             // interestRate1YearLabel
             // 
             this.interestRate1YearLabel.AutoSize = true;
-            this.interestRate1YearLabel.Location = new System.Drawing.Point(395, 155);
+            this.interestRate1YearLabel.Location = new System.Drawing.Point(198, 151);
             this.interestRate1YearLabel.Name = "interestRate1YearLabel";
             this.interestRate1YearLabel.Size = new System.Drawing.Size(148, 32);
             this.interestRate1YearLabel.TabIndex = 6;
@@ -360,7 +363,7 @@ namespace Assignment3
             // 
             this.interestRateLabel.AutoSize = true;
             this.interestRateLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.interestRateLabel.Location = new System.Drawing.Point(395, 82);
+            this.interestRateLabel.Location = new System.Drawing.Point(198, 78);
             this.interestRateLabel.Name = "interestRateLabel";
             this.interestRateLabel.Size = new System.Drawing.Size(148, 32);
             this.interestRateLabel.TabIndex = 5;
@@ -370,7 +373,7 @@ namespace Assignment3
             // 
             this.selectInvestmentTermLabel.AutoSize = true;
             this.selectInvestmentTermLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.selectInvestmentTermLabel.Location = new System.Drawing.Point(63, 47);
+            this.selectInvestmentTermLabel.Location = new System.Drawing.Point(11, 35);
             this.selectInvestmentTermLabel.Name = "selectInvestmentTermLabel";
             this.selectInvestmentTermLabel.Size = new System.Drawing.Size(304, 32);
             this.selectInvestmentTermLabel.TabIndex = 4;
@@ -379,7 +382,7 @@ namespace Assignment3
             // tenYearsRadioButton
             // 
             this.tenYearsRadioButton.AutoSize = true;
-            this.tenYearsRadioButton.Location = new System.Drawing.Point(60, 333);
+            this.tenYearsRadioButton.Location = new System.Drawing.Point(35, 329);
             this.tenYearsRadioButton.Name = "tenYearsRadioButton";
             this.tenYearsRadioButton.Size = new System.Drawing.Size(132, 36);
             this.tenYearsRadioButton.TabIndex = 3;
@@ -391,7 +394,7 @@ namespace Assignment3
             // fiveYearsRadioButton
             // 
             this.fiveYearsRadioButton.AutoSize = true;
-            this.fiveYearsRadioButton.Location = new System.Drawing.Point(60, 273);
+            this.fiveYearsRadioButton.Location = new System.Drawing.Point(35, 269);
             this.fiveYearsRadioButton.Name = "fiveYearsRadioButton";
             this.fiveYearsRadioButton.Size = new System.Drawing.Size(119, 36);
             this.fiveYearsRadioButton.TabIndex = 2;
@@ -403,7 +406,7 @@ namespace Assignment3
             // threeYearsRadioButton
             // 
             this.threeYearsRadioButton.AutoSize = true;
-            this.threeYearsRadioButton.Location = new System.Drawing.Point(60, 213);
+            this.threeYearsRadioButton.Location = new System.Drawing.Point(35, 209);
             this.threeYearsRadioButton.Name = "threeYearsRadioButton";
             this.threeYearsRadioButton.Size = new System.Drawing.Size(119, 36);
             this.threeYearsRadioButton.TabIndex = 1;
@@ -415,7 +418,7 @@ namespace Assignment3
             // oneYearRadioButton
             // 
             this.oneYearRadioButton.AutoSize = true;
-            this.oneYearRadioButton.Location = new System.Drawing.Point(60, 153);
+            this.oneYearRadioButton.Location = new System.Drawing.Point(35, 149);
             this.oneYearRadioButton.Name = "oneYearRadioButton";
             this.oneYearRadioButton.Size = new System.Drawing.Size(109, 36);
             this.oneYearRadioButton.TabIndex = 0;
@@ -426,7 +429,7 @@ namespace Assignment3
             // 
             // displayButton
             // 
-            this.displayButton.Location = new System.Drawing.Point(938, 32);
+            this.displayButton.Location = new System.Drawing.Point(838, 32);
             this.displayButton.Name = "displayButton";
             this.displayButton.Size = new System.Drawing.Size(150, 46);
             this.displayButton.TabIndex = 3;
@@ -436,7 +439,7 @@ namespace Assignment3
             // 
             // investmentAmountTextBox
             // 
-            this.investmentAmountTextBox.Location = new System.Drawing.Point(621, 36);
+            this.investmentAmountTextBox.Location = new System.Drawing.Point(600, 36);
             this.investmentAmountTextBox.MaxLength = 10;
             this.investmentAmountTextBox.Name = "investmentAmountTextBox";
             this.investmentAmountTextBox.Size = new System.Drawing.Size(200, 39);
@@ -445,7 +448,7 @@ namespace Assignment3
             // euroSymbolLabel
             // 
             this.euroSymbolLabel.AutoSize = true;
-            this.euroSymbolLabel.Location = new System.Drawing.Point(588, 36);
+            this.euroSymbolLabel.Location = new System.Drawing.Point(567, 36);
             this.euroSymbolLabel.Name = "euroSymbolLabel";
             this.euroSymbolLabel.Size = new System.Drawing.Size(27, 32);
             this.euroSymbolLabel.TabIndex = 1;
@@ -458,9 +461,9 @@ namespace Assignment3
             this.investmentAmountLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.investmentAmountLabel.Location = new System.Drawing.Point(92, 36);
             this.investmentAmountLabel.Name = "investmentAmountLabel";
-            this.investmentAmountLabel.Size = new System.Drawing.Size(455, 32);
+            this.investmentAmountLabel.Size = new System.Drawing.Size(339, 32);
             this.investmentAmountLabel.TabIndex = 0;
-            this.investmentAmountLabel.Text = "1. How much would you like to invest?";
+            this.investmentAmountLabel.Text = "1. Enter investment amount:";
             // 
             // Form1
             // 
