@@ -29,6 +29,7 @@ namespace Assignment3
         const string ENTER_PHONE_MESSAGE = "Please enter your phone number";
         const string ENTER_VALID_EMAIL_MESSAGE = "Please enter a valid email address";
         const string ENTER_VALID_PHONE_MESSAGE = "Please enter a valid phone number";
+        const string ENTER_VALID_AMOUNT = "Please enter a numeric value for investment amount";
 
         // Interest rates
         const decimal BAND_1_TERM_1_YEARS = 0.005000M;
@@ -72,7 +73,7 @@ namespace Assignment3
         int termDuration = TERM_1_YEARS;
 
         // Variables to keep track of investor details
-        string reference = "12345678";
+        string reference = "";
         string name = "";
         string email = "";
         string phone = "";
@@ -145,10 +146,19 @@ namespace Assignment3
         private void displayButton_Click(object sender, EventArgs e)
         {
             // Obtain entered investment amount
-            investment = int.Parse(investmentAmountTextBox.Text);
-
-            // Show interest rates and final balance
-            investmentDetailsGroupBox.Show();
+            try
+            {
+                investment = decimal.Parse(investmentAmountTextBox.Text);
+            }
+            catch
+            {
+                // Show message requesting entry of a valid investment amount
+                DialogResult result = MessageBox.Show(ENTER_VALID_AMOUNT,
+                    ERROR_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (result == DialogResult.OK)
+                    investmentAmountTextBox.Focus();
+                return;
+            }
 
             // Check if the investment amount qualifies for the higher interest rate
             if (investment >= BAND_2_CUTOFF)
@@ -189,6 +199,10 @@ namespace Assignment3
             interestRate3YearLabel.Text = interestRateFor3Years + "%";
             interestRate5YearLabel.Text = interestRateFor5Years + "%";
             interestRate10YearLabel.Text = interestRateFor10Years + "%";
+
+            // Show interest rates and final balance
+            investmentDetailsGroupBox.Enabled = true;
+            investmentDetailsGroupBox.Show();
 
         }
 
@@ -268,8 +282,27 @@ namespace Assignment3
                     break;
             }
 
-            // Generate and assign a random string for the reference ID
-            referenceNumberLabel.Text = randomString();
+            // Check if a reference ID hasa not been generated
+            if (reference == "")
+            {
+                // If so, generate and assign a random string for the reference ID
+                reference = randomString();
+                referenceNumberLabel.Text = reference;
+            }
+
+            investorDetailsGroupBox.Show();
+            investorDetailsGroupBox.Enabled = true;
+
+            // Pass on focus
+            if (fullNameTextBox.Text == "")
+                fullNameTextBox.Focus();
+            else if (emailTextBox.Text == "")
+                emailTextBox.Focus();
+            else if (phoneNumberTextBox.Text == "")
+                phoneNumberTextBox.Focus();
+            else
+                submitButton.Focus();
+
         }
 
         // Method called on pressing the "Proceed" button
@@ -316,6 +349,33 @@ namespace Assignment3
 
         }
 
+        // Method called on editing investment amount text box
+        private void investmentAmountTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (investment != decimal.Parse(investmentAmountTextBox.Text))
+                {
+                    investmentDetailsGroupBox.Enabled = false;
+                    investorDetailsGroupBox.Enabled = false;
+                }
+                else
+                {
+                    investmentDetailsGroupBox.Enabled = true;
+                    if (termDuration == TERM_1_YEARS && oneYearRadioButton.Checked ||
+                        termDuration == TERM_3_YEARS && threeYearsRadioButton.Checked ||
+                        termDuration == TERM_5_YEARS && fiveYearsRadioButton.Checked ||
+                        termDuration == TERM_10_YEARS && tenYearsRadioButton.Checked)
+                    investorDetailsGroupBox.Enabled = true;
+                }
+            }
+            catch { }
+        }
+
+        private void investmentAmountTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     }
 
 }
