@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 using System.ComponentModel.DataAnnotations;
 
@@ -134,16 +135,8 @@ namespace Assignment3
             }
         }
 
-        // Method to compute balance after compound interest
-        decimal computeBalance(decimal investment, int term, decimal interest) => 
-            investment * ((decimal)Math.Pow((1 + Decimal.ToDouble(interest)), (term * 12)));
-
-        // Method to generate applicable bonus amount
-        decimal generateBonus(decimal investment, int term) =>
-            (investment > BONUS_CUTOFF && term >= BONUS_MINIMUM_TERM_DURATION) ? BONUS_AMOUNT : 0;
-
-        // Method called on pressing the "Display" button 
-        private void displayButton_Click(object sender, EventArgs e)
+        // Method to show interest rates and final balance for given investment amount
+        void displayRates()
         {
             // Obtain entered investment amount
             try
@@ -203,12 +196,27 @@ namespace Assignment3
             // Show interest rates and final balance
             investmentDetailsGroupBox.Enabled = true;
             investmentDetailsGroupBox.Show();
+        }
 
+        // Method to compute balance after compound interest
+        decimal computeBalance(decimal investment, int term, decimal interest) => 
+            investment * ((decimal)Math.Pow((1 + Decimal.ToDouble(interest)), (term * 12)));
+
+        // Method to generate applicable bonus amount
+        decimal generateBonus(decimal investment, int term) =>
+            (investment > BONUS_CUTOFF && term >= BONUS_MINIMUM_TERM_DURATION) ? BONUS_AMOUNT : 0;
+
+        // Method called on pressing the "Display" button 
+        private void displayButton_Click(object sender, EventArgs e)
+        {
+            displayRates();
         }
 
         // Method to generate a random string
         string randomString()
         {
+            StreamReader inputFile = File.OpenText("data.txt");
+
             // Specify the characters used to make up the random string
             var characterSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
@@ -347,6 +355,15 @@ namespace Assignment3
                 return;
             }
 
+            // Fill investment details
+            investmentValueLabel.Text = investment.ToString("C");
+            interestRateValueLabel.Text = interestRate.ToString();
+            termDurationValueLabel.Text = termDuration + " Year" + (termDuration == 1 ? "" : "s");
+            fullNameValueLabel.Text = "";
+
+            // Show the investment details for confirmation
+            confirmationGroupBox.Show();
+
         }
 
         // Method called on editing investment amount text box
@@ -354,27 +371,68 @@ namespace Assignment3
         {
             try
             {
-                if (investment != decimal.Parse(investmentAmountTextBox.Text))
+                // Check if the investment amount is the same as that was saved
+                if (investment == decimal.Parse(investmentAmountTextBox.Text) &&
+                    investment != 0)
                 {
-                    investmentDetailsGroupBox.Enabled = false;
-                    investorDetailsGroupBox.Enabled = false;
-                }
-                else
-                {
+                    // If so, show the investment details
                     investmentDetailsGroupBox.Enabled = true;
+
+                    // Check if the term duration selected is the same as that before pressing "Proceed"
                     if (termDuration == TERM_1_YEARS && oneYearRadioButton.Checked ||
                         termDuration == TERM_3_YEARS && threeYearsRadioButton.Checked ||
                         termDuration == TERM_5_YEARS && fiveYearsRadioButton.Checked ||
                         termDuration == TERM_10_YEARS && tenYearsRadioButton.Checked)
-                    investorDetailsGroupBox.Enabled = true;
+                        // If so, show the investor details
+                        investorDetailsGroupBox.Enabled = true;                    
+                }
+                else
+                {
+                    // Otherwise, hide the investment and the investor details
+                    investmentDetailsGroupBox.Enabled = false;
+                    investorDetailsGroupBox.Enabled = false;
                 }
             }
             catch { }
         }
 
+        // Method called on pressing a key when focused on the Investment amount text box
         private void investmentAmountTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            // Check if the enter key is pressed
+            if (e.KeyChar == (char)13)
+            {
+                // If so, display the interest rates and final balance
+                displayRates();
+            }
+        }
 
+        // Method called on pressing the "Confirm" button
+        private void confirmButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Obtain the file where data is stored
+                StreamWriter outputFile = File.AppendText("data.txt");
+
+                // Write details of investment to file
+                outputFile.WriteLine(reference);
+                outputFile.WriteLine(name);
+                outputFile.WriteLine(email);
+                outputFile.WriteLine(phone);
+                outputFile.WriteLine("Date");
+                outputFile.WriteLine(investment);
+                outputFile.WriteLine(interestRate);
+                outputFile.WriteLine(termDuration);
+
+                // Close file
+                outputFile.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 
