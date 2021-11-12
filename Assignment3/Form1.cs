@@ -346,6 +346,9 @@ namespace Assignment3
                             inputFile.ReadLine();
                 }
                 while (inputFile.ReadLine() != null);
+
+                // Close file
+                inputFile.Close();
             }
             catch { }
 
@@ -578,10 +581,10 @@ namespace Assignment3
         private void toggleInvestorDetailsVisibility()
         {
             // Check if the term duration selected is the same as that before pressing "Proceed"
-            if (termDuration == TERM_1_YEARS && term1YearsRadioButton.Checked ||
-                termDuration == TERM_3_YEARS && term3YearsRadioButton.Checked ||
-                termDuration == TERM_5_YEARS && term5YearsRadioButton.Checked ||
-                termDuration == TERM_10_YEARS && term10YearsRadioButton.Checked)
+            if (termDuration == TERM_1_YEARS && finalBalance == finalBalanceFor1Years && term1YearsRadioButton.Checked ||
+                termDuration == TERM_3_YEARS && finalBalance == finalBalanceFor3Years && term3YearsRadioButton.Checked ||
+                termDuration == TERM_5_YEARS && finalBalance == finalBalanceFor5Years && term5YearsRadioButton.Checked ||
+                termDuration == TERM_10_YEARS && finalBalance == finalBalanceFor10Years && term10YearsRadioButton.Checked)
                 // If so, show the investor details
                 investorDetailsGroupBox.Enabled = true;
             else 
@@ -803,7 +806,6 @@ namespace Assignment3
         {
             try
             {
-
                 // Initialize variable for total investment amount
                 decimal totalInvestment = 0.00M;
 
