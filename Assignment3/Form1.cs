@@ -593,7 +593,18 @@ namespace Assignment3
                 return;
             }
 
-            // Display values to be confirmed
+            // Check if invalid phone number was entered
+            if (!new PhoneAttribute().IsValid(phoneNumberTextBox.Text))
+            {
+                // Display message requesting the user to enter a valid phone number
+                DialogResult result = MessageBox.Show(ENTER_VALID_PHONE_MESSAGE,
+                ERROR_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                if (result == DialogResult.OK)
+                    // Pass on focus to the phone number input field
+                    phoneNumberTextBox.Focus();
+                return;
+            }
 
             // Obtain investor name
             name = fullNameTextBox.Text.Trim();
