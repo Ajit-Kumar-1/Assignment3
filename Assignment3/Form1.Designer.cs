@@ -110,10 +110,10 @@ namespace Assignment3
             this.interestRate3YearLabel = new System.Windows.Forms.Label();
             this.interestRate1YearLabel = new System.Windows.Forms.Label();
             this.interestRateLabel = new System.Windows.Forms.Label();
-            this.term1YearsRadioButton = new System.Windows.Forms.RadioButton();
+            this.term10YearsRadioButton = new System.Windows.Forms.RadioButton();
             this.term5YearsRadioButton = new System.Windows.Forms.RadioButton();
             this.term3YearsRadioButton = new System.Windows.Forms.RadioButton();
-            this.term10YearsRadioButton = new System.Windows.Forms.RadioButton();
+            this.term1YearsRadioButton = new System.Windows.Forms.RadioButton();
             this.passwordEntryPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.passwordScreenImage)).BeginInit();
             this.investmentPanel.SuspendLayout();
@@ -882,10 +882,10 @@ namespace Assignment3
             this.investmentDetailsGroupBox.Controls.Add(this.interestRate3YearLabel);
             this.investmentDetailsGroupBox.Controls.Add(this.interestRate1YearLabel);
             this.investmentDetailsGroupBox.Controls.Add(this.interestRateLabel);
-            this.investmentDetailsGroupBox.Controls.Add(this.term1YearsRadioButton);
+            this.investmentDetailsGroupBox.Controls.Add(this.term10YearsRadioButton);
             this.investmentDetailsGroupBox.Controls.Add(this.term5YearsRadioButton);
             this.investmentDetailsGroupBox.Controls.Add(this.term3YearsRadioButton);
-            this.investmentDetailsGroupBox.Controls.Add(this.term10YearsRadioButton);
+            this.investmentDetailsGroupBox.Controls.Add(this.term1YearsRadioButton);
             this.investmentDetailsGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.investmentDetailsGroupBox.Location = new System.Drawing.Point(35, 163);
             this.investmentDetailsGroupBox.Name = "investmentDetailsGroupBox";
@@ -1013,19 +1013,19 @@ namespace Assignment3
             this.interestRateLabel.Text = "Interest Rate";
             this.interestRateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // term1YearsRadioButton
+            // term10YearsRadioButton
             // 
-            this.term1YearsRadioButton.AutoSize = true;
-            this.term1YearsRadioButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.term1YearsRadioButton.Location = new System.Drawing.Point(35, 234);
-            this.term1YearsRadioButton.Name = "term1YearsRadioButton";
-            this.term1YearsRadioButton.Size = new System.Drawing.Size(132, 36);
-            this.term1YearsRadioButton.TabIndex = 3;
-            this.term1YearsRadioButton.TabStop = true;
-            this.term1YearsRadioButton.Text = "10 Years";
-            this.term1YearsRadioButton.UseVisualStyleBackColor = true;
-            this.term1YearsRadioButton.CheckedChanged += new System.EventHandler(this.tenYearsRadioButton_CheckedChanged);
-            this.term1YearsRadioButton.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tenYearsRadioButton_KeyPress);
+            this.term10YearsRadioButton.AutoSize = true;
+            this.term10YearsRadioButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.term10YearsRadioButton.Location = new System.Drawing.Point(35, 234);
+            this.term10YearsRadioButton.Name = "term10YearsRadioButton";
+            this.term10YearsRadioButton.Size = new System.Drawing.Size(132, 36);
+            this.term10YearsRadioButton.TabIndex = 3;
+            this.term10YearsRadioButton.TabStop = true;
+            this.term10YearsRadioButton.Text = "10 Years";
+            this.term10YearsRadioButton.UseVisualStyleBackColor = true;
+            this.term10YearsRadioButton.CheckedChanged += new System.EventHandler(this.tenYearsRadioButton_CheckedChanged);
+            this.term10YearsRadioButton.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tenYearsRadioButton_KeyPress);
             // 
             // term5YearsRadioButton
             // 
@@ -1055,19 +1055,19 @@ namespace Assignment3
             this.term3YearsRadioButton.CheckedChanged += new System.EventHandler(this.threeYearsRadioButton_CheckedChanged);
             this.term3YearsRadioButton.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.threeYearsRadioButton_KeyPress);
             // 
-            // term10YearsRadioButton
+            // term1YearsRadioButton
             // 
-            this.term10YearsRadioButton.AutoSize = true;
-            this.term10YearsRadioButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.term10YearsRadioButton.Location = new System.Drawing.Point(35, 99);
-            this.term10YearsRadioButton.Name = "term10YearsRadioButton";
-            this.term10YearsRadioButton.Size = new System.Drawing.Size(109, 36);
-            this.term10YearsRadioButton.TabIndex = 0;
-            this.term10YearsRadioButton.TabStop = true;
-            this.term10YearsRadioButton.Text = "1 Year";
-            this.term10YearsRadioButton.UseVisualStyleBackColor = true;
-            this.term10YearsRadioButton.CheckedChanged += new System.EventHandler(this.oneYearRadioButton_CheckedChanged);
-            this.term10YearsRadioButton.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.oneYearRadioButton_KeyPress);
+            this.term1YearsRadioButton.AutoSize = true;
+            this.term1YearsRadioButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.term1YearsRadioButton.Location = new System.Drawing.Point(35, 99);
+            this.term1YearsRadioButton.Name = "term1YearsRadioButton";
+            this.term1YearsRadioButton.Size = new System.Drawing.Size(109, 36);
+            this.term1YearsRadioButton.TabIndex = 0;
+            this.term1YearsRadioButton.TabStop = true;
+            this.term1YearsRadioButton.Text = "1 Year";
+            this.term1YearsRadioButton.UseVisualStyleBackColor = true;
+            this.term1YearsRadioButton.CheckedChanged += new System.EventHandler(this.oneYearRadioButton_CheckedChanged);
+            this.term1YearsRadioButton.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.oneYearRadioButton_KeyPress);
             // 
             // Form1
             // 
@@ -1115,10 +1115,10 @@ namespace Assignment3
         private System.Windows.Forms.Label euroSymbolLabel;
         private System.Windows.Forms.Button displayButton;
         private System.Windows.Forms.GroupBox investmentDetailsGroupBox;
-        private System.Windows.Forms.RadioButton term1YearsRadioButton;
+        private System.Windows.Forms.RadioButton term10YearsRadioButton;
         private System.Windows.Forms.RadioButton term5YearsRadioButton;
         private System.Windows.Forms.RadioButton term3YearsRadioButton;
-        private System.Windows.Forms.RadioButton term10YearsRadioButton;
+        private System.Windows.Forms.RadioButton term1YearsRadioButton;
         private System.Windows.Forms.Label interestRateLabel;
         private System.Windows.Forms.Label interestRate10YearLabel;
         private System.Windows.Forms.Label interestRate5YearLabel;

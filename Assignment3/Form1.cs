@@ -14,9 +14,11 @@ namespace Assignment3
 {
     public partial class Form1 : Form
     {
+        
+        // Default form height
+        const int MIN_HEIGHT = 508;
 
-        // Form dimensions
-        const int MIN_HEIGHT = 500;
+        // Fully expanded form height
         const int MAX_HEIGHT = 1518;        
         
         // Correct password
@@ -31,24 +33,52 @@ namespace Assignment3
         // Format for displaying date
         const string DATE_FORMAT = "dd/MM/yyyy";
 
-        // Messages
+        // Messages displayed on entering the wrong password
         const string WRONG_PASSWORD_MESSAGE_PART_1 = "Wrong Password. You have ";
         const string WRONG_PASSWORD_MESSAGE_PART_2 = " more attempt(s).";
+
+        // Message displayed on being locked out of the application
         const string TOO_MANY_FAILED_ATTEMPTS_MESSAGE = "Too many failed attempts";
         const string LOCKED_OUT_MESSAGE = "Locked out";
+
+        // Heading for the message box for errors
         const string ERROR_MESSAGE = "Error";
+
+        // Message displayed when name is not entered
         const string ENTER_NAME_MESSAGE = "Please enter your full name";
+
+        // Message displayed when email is not entered
         const string ENTER_EMAIL_MESSAGE = "Please enter your email address";
+
+        // Message displayed when phone number is not entered
         const string ENTER_PHONE_MESSAGE = "Please enter your phone number";
+
+        // Message displayed when an invalid email address is entered
         const string ENTER_VALID_EMAIL_MESSAGE = "Please enter a valid email address";
+
+        // Message displayed when an invalid phone number is entered
         const string ENTER_VALID_PHONE_MESSAGE = "Please enter a valid phone number";
+
+        // Message displayed when an invalid value is entered for investment
         const string ENTER_VALID_AMOUNT = "Please enter a numeric value for investment amount";
+
+        // Message displayed when a negative investment amount is entered
+        const string ENTER_NON_NEGATIVE_AMOUNT = "Please enter a non-negative amount for investment";
+
+        // Heading for the message box displayed when requesting final confirmation
         const string CONFIRM_INVESTMENT_MESSAGE = "Confirm Investment";
+
+        // Message displayed when requesting final confirmation
         const string ARE_YOU_SURE_MESSAGE = "Would you like to confirm this investment?";
+
+        // Message displayed confirming transaction
         const string TRANSACTION_CONFIRMED_MESSAGE = "Transaction confirmed!";
+
+        // Heading for alert messages
         const string ALERT_MESSAGE = "Alert";
+
+        // Message prompting the user to enter a value to search for
         const string ENTER_SEARCH_TERM_MESSAGE = "Enter a term to search";
-        const string ID_NOT_FOUND = "No transaction found for given ID";
 
         // Literal value for displaying years of investment term duration
         const string YEAR_SUFFIX = " Year(s)";
@@ -128,21 +158,24 @@ namespace Assignment3
                 // Check if we are within the limit for failed password attempts
                 if (passwordAttemptsCounter < PASSWORD_FAILED_ATTEMPTS_LIMIT)
                 {
-                    // Show message indicating that a wrong password is entered
+                    // Display message indicating that a wrong password is entered
                     string mainMessage = WRONG_PASSWORD_MESSAGE_PART_1 +
                         (PASSWORD_FAILED_ATTEMPTS_LIMIT - passwordAttemptsCounter) +
                         WRONG_PASSWORD_MESSAGE_PART_2;
                     DialogResult result = MessageBox.Show(mainMessage, ERROR_MESSAGE, 
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     if (result == DialogResult.OK)
+                        // Return focus to the password text field
                         passwordEntryTextBox.Focus();
                 }
                 else
                 {
-                    // Show message indicating that too many failed attempts have occured
+                    // Display message indicating that too many failed attempts have occured
                     DialogResult result =
                     MessageBox.Show(TOO_MANY_FAILED_ATTEMPTS_MESSAGE,
                     LOCKED_OUT_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     // Then exit the application
                     if (result == DialogResult.OK)
                         Application.Exit();
@@ -168,20 +201,38 @@ namespace Assignment3
             }
         }
 
-        // Method to show interest rates and final balance for given investment amount
+        // Method to display interest rates and final balance for given investment amount
         private void displayRates()
         {
-            // Obtain entered investment amount
+            
             try
             {
-                investment = decimal.Parse(investmentAmountTextBox.Text);
+                // Obtain entered investment amount
+                investment = Math.Round(decimal.Parse(investmentAmountTextBox.Text), 2);
+
+                // Check if the value entered is negative
+                if(investment < 0)
+                {
+                    // Display message requesting entry of a non-negative investment amount
+                    DialogResult result = MessageBox.Show(ENTER_NON_NEGATIVE_AMOUNT,
+                        ERROR_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    // Return focus to the investment amount text field
+                    if (result == DialogResult.OK)
+                        // Pass on focus to the investment amount input field
+                        investmentAmountTextBox.Focus();
+                    return;
+                }
             }
             catch
             {
-                // Show message requesting entry of a valid investment amount
+                // Display message requesting entry of a valid investment amount
                 DialogResult result = MessageBox.Show(ENTER_VALID_AMOUNT,
                     ERROR_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                // Return focus to the investment amount text field
                 if (result == DialogResult.OK)
+                    // Pass on focus to the investment amount input field
                     investmentAmountTextBox.Focus();
                 return;
             }
@@ -189,7 +240,7 @@ namespace Assignment3
             // Check if the investment amount qualifies for the higher interest rate
             if (investment >= BAND_2_CUTOFF)
             {
-                // If so, apply the higher interest rate
+                // If so, apply the higher interest rate for each term duration
                 interestRateFor1Years = BAND_2_TERM_1_YEARS;
                 interestRateFor3Years = BAND_2_TERM_3_YEARS;
                 interestRateFor5Years = BAND_2_TERM_5_YEARS;
@@ -197,7 +248,7 @@ namespace Assignment3
             }
             else
             {
-                // Otherwise, apply the lower interest rate
+                // Otherwise, apply the lower interest rate for each term duration
                 interestRateFor1Years = BAND_1_TERM_1_YEARS;
                 interestRateFor3Years = BAND_1_TERM_3_YEARS;
                 interestRateFor5Years = BAND_1_TERM_5_YEARS;
@@ -229,7 +280,7 @@ namespace Assignment3
             // Expand form
             this.Height = MAX_HEIGHT;
 
-            // Show interest rates and final balance
+            // Display interest rates and final balance
             investmentDetailsGroupBox.Enabled = true;
             investmentDetailsGroupBox.Show();
 
@@ -248,16 +299,16 @@ namespace Assignment3
         // Event handler called on pressing the "Display" button 
         private void displayButton_Click(object sender, EventArgs e)
         {
+            // Display interest rates and final balance values for the given investment amount
             displayRates();
         }
 
         // Method to generate a random string
         private string randomString()
         {
-            // StreamReader inputFile = File.OpenText("Invest4UTransactions.txt");
-
             // Initialize the random string
             var randomizedString = "";
+
             var random = new Random();
 
             // Loop 8 times
@@ -268,29 +319,69 @@ namespace Assignment3
             return randomizedString;
         }
 
+        // Method to generate a unique random string
+        void generateTransactionID()
+        {
+            // Generate a random candidate string for the Transaction ID
+            string candidate = randomString();
+            try
+            {
+                // Open file
+                StreamReader inputFile = File.OpenText(DATA_FILE_NAME);
+
+                do
+                {
+                    // Obtain the first transacation ID from file, if any
+                    string currentID = inputFile.ReadLine();
+
+                    // Check if it's the same as the one just generated
+                    if (currentID == candidate)
+                    {
+                        generateTransactionID();
+                        return;
+                    }
+                    else
+                        // Pass over the rest of the current transaction's details
+                        for (int index = 0; index < 7; index++)
+                            inputFile.ReadLine();
+                }
+                while (inputFile.ReadLine() != null);
+            }
+            catch { }
+
+            // Save the candidate string as the transaction ID
+            transactionID = candidate;
+        }
+
+        // Method to be called when toggling radio buttons
+        void toggleRadioButton()
+        {
+            // Unhide the proceed button
+            proceedButton.Show();
+
+            // Grey out the investor details section depending on whether the term duration was changed
+            toggleInvestorDetailsVisibility();
+        }
+
         // Event handlers called on toggling radio buttons
         private void oneYearRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            proceedButton.Show();
-            toggleInvestorDetailsVisibility();
+            toggleRadioButton();
         }
 
         private void threeYearsRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            proceedButton.Show();
-            toggleInvestorDetailsVisibility();
+            toggleRadioButton();
         }
 
         private void fiveYearsRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            proceedButton.Show();
-            toggleInvestorDetailsVisibility();
+            toggleRadioButton();
         }
 
         private void tenYearsRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            proceedButton.Show();
-            toggleInvestorDetailsVisibility();
+            toggleRadioButton();
         }
 
         // Method for proceeding from term selection to investor information
@@ -300,10 +391,10 @@ namespace Assignment3
             int checkedIndex = 0;
 
             // Set term duration based on selected radio button
-            checkedIndex = term10YearsRadioButton.Checked ? 0 :
+            checkedIndex = term1YearsRadioButton.Checked ? 0 :
                 term3YearsRadioButton.Checked ? 1 :
                 term5YearsRadioButton.Checked ? 2 :
-                term1YearsRadioButton.Checked ? 3 : 0;
+                term10YearsRadioButton.Checked ? 3 : 0;
 
             // Set interest rate and final balance based on selected term duration
             switch (checkedIndex)
@@ -330,32 +421,41 @@ namespace Assignment3
                     break;
             }
 
-            // Check if a transaction ID hasa not been generated
+            // Check if a transaction ID has not been generated
             if (transactionID == "")
             {
-                // If so, generate and assign a random string for the transaction ID
-                transactionID = randomString();
-                transactionIDDisplayLabel.Text = transactionID;
+                // If so, generate a transaction ID
+                generateTransactionID();
             }
 
-            // Show date
+            // Display transaction ID
+            transactionIDDisplayLabel.Text = transactionID;
+
+            // Display date
             investmentDateValueLabel.Text = DateTime.Today.ToString(DATE_FORMAT);
 
             // Expand form
             this.Height = MAX_HEIGHT;
 
-            // Show fields for investor details
+            // Display fields for investor details
             investorDetailsGroupBox.Show();
             investorDetailsGroupBox.Enabled = true;
 
-            // Pass on focus
+            // Check if name is not entered
             if (fullNameTextBox.Text == "")
+                // Pass on focus to the name input field
                 fullNameTextBox.Focus();
+            // Check if email is not entered
             else if (emailTextBox.Text == "")
+                // Pass on focus to the email input field
                 emailTextBox.Focus();
+            // Check if phone number is not entered
             else if (phoneNumberTextBox.Text == "")
+                // Pass on focus to the phone number input field
                 phoneNumberTextBox.Focus();
+            // Everything seems filled in
             else
+                // Pass on focus to the submit button
                 submitButton.Focus();
 
         }
@@ -363,6 +463,7 @@ namespace Assignment3
         // Event handler called on pressing the "Proceed" button
         private void proceedButton_Click(object sender, EventArgs e)
         {
+            // Show fields for entering client details
             proceedToInvestorInformation();
         }
 
@@ -372,10 +473,12 @@ namespace Assignment3
             // Check if no name was entered
             if (fullNameTextBox.Text.Trim() == "")
             {
-                // Show message requesting the user to enter one
+                // Display message requesting the user to enter one
                 DialogResult result = MessageBox.Show(ENTER_NAME_MESSAGE,
                     ERROR_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
                 if (result == DialogResult.OK)
+                    // Pass on focus to the name input field
                     fullNameTextBox.Focus();
                 return;
             }
@@ -383,10 +486,12 @@ namespace Assignment3
             // Check if no email address was entered
             if (emailTextBox.Text.Trim() == "")
             {
-                // Show message requesting the user to enter one
+                // Display message requesting the user to enter one
                 DialogResult result = MessageBox.Show(ENTER_EMAIL_MESSAGE,
                     ERROR_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 if (result == DialogResult.OK)
+                    // Pass on focus to the email input field
                     emailTextBox.Focus();
                 return;
             }
@@ -394,31 +499,68 @@ namespace Assignment3
             // Check if email entered was invalid
             if (!new EmailAddressAttribute().IsValid(emailTextBox.Text))
             {
-                // Show message requesting the user to enter a valid email address
+                // Display message requesting the user to enter a valid email address
                 DialogResult result = MessageBox.Show(ENTER_VALID_EMAIL_MESSAGE,
                 ERROR_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 if (result == DialogResult.OK)
+                    // Pass on focus to the email input field
                     emailTextBox.Focus();
                 return;
             }
 
-            // Obtain entered information
+            // Check if no phone number was entered
+            if (phoneNumberTextBox.Text.Trim() == "")
+            {
+                // Display message requesting the user to enter one
+                DialogResult result = MessageBox.Show(ENTER_PHONE_MESSAGE,
+                    ERROR_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                if (result == DialogResult.OK)
+                    // Pass on focus to the phone number input field
+                    phoneNumberTextBox.Focus();
+                return;
+            }
+
+            // Display values to be confirmed
+
+            // Obtain investor name
             name = fullNameTextBox.Text.Trim();
+
+            // Obtain investor email
             email = emailTextBox.Text.Trim();
+
+            // Obtain investor phone number
             phone = phoneNumberTextBox.Text.Trim();
 
-            // Fill investment details
+            // Display the investment amount
             investmentValueLabel.Text = investment.ToString("C");
+
+            // Display the final amount
             finalBalanceValueLabel.Text = finalBalance.ToString("C");
+
+            // Display the interest amount
             interestValueLabel.Text = (finalBalance - investment).ToString("C");
-            termDurationValueLabel.Text = termDuration + (termDuration == 1 ? "" : "s");
+
+            // Display the term duration
+            termDurationValueLabel.Text = termDuration + YEAR_SUFFIX;
+
+            // Display the client name
             fullNameValueLabel.Text = name;
+
+            // Display the client email
             emailAddressValueLabel.Text = email;
+
+            // Display the client phone number
             telephoneValueLabel.Text = phone;
+
+            // Display the transaction ID
             transactionIDValueLabel.Text = transactionID;
+
+            // Display the date
             dateValueLabel.Text = DateTime.Today.ToString(DATE_FORMAT);
 
-            // Show the investment details for confirmation
+            // Display the investment details for confirmation
             confirmationGroupBox.Show();
 
             // Pass on focus
@@ -436,10 +578,10 @@ namespace Assignment3
         private void toggleInvestorDetailsVisibility()
         {
             // Check if the term duration selected is the same as that before pressing "Proceed"
-            if (termDuration == TERM_1_YEARS && term10YearsRadioButton.Checked ||
+            if (termDuration == TERM_1_YEARS && term1YearsRadioButton.Checked ||
                 termDuration == TERM_3_YEARS && term3YearsRadioButton.Checked ||
                 termDuration == TERM_5_YEARS && term5YearsRadioButton.Checked ||
-                termDuration == TERM_10_YEARS && term1YearsRadioButton.Checked)
+                termDuration == TERM_10_YEARS && term10YearsRadioButton.Checked)
                 // If so, show the investor details
                 investorDetailsGroupBox.Enabled = true;
             else 
@@ -459,6 +601,7 @@ namespace Assignment3
                     // If so, show the investment details
                     investmentDetailsGroupBox.Enabled = true;
 
+                    // Set the visibility of the investor details section based on the term duration selection
                     toggleInvestorDetailsVisibility();                   
                 }
                 else
@@ -485,9 +628,12 @@ namespace Assignment3
         // Method to clear fields and labels
         private void clearFields()
         {
+            // Hide sections that were hidden initially
             confirmationGroupBox.Hide();
             investorDetailsGroupBox.Hide();
             investmentDetailsGroupBox.Hide();
+
+            // Clear displayed values
             fullNameValueLabel.Text = "";
             emailAddressValueLabel.Text = "";
             interestValueLabel.Text = "";
@@ -502,18 +648,45 @@ namespace Assignment3
             emailTextBox.Text = "";
             phoneNumberTextBox.Text = "";
             investmentAmountTextBox.Text = "";
-            term10YearsRadioButton.Checked = false;
+            term1YearsRadioButton.Checked = false;
             term3YearsRadioButton.Checked = false;
             term5YearsRadioButton.Checked = false;
-            term1YearsRadioButton.Checked = false;
+            term10YearsRadioButton.Checked = false;
+            averageInvestmentValueLabel.Text = "";
+            averageTermValueLabel.Text = "";
+            totalInterestValueLabel.Text = "";
+            totalInvestmentValueLabel.Text = "";
+
+            // Clear session data
+            transactionID = "";
+            name = "";
+            email = "";
+            phone = "";
+            investment = 0.00M;
+            interestRate = 0;
+            termDuration = 0;
+            interestRateFor1Years = BAND_1_TERM_1_YEARS;
+            interestRateFor3Years = BAND_1_TERM_3_YEARS;
+            interestRateFor5Years = BAND_1_TERM_5_YEARS;
+            interestRateFor10Years = BAND_1_TERM_10_YEARS;
+            finalBalanceFor1Years = 0.00M;
+            finalBalanceFor3Years = 0.00M;
+            finalBalanceFor5Years = 0.00M;
+            finalBalanceFor10Years = 0.00M;
+            interestRate = BAND_1_TERM_1_YEARS;
+            finalBalance = 0.00M;
+
+            // Pass on focus to the input field for entering investment amount
             investmentAmountTextBox.Focus();
         }
 
         // Event handler called on pressing the "Confirm" button
         private void confirmButton_Click(object sender, EventArgs e)
         {
+            // Display message prompting the user to confirm the transaction
             DialogResult result = MessageBox.Show(ARE_YOU_SURE_MESSAGE,
                 CONFIRM_INVESTMENT_MESSAGE, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
             if (result == DialogResult.Yes)
             try
             {
@@ -534,6 +707,7 @@ namespace Assignment3
                 // Close file
                 outputFile.Close();
 
+                // Display message indicating that the transaction has been confirmed
                 MessageBox.Show(TRANSACTION_CONFIRMED_MESSAGE, ALERT_MESSAGE, 
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -543,7 +717,8 @@ namespace Assignment3
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                // Display message explaining the exception that occured
+                MessageBox.Show(ex.Message, ERROR_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -552,24 +727,28 @@ namespace Assignment3
         {
             // Check if enter key is pressed
             if (e.KeyChar == (char)13)
+                // Display fields for entering client details
                 proceedToInvestorInformation();
         }
         private void threeYearsRadioButton_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Check if enter key is pressed
             if (e.KeyChar == (char)13)
+                // Display fields for entering client details
                 proceedToInvestorInformation();
         }
         private void fiveYearsRadioButton_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Check if enter key is pressed
             if (e.KeyChar == (char)13)
+                // Display fields for entering client details
                 proceedToInvestorInformation();
         }
         private void tenYearsRadioButton_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Check if enter key is pressed
             if (e.KeyChar == (char)13)
+                // Display fields for entering client details
                 proceedToInvestorInformation();
         }
 
@@ -578,32 +757,44 @@ namespace Assignment3
         {
             // Check if enter key is pressed
             if (e.KeyChar == (char)13)
+                // Submit investment details to be confirmed
                 submitInformation();
         }
         private void emailTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Check if enter key is pressed
             if (e.KeyChar == (char)13)
+                // Submit investment details to be confirmed
                 submitInformation();
         }
         private void phoneNumberTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Check if enter key is pressed
             if (e.KeyChar == (char)13)
+                // Submit investment details to be confirmed
                 submitInformation();
         }
 
         // Event handler called on pressing the "Exit" button
         private void exitButton_Click(object sender, EventArgs e)
         {
+            // Quit application
             Application.Exit();
         }
 
         // Event handler called on pressing the "Clear" button
         private void clearButton_Click(object sender, EventArgs e)
         {
+            // Set views to default
             clearFields();
+
+            // Hide the summary section as per default
             summaryPanel.Hide();
+
+            // Hide the search results section as per default
+            searchResultsPanel.Hide();
+
+            // Restore form height to default
             this.Height = MIN_HEIGHT;
         }
         
@@ -613,18 +804,28 @@ namespace Assignment3
             try
             {
 
-                // Initializing variables
+                // Initialize variable for total investment amount
                 decimal totalInvestment = 0.00M;
+
+                // Initialize variable for total interest amount
                 decimal totalInterest = 0.00M;
+
+                // Initialize variable for average investment amount
                 decimal averageInvestment = 0.00M;
+
+                // Initialze variable for average term duration
                 decimal averageTermDuration = 0.0M;
+
+                // Initialize variable for counting the number of transactions
                 int transactionCount = 0;
+
+                // Initialize variable for totalling the term duration, for computing its average
                 decimal totalTermDuration = 0.0M;
 
                 // Open file
                 StreamReader inputFile = File.OpenText(DATA_FILE_NAME);
 
-                // Empty list of IDs shown in Summary section
+                // Empty list of IDs displayed in Summary section
                 summaryListBox.Items.Clear();
 
                 // Read saved data
@@ -637,17 +838,23 @@ namespace Assignment3
                     if (currentID == null)
                         break;
 
+                    // Increment number of transactions
                     transactionCount++;
 
-                    // Add transaction ID to the list of IDs shown
+                    // Add transaction ID to the list of IDs displayed
                     summaryListBox.Items.Add(currentID);
 
                     // Skip through lines with information we don't need now
                     for (int index = 0; index < 4; index++)
                         inputFile.ReadLine();
 
+                    // Add investment amount to total
                     totalInvestment += decimal.Parse(inputFile.ReadLine());
+
+                    // Add term duration to total
                     totalTermDuration += decimal.Parse(inputFile.ReadLine());
+
+                    // Add interest amount to total
                     totalInterest += decimal.Parse(inputFile.ReadLine());
                 }
                 while (inputFile.ReadLine() != null);
@@ -655,25 +862,37 @@ namespace Assignment3
                 // Close file
                 inputFile.Close();
 
-                // Calculating averages
+                // Calculating average investment amount
                 averageInvestment = totalInvestment / transactionCount;
+
+                // Calculating average term duration
                 averageTermDuration = totalTermDuration / transactionCount;
 
                 // Expand form
                 this.Height = MAX_HEIGHT;
 
-                // Display information
+                // Display average term duration
                 averageTermValueLabel.Text = averageTermDuration.ToString("0.0") + YEAR_SUFFIX;
+
+                // Display average investment amount
                 averageInvestmentValueLabel.Text = averageInvestment.ToString("C");
+
+                // Display total investment amount
                 totalInvestmentValueLabel.Text = totalInvestment.ToString("C");
+
+                // Display total interest amount
                 totalInterestValueLabel.Text = totalInterest.ToString("C");
 
-                // Show summary section
+                // Display summary section
                 summaryPanel.Show();
+
+                // Hide overlapping search results panel
+                searchResultsPanel.Hide();
 
             }
             catch (Exception ex)
             {
+                // Display message explaining the exception that occured
                 MessageBox.Show(ex.Message, ERROR_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         
@@ -682,7 +901,7 @@ namespace Assignment3
         // Method for searching
         private void runSearch()
         {
-            // Show the search results section
+            // Display the search results section
             searchResultsPanel.Show();
 
             // Hide the overlapping Summary section
@@ -703,7 +922,9 @@ namespace Assignment3
                 // Inform the user to enter one
                 DialogResult result = MessageBox.Show(ENTER_SEARCH_TERM_MESSAGE, ALERT_MESSAGE,
                      MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                 if (result == DialogResult.OK)
+                    // Pass focus to the search input field
                     searchPaneTextBox.Focus();
                 return;
             }
@@ -719,17 +940,16 @@ namespace Assignment3
 
                     do
                     {
+                        // Obtain the transaction ID from file, if any
                         string savedID = inputFile.ReadLine();
 
                         // Check if the saved ID is the one we are looking for
                         if (savedID == searchTerm)
                         {
-                            // If so, print details in form
-
-                            // Show ID
+                            // Display transaction ID
                             searchResultsListBox.Items.Add(savedID);
 
-                            // Show the rest of that transaction's details
+                            // Display the rest of that transaction's details
                             for (int index = 0; index < 7; index++)
                                 searchResultsListBox.Items.Add(inputFile.ReadLine());
                             break;
@@ -753,19 +973,30 @@ namespace Assignment3
                 {
                     do
                     {
+                        // Obtain transaction ID
                         string savedID = inputFile.ReadLine();
+
+                        // Obtain transaction date
                         string savedDate = inputFile.ReadLine();
+
+                        // Obtain email registered with the transaction
                         string savedEmail = inputFile.ReadLine();
 
                         // Check if the saved ID is the one we are looking for
                         if (savedEmail == searchTerm)
                         {
-                            // If so, print details in form
+                            // If so, display details pertaining to the current transaction
+
+                            // Display transaction ID
                             searchResultsListBox.Items.Add(savedID);
+
+                            // Display transaction date
                             searchResultsListBox.Items.Add(savedDate);
+
+                            // Display email registered with the transaction
                             searchResultsListBox.Items.Add(savedEmail);
 
-                            // Show the rest of that transaction's details
+                            // Display the rest of that transaction's details
                             for (int index = 0; index < 5; index++)
                                 searchResultsListBox.Items.Add(inputFile.ReadLine());
                         }
@@ -784,21 +1015,29 @@ namespace Assignment3
                     if(searchResultsListBox.Items.Count == 0)
                         searchResultsListBox.Items.Add("No results found");
                 }
+                // Check if search is by date
                 else if (searchDateRadioButton.Checked)
                 {
                     do
                     {
+                        // Obtain transaction ID
                         string savedID = inputFile.ReadLine();
+
+                        // Obtain transaction date
                         string savedDate = inputFile.ReadLine();
 
                         // Check if the saved ID is the one we are looking for
                         if (savedDate == searchTerm)
                         {
-                            // If so, print details in form
+                            // If so, display details pertaining to the current transaction
+
+                            // Display transaction ID
                             searchResultsListBox.Items.Add(savedID);
+
+                            // Display transaction date
                             searchResultsListBox.Items.Add(savedDate);
 
-                            // Show the rest of that transaction's details
+                            // Display the rest of that transaction's details
                             for (int index = 0; index < 6; index++)
                                 searchResultsListBox.Items.Add(inputFile.ReadLine());
                         }
@@ -818,12 +1057,12 @@ namespace Assignment3
                         searchResultsListBox.Items.Add("No results found");
                 }
 
-
                 // Close file
                 inputFile.Close();
             }
             catch (Exception ex)
             {
+                // Display a message explaining the exception that occured
                 MessageBox.Show(ex.Message, ERROR_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
