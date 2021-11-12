@@ -204,6 +204,8 @@ namespace Assignment3
             toolTip.SetToolTip(searchDateRadioButton, BY_DATE_TOOLTIP);
 
         }
+        
+        Random random = new Random();
 
         // Function for checking the entered password and acting according to its validity
         private void checkPassword()
@@ -217,6 +219,9 @@ namespace Assignment3
                 // If so, proceed to the next screen
                 passwordEntryPanel.Hide();
                 investmentPanel.Show();
+
+                // Pass on focus to the investment amount text field
+                investmentAmountTextBox.Focus();
 
             }
             else
@@ -377,19 +382,40 @@ namespace Assignment3
             // Initialize the random string
             var randomizedString = "";
 
-            var random = new Random();
-
             // Loop 8 times
-            for (int i = 0; i < 8; i++)
+            for (int index = 0; index < 8; index++)
                 // Add a random character each time
-                randomizedString += characterSet[random.Next(8)];
+                randomizedString += characterSet[random.Next(36)];
 
             return randomizedString;
         }
 
+        private Boolean isUnique(string searchString)
+        {
+            StreamReader inputFile = File.OpenText(DATA_FILE_NAME);
+            while (!inputFile.EndOfStream)
+            {
+                if (searchString.Equals(inputFile.ReadLine()))
+                {
+                    inputFile.Close();
+                    return false;
+                }
+
+                for (int index = 0; index < 8; index++)
+                {
+                    inputFile.ReadLine();
+                }
+            }
+            inputFile.Close();
+            return true;
+        }
+
+
         // Method to generate a unique random string
         private void generateTransactionID()
         {
+
+            /* Very unsure about this approach, so ditched it
             // Generate a random candidate string for the Transaction ID
             string candidate = randomString();
             try
@@ -422,6 +448,18 @@ namespace Assignment3
 
             // Save the candidate string as the transaction ID
             transactionID = candidate;
+            */
+
+            string candidate = "";
+            Boolean unique = false;
+            do
+            {
+                candidate = randomString();
+                unique = isUnique(candidate);
+            }
+            while (!unique);
+            transactionID = candidate;
+
         }
 
         // Method to be called when toggling radio buttons

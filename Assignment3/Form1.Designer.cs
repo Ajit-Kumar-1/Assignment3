@@ -1076,8 +1076,8 @@ namespace Assignment3
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1574, 437);
-            this.Controls.Add(this.investmentPanel);
             this.Controls.Add(this.passwordEntryPanel);
+            this.Controls.Add(this.investmentPanel);
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "Invest4U";
