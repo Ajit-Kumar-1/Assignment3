@@ -86,6 +86,39 @@ namespace Assignment3
         // Specify the characters used to make up the random string
         const string characterSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
+        // Tooltip message for the "Display" button
+        const string DISPLAY_TOOLTIP = "Display term duration options, and interest rates and final balances for each term duration";
+
+        // Tooltip message for the "Summary" button
+        const string SUMMARY_TOOLTIP = "Show a summary of all transactions saved on file";
+
+        // Tooltip message for the "Clear" button
+        const string CLEAR_TOOLTIP = "Clear the form and set values to default";
+
+        // Tooltip message for the "Exit" button
+        const string EXIT_TOOLTIP = "Quit application";
+
+        // Tooltip message for the "Search" button
+        const string SEARCH_TOOLTIP = "Search file for transactions matching the provided term";
+
+        // Tooltip message for the "By transaction ID" radio button
+        const string BY_ID_TOOLTIP = "Search for a transaction by providing its transaction ID";
+
+        // Tooltip message for the "By email" radio button
+        const string BY_EMAIL_TOOLTIP = "Search for transactions by providing the email address registered with them";
+
+        // Tooltip message for the "By date" radio button
+        const string BY_DATE_TOOLTIP = "Search for transactions by providing the date of their occurrence";
+
+        // Tooltip message for the "Proceed" button
+        const string PROCEED_TOOLTIP = "Proceed to fill in the investor's name, email and phone number";
+
+        // Tooltip message for the "Submit" button
+        const string SUBMIT_TOOLTIP = "Submit given details for a pre-confirmation summary";
+
+        // Tooltip message for the "Confirm" button
+        const string CONFIRM_TOOLTIP = "Seek final confirmation";
+
         // Interest rates
         const decimal BAND_1_TERM_1_YEARS = 0.005000M;
         const decimal BAND_1_TERM_3_YEARS = 0.006250M;
@@ -136,6 +169,40 @@ namespace Assignment3
         public Form1()
         {
             InitializeComponent();
+
+            // Set a tooltip for the "Display" button
+            toolTip.SetToolTip(displayButton, DISPLAY_TOOLTIP);
+
+            // Set a tooltip for the "Summary" button
+            toolTip.SetToolTip(summaryButton, SUMMARY_TOOLTIP);
+
+            // Set a tooltip for the "Clear" button
+            toolTip.SetToolTip(clearButton, CLEAR_TOOLTIP);
+
+            // Set a tooltip for the "Exit" button
+            toolTip.SetToolTip(exitButton, EXIT_TOOLTIP);
+
+            // Set a tooltip for the "Search" button
+            toolTip.SetToolTip(searchButton, SEARCH_TOOLTIP);
+
+            // Set a tooltip for the "Proceed" button
+            toolTip.SetToolTip(proceedButton, PROCEED_TOOLTIP);
+
+            // Set a tooltip for the "Submit" button
+            toolTip.SetToolTip(submitButton, SUBMIT_TOOLTIP);
+
+            // Set a tootip for the "Confirm" button
+            toolTip.SetToolTip(confirmButton, CONFIRM_TOOLTIP);
+
+            // Set a tooltip for the "By Transaction ID" radio button
+            toolTip.SetToolTip(searchIDRadioButton, BY_ID_TOOLTIP);
+
+            // Set a tooltip for the "By email" radio button
+            toolTip.SetToolTip(searchEmailRadioButton, BY_EMAIL_TOOLTIP);
+
+            // Set a tooltip for the "By date" radio button
+            toolTip.SetToolTip(searchDateRadioButton, BY_DATE_TOOLTIP);
+
         }
 
         // Function for checking the entered password and acting according to its validity
@@ -150,6 +217,7 @@ namespace Assignment3
                 // If so, proceed to the next screen
                 passwordEntryPanel.Hide();
                 investmentPanel.Show();
+
             }
             else
             {
@@ -320,7 +388,7 @@ namespace Assignment3
         }
 
         // Method to generate a unique random string
-        void generateTransactionID()
+        private void generateTransactionID()
         {
             // Generate a random candidate string for the Transaction ID
             string candidate = randomString();
@@ -357,7 +425,7 @@ namespace Assignment3
         }
 
         // Method to be called when toggling radio buttons
-        void toggleRadioButton()
+        private void toggleRadioButton()
         {
             // Unhide the proceed button
             proceedButton.Show();
@@ -1084,6 +1152,7 @@ namespace Assignment3
                 // If so, run the search
                 runSearch();
         }
+
     }
 
 }

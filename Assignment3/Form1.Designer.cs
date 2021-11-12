@@ -29,6 +29,7 @@ namespace Assignment3
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.passwordEntryPanel = new System.Windows.Forms.Panel();
             this.passwordEntryButton = new System.Windows.Forms.Button();
@@ -114,6 +115,7 @@ namespace Assignment3
             this.term5YearsRadioButton = new System.Windows.Forms.RadioButton();
             this.term3YearsRadioButton = new System.Windows.Forms.RadioButton();
             this.term1YearsRadioButton = new System.Windows.Forms.RadioButton();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.passwordEntryPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.passwordScreenImage)).BeginInit();
             this.investmentPanel.SuspendLayout();
@@ -1189,6 +1191,7 @@ namespace Assignment3
         private System.Windows.Forms.Panel searchResultsPanel;
         private System.Windows.Forms.GroupBox searchResultsGroupBox;
         private System.Windows.Forms.ListBox searchResultsListBox;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }
 
