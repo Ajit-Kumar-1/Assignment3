@@ -713,6 +713,7 @@ namespace Assignment3
                 // Open file
                 StreamReader inputFile = File.OpenText(DATA_FILE_NAME);
 
+                // Check if the search is by transaction ID
                 if (searchIDRadioButton.Checked)
                 {
 
@@ -747,6 +748,76 @@ namespace Assignment3
                     // If no results found, indicate accordingly
                     searchResultsListBox.Items.Add("No results found");
                 }
+                // Check if search is by email
+                else if (searchEmailRadioButton.Checked)
+                {
+                    do
+                    {
+                        string savedID = inputFile.ReadLine();
+                        string savedDate = inputFile.ReadLine();
+                        string savedEmail = inputFile.ReadLine();
+
+                        // Check if the saved ID is the one we are looking for
+                        if (savedEmail == searchTerm)
+                        {
+                            // If so, print details in form
+                            searchResultsListBox.Items.Add(savedID);
+                            searchResultsListBox.Items.Add(savedDate);
+                            searchResultsListBox.Items.Add(savedEmail);
+
+                            // Show the rest of that transaction's details
+                            for (int index = 0; index < 5; index++)
+                                searchResultsListBox.Items.Add(inputFile.ReadLine());
+                        }
+                        else
+                        {
+                            // Since not a match, skip over the current transaction
+                            for (int index = 0; index < 5; index++)
+                                inputFile.ReadLine();
+
+                        }
+
+                    }
+                    while (inputFile.ReadLine() != null);
+
+                    // If no results found, indicate accordingly
+                    if(searchResultsListBox.Items.Count == 0)
+                        searchResultsListBox.Items.Add("No results found");
+                }
+                else if (searchDateRadioButton.Checked)
+                {
+                    do
+                    {
+                        string savedID = inputFile.ReadLine();
+                        string savedDate = inputFile.ReadLine();
+
+                        // Check if the saved ID is the one we are looking for
+                        if (savedDate == searchTerm)
+                        {
+                            // If so, print details in form
+                            searchResultsListBox.Items.Add(savedID);
+                            searchResultsListBox.Items.Add(savedDate);
+
+                            // Show the rest of that transaction's details
+                            for (int index = 0; index < 6; index++)
+                                searchResultsListBox.Items.Add(inputFile.ReadLine());
+                        }
+                        else
+                        {
+                            // Since not a match, skip over the current transaction
+                            for (int index = 0; index < 6; index++)
+                                inputFile.ReadLine();
+
+                        }
+
+                    }
+                    while (inputFile.ReadLine() != null);
+
+                    // If no results found, indicate accordingly
+                    if (searchResultsListBox.Items.Count == 0)
+                        searchResultsListBox.Items.Add("No results found");
+                }
+
 
                 // Close file
                 inputFile.Close();
@@ -755,8 +826,6 @@ namespace Assignment3
             {
                 MessageBox.Show(ex.Message, ERROR_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            // Check if the search is by transaction ID
 
         }
 
