@@ -139,7 +139,6 @@ namespace Assignment3
             this.passwordEntryPanel.Name = "passwordEntryPanel";
             this.passwordEntryPanel.Size = new System.Drawing.Size(1575, 452);
             this.passwordEntryPanel.TabIndex = 0;
-            this.passwordEntryPanel.Visible = false;
             // 
             // passwordEntryButton
             // 
@@ -246,6 +245,7 @@ namespace Assignment3
             this.searchButton.TabIndex = 24;
             this.searchButton.Text = "&Search";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // searchDateRadioButton
             // 
@@ -289,6 +289,7 @@ namespace Assignment3
             this.searchPaneTextBox.Name = "searchPaneTextBox";
             this.searchPaneTextBox.Size = new System.Drawing.Size(441, 39);
             this.searchPaneTextBox.TabIndex = 20;
+            this.searchPaneTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchPaneTextBox_KeyPress);
             // 
             // searchPaneLabel
             // 
@@ -1073,8 +1074,8 @@ namespace Assignment3
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1574, 437);
-            this.Controls.Add(this.passwordEntryPanel);
             this.Controls.Add(this.investmentPanel);
+            this.Controls.Add(this.passwordEntryPanel);
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "Invest4U";

@@ -15,12 +15,12 @@ namespace Assignment3
     public partial class Form1 : Form
     {
 
-        // Form dimension
+        // Form dimensions
         const int MIN_HEIGHT = 500;
         const int MAX_HEIGHT = 1518;        
         
         // Correct password
-        const string PASSWORD_VALUE = "ShowMeTheMoney";
+        const string PASSWORD_VALUE = "ShowMeTheMoney#";
 
         // Limit for number of failed attempts to enter password
         const int PASSWORD_FAILED_ATTEMPTS_LIMIT = 4;
@@ -29,7 +29,7 @@ namespace Assignment3
         const string DATA_FILE_NAME = "Invest4UTransactions.txt";
 
         // Format for displaying date
-        const string DATE_FORMAT = "DD/MM/YYYY";
+        const string DATE_FORMAT = "dd/MM/yyyy";
 
         // Messages
         const string WRONG_PASSWORD_MESSAGE_PART_1 = "Wrong Password. You have ";
@@ -47,7 +47,7 @@ namespace Assignment3
         const string ARE_YOU_SURE_MESSAGE = "Would you like to confirm this investment?";
         const string TRANSACTION_CONFIRMED_MESSAGE = "Transaction confirmed!";
         const string ALERT_MESSAGE = "Alert";
-        const string ENTER_TRANSACTION_ID_MESSAGE = "Please enter a transaction ID to search";
+        const string ENTER_SEARCH_TERM_MESSAGE = "Enter a term to search";
         const string ID_NOT_FOUND = "No transaction found for given ID";
 
         // Literal value for displaying years of investment term duration
@@ -150,14 +150,14 @@ namespace Assignment3
             }
         }
 
-        // Method called on pressing the "Proceed" button on the first screen
+        // Event handler called on pressing the "Proceed" button on the first screen
         private void passwordEntryButton_Click(object sender, EventArgs e)
         {
             // Run password check
             checkPassword();
         }
 
-        // Method called whenever a key is pressed while the text box has focus
+        // Event handler called whenever a key is pressed while the text box has focus
         private void passwordEntryTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             // Check if the enter key is pressed
@@ -245,7 +245,7 @@ namespace Assignment3
         private decimal generateBonus(decimal investment, int term) =>
             (investment > BONUS_CUTOFF && term >= BONUS_MINIMUM_TERM_DURATION) ? BONUS_AMOUNT : 0;
 
-        // Method called on pressing the "Display" button 
+        // Event handler called on pressing the "Display" button 
         private void displayButton_Click(object sender, EventArgs e)
         {
             displayRates();
@@ -268,7 +268,7 @@ namespace Assignment3
             return randomizedString;
         }
 
-        // Methods called on toggling radio buttons
+        // Event handlers called on toggling radio buttons
         private void oneYearRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             proceedButton.Show();
@@ -360,7 +360,7 @@ namespace Assignment3
 
         }
 
-        // Method called on pressing the "Proceed" button
+        // Event handler called on pressing the "Proceed" button
         private void proceedButton_Click(object sender, EventArgs e)
         {
             proceedToInvestorInformation();
@@ -411,7 +411,7 @@ namespace Assignment3
             investmentValueLabel.Text = investment.ToString("C");
             finalBalanceValueLabel.Text = finalBalance.ToString("C");
             interestValueLabel.Text = (finalBalance - investment).ToString("C");
-            termDurationValueLabel.Text = termDuration + YEAR_SUFFIX + (termDuration == 1 ? "" : "s");
+            termDurationValueLabel.Text = termDuration + (termDuration == 1 ? "" : "s");
             fullNameValueLabel.Text = name;
             emailAddressValueLabel.Text = email;
             telephoneValueLabel.Text = phone;
@@ -426,7 +426,7 @@ namespace Assignment3
 
         }
 
-        // Method called on pressing the "Submit" button
+        // Event handler called on pressing the "Submit" button
         private void submitButton_Click(object sender, EventArgs e)
         {
             submitInformation();
@@ -447,7 +447,7 @@ namespace Assignment3
                 investorDetailsGroupBox.Enabled = false;
         }
 
-        // Method called on editing investment amount text box
+        // Event handler called on editing investment amount text box
         private void investmentAmountTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -471,7 +471,7 @@ namespace Assignment3
             catch { }
         }
 
-        // Method called on pressing a key when focused on the Investment amount text box
+        // Event handler called on pressing a key when focused on the Investment amount text box
         private void investmentAmountTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Check if the enter key is pressed
@@ -509,7 +509,7 @@ namespace Assignment3
             investmentAmountTextBox.Focus();
         }
 
-        // Method called on pressing the "Confirm" button
+        // Event handler called on pressing the "Confirm" button
         private void confirmButton_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(ARE_YOU_SURE_MESSAGE,
@@ -526,15 +526,16 @@ namespace Assignment3
                 outputFile.WriteLine(email);
                 outputFile.WriteLine(name);
                 outputFile.WriteLine(phone);
-                outputFile.WriteLine(investment);
+                outputFile.WriteLine(investment.ToString("0.00"));
                 outputFile.WriteLine(termDuration);
-                outputFile.WriteLine(finalBalance - investment);
+                outputFile.WriteLine((finalBalance - investment).ToString("0.00"));
                 outputFile.WriteLine(" ");
 
                 // Close file
                 outputFile.Close();
 
-                MessageBox.Show(TRANSACTION_CONFIRMED_MESSAGE, ALERT_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(TRANSACTION_CONFIRMED_MESSAGE, ALERT_MESSAGE, 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Clear text fields and labels
                 clearFields();
@@ -546,7 +547,7 @@ namespace Assignment3
             }
         }
 
-        // Methods called on pressing keys when focused on a radio button
+        // Event handlers called on pressing keys when focused on a radio button
         private void oneYearRadioButton_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Check if enter key is pressed
@@ -572,7 +573,7 @@ namespace Assignment3
                 proceedToInvestorInformation();
         }
 
-        // Methods called on pressing keys while focused on text fields in the Investor information group box
+        // Event handlers called on pressing keys while focused on text fields in the Investor information group box
         private void fullNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Check if enter key is pressed
@@ -592,20 +593,21 @@ namespace Assignment3
                 submitInformation();
         }
 
-        // Method called on pressing the "Exit" button
+        // Event handler called on pressing the "Exit" button
         private void exitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        // Method called on pressing the "Clear" button
+        // Event handler called on pressing the "Clear" button
         private void clearButton_Click(object sender, EventArgs e)
         {
             clearFields();
             summaryPanel.Hide();
             this.Height = MIN_HEIGHT;
         }
-
+        
+        // Event handler called on pressing the "Summary" button
         private void summaryButton_Click(object sender, EventArgs e)
         {
             try
@@ -622,11 +624,16 @@ namespace Assignment3
                 // Open file
                 StreamReader inputFile = File.OpenText(DATA_FILE_NAME);
 
+                // Empty list of IDs shown in Summary section
+                summaryListBox.Items.Clear();
+
                 // Read saved data
                 do
                 {                    
+                    // Obtain the transaction ID of the first record
                     string currentID = inputFile.ReadLine();
 
+                    // Check if there is no record
                     if (currentID == null)
                         break;
 
@@ -652,8 +659,11 @@ namespace Assignment3
                 averageInvestment = totalInvestment / transactionCount;
                 averageTermDuration = totalTermDuration / transactionCount;
 
+                // Expand form
+                this.Height = MAX_HEIGHT;
+
                 // Display information
-                averageTermValueLabel.Text = averageTermDuration + YEAR_SUFFIX;
+                averageTermValueLabel.Text = averageTermDuration.ToString("0.0") + YEAR_SUFFIX;
                 averageInvestmentValueLabel.Text = averageInvestment.ToString("C");
                 totalInvestmentValueLabel.Text = totalInvestment.ToString("C");
                 totalInterestValueLabel.Text = totalInterest.ToString("C");
@@ -667,6 +677,102 @@ namespace Assignment3
                 MessageBox.Show(ex.Message, ERROR_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         
+        }
+
+        // Method for searching
+        private void runSearch()
+        {
+            // Show the search results section
+            searchResultsPanel.Show();
+
+            // Hide the overlapping Summary section
+            summaryPanel.Hide();
+
+            // Expand the form
+            this.Height = MAX_HEIGHT;
+
+            // Empty display listbox
+            searchResultsListBox.Items.Clear();
+
+            // Obtain the entered search term
+            string searchTerm = searchPaneTextBox.Text.Trim();
+
+            // If the search term is empty,
+            if (searchTerm == "")
+            {
+                // Inform the user to enter one
+                DialogResult result = MessageBox.Show(ENTER_SEARCH_TERM_MESSAGE, ALERT_MESSAGE,
+                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (result == DialogResult.OK)
+                    searchPaneTextBox.Focus();
+                return;
+            }
+
+            try
+            {
+                // Open file
+                StreamReader inputFile = File.OpenText(DATA_FILE_NAME);
+
+                if (searchIDRadioButton.Checked)
+                {
+
+                    do
+                    {
+                        string savedID = inputFile.ReadLine();
+
+                        // Check if the saved ID is the one we are looking for
+                        if (savedID == searchTerm)
+                        {
+                            // If so, print details in form
+
+                            // Show ID
+                            searchResultsListBox.Items.Add(savedID);
+
+                            // Show the rest of that transaction's details
+                            for (int index = 0; index < 7; index++)
+                                searchResultsListBox.Items.Add(inputFile.ReadLine());
+                            break;
+                        }
+                        else
+                        {
+                            // Since not a match, skip over the current transaction
+                            for (int index = 0; index < 7; index++)
+                                inputFile.ReadLine();
+
+                        }
+
+                    }
+                    while (inputFile.ReadLine() != null);
+
+                    // If no results found, indicate accordingly
+                    searchResultsListBox.Items.Add("No results found");
+                }
+
+                // Close file
+                inputFile.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ERROR_MESSAGE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            // Check if the search is by transaction ID
+
+        }
+
+        // Event handler called on pressing the "Search" button
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            runSearch();
+        }
+
+        // Event handler called on pressing a key when focused on the text box in search pane
+        private void searchPaneTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Check if the key pressed is the Enter key
+            if (e.KeyChar == (char)13)
+                // If so, run the search
+                runSearch();
         }
     }
 
